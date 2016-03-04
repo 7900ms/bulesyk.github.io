@@ -7,50 +7,48 @@ function getValue() {
     value = /(\d{4})\-(\d{1,2})\-(\d{1,2})/g.exec(value);
     if (value) {
         var date = [value[1], value[2], value[3]];
+        return date;
     } else {
-        result.innerHTML = result.innerHTML = '你输错了';
+        return null;
     }
-    return date;
 }
 
 function outputTime() {
+    var rotation;
     btn.onclick = function() {
-        function setTime() {
-            var nowDate = new Date();
-            var date = getValue();
-            if (date) {
-                var userDate = new Date(date[0], date[1] - 1, date[2]);
-                //获得秒数
-                var sub = Math.floor((userDate.getTime() - nowDate.getTime()) / 1000);
-                if (!sub) {
-                    result.innerHTML = "时间到了啊!";
-                    return false;
-                };
-                var D = Math.floor(sub / (24 * 60 * 60)),
-                    H = Math.floor(sub / (60 * 60) % 24),
-                    M = Math.floor(sub / 60 % 60),
-                    S = Math.floor(sub % 60);
-                if (sub > 0) {
-                    //如果输入日期大于当前日期
-                    var resultTime = '距离' + date[0] + '年' + date[1] + '月' + date[2] + '日还有' + D + '天' + H + '小时' + M + '分' + S + '秒';
-                };
-                if (sub < 0) {
-                    //如果输入日期小于当前日期
-                    sub = Math.abs(sub);
-                    D = Math.floor(sub / (24 * 60 * 60));
-                    H = Math.floor(sub / (60 * 60) % 24);
-                    M = Math.floor(sub / 60 % 60);
-                    S = Math.floor(sub % 60);
-                    resultTime = '距离' + date[0] + '年' + date[1] + '月' + date[2] + '日已有' + D + '天' + H + '小时' + M + '分' + S + '秒';
-                };
-                result.innerHTML = resultTime;
-                //循环
-                var timeChange = setTimeout(setTime, 1000);
-            } else {
-                result.innerHTML = '你输错了';
-            };
+        var userTime = getValue();
+        if (!userTime) {
+            //判断用户有没有输入
+            result.innerHTML = '你输入的正确日期呢?';
+            return false;
         };
-        setTime();
+        //每次点击将取消之前的循环
+        clearTimeout(rotation);
+        (function setTime() {
+            //重复获取时间的部分
+            var nowDate = new Date();
+            var userDate = new Date(userTime[0], userTime[1] - 1, userTime[2]);
+            var sub = Math.floor((userDate.getTime() - nowDate.getTime()) / 1000);
+            var T = {
+                d: sub / (24 * 60 * 60),
+                h: sub / (60 * 60) % 24,
+                m: sub / 60 % 60,
+                s: sub % 60
+            };
+            for (var key in T) {
+                T[key] = Math.abs(Math.floor(T[key]));
+            };
+            if (!sub) {
+                result.innerHTML = '时间到了啊!';
+                return false;
+            } else if (sub > 0) {
+                var resultTime = '距离' + userTime[0] + '年' + userTime[1] + '月' + userTime[2] + '日还有' + T.d + '天' + T.h + '小时' + T.m + '分' + T.s + '秒';
+            } else {
+                var resultTime = '距离' + userTime[0] + '年' + userTime[1] + '月' + userTime[2] + '日已有' + T.d + '天' + T.h + '小时' + T.m + '分' + T.s + '秒';
+            };
+            result.innerHTML = resultTime;
+            rotation = setTimeout(setTime, 1000);
+        })();
     };
 };
 
