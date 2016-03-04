@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <style>
+    body {
+        margin: 0;
+        text-align: center;
+    }
+    h1 {
+        text-align: center;
+    }
+    ul {
+        margin: 0 auto;
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+    }
+    ul li {
+        margin: 1rem 0;
+    }
+    ul a {
+        color: #333;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>百度前端技术学院2015项目展示</h1>
+        <ul>
+            <li><a href="{{ url_for('galleryIndex') }}">Task0001,是一个博客站点</a></li>
+            <li><a href="{{ url_for('demo')}}">Task0002</a></li>
+        </ul>
+    </div>
+</body>
+</html>
