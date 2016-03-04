@@ -29,12 +29,14 @@ function outputTime() {
             var nowDate = new Date();
             var userDate = new Date(userTime[0], userTime[1] - 1, userTime[2]);
             var sub = Math.floor((userDate.getTime() - nowDate.getTime()) / 1000);
+            //设置天,小时,分,秒
             var T = {
                 d: sub / (24 * 60 * 60),
                 h: sub / (60 * 60) % 24,
                 m: sub / 60 % 60,
                 s: sub % 60
             };
+            //转化为整数和绝对值
             for (var key in T) {
                 T[key] = Math.abs(Math.floor(T[key]));
             };
