@@ -27,7 +27,7 @@
     z-index: 2;
 }
 span:hover, .active {
-    background-color: rgba(204, 204, 204, 0.9);
+    background-color: rgba(204, 204, 204, 1);
 }
 img {
     width: 100%;
