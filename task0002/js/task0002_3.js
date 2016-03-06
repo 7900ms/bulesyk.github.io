@@ -3,6 +3,7 @@ var interval = document.getElementById('interval'),
     trueMove = document.getElementById('trueMove'),
     spanList = document.getElementsByTagName('span'),
     imghoder = document.getElementById('imghoder'),
+    imgs = imghoder.getElementsByTagName('img'),
     intervalID;
 
 //初始化图片位置函数
@@ -12,6 +13,7 @@ function resetPos(ElemID, posX, posY) {
     elem.style.left = posX + 'px';
     elem.style.top = posY + 'px';
 };
+//自动轮播函数
 function autoMove(direct, rotation, interval) {
     //定义默认值
     interval = parseInt(interval) * 1000 || 2000;
@@ -35,7 +37,6 @@ function autoMove(direct, rotation, interval) {
             resetPos(list[0], 800, 0);
             animation(list[4], -800, 0);
             animation(list[0], 0, 0);
-            document.getElementById(list[0]).style.zIndex = '2';
             span(list[0]);
         } else {
             list = [list[4], list[0], list[1], list[2], list[3]];
@@ -48,7 +49,6 @@ function autoMove(direct, rotation, interval) {
             resetPos(list[1], 0, 0);
             resetPos(list[2], 800, 0);
             animation(list[1], 800, 0);
-            document.getElementById(list[0]).style.zIndex = '2';
             animation(list[0], 0, 0);
             span(list[0]);
         };
@@ -61,7 +61,6 @@ function getConfig() {
     for (var i = 0, len = spanList.length; i < len; i++) {
         spanList[i].setAttribute('id', i + 1 + 'span');
     };
-    spanList[0].className = 'active';
     //返回用户配置
     return {
         interval: interval.value,
@@ -79,30 +78,81 @@ function span(imgID) {
         }
     };
 };
-//点击小圆点
-function spanClick() {
-    var imgs = imghoder.getElementsByTagName('img');
-    for (var j=0,l=spanList.length;j<l;j++) {
-        spanList[j].onclick = function () {
-            clearInterval(intervalID);
-            for (var i=0,len=imgs.length;i<len;i++) {
-                resetPos((i+1).toString(),800,0);
-                document.getElementById(i+1).style.zIndex = '0';
-            };
-            var paraID = parseInt(this.getAttribute('id'));
-            var thisElem = document.getElementById(paraID);
-            thisElem.style.zIndex = '1';
-            var lastImgID = paraID-1?paraID-1:5
-            resetPos(lastImgID, 0, 0);
-            animation(lastImgID,-800,0)
-            animation(paraID,0,0);
-            span(paraID);
+// 设置当前图片的class
+function nowImg() {
+    var nowSpanID = parseInt(document.querySelector('.active').getAttribute('id')).toString();
+    for (var i = 0; i < 5; i++) {
+        if (imgs[i].getAttribute('id') === nowSpanID) {
+            imgs[i].className = 'now';
+        } else {
+            imgs[i].className = '';
         };
     };
 };
-
-
+//点击小圆点
+function spanClick() {
+    for (var j = 0, l = spanList.length; j < l; j++) {
+        spanList[j].onclick = function() {
+            clearInterval(intervalID);
+            var clickID = parseInt(this.getAttribute('id')).toString();
+            nowImg();
+            var imgID = document.querySelector('.now').getAttribute('id');
+            if (clickID > imgID) {
+                resetPos(clickID,800,0);
+                animation(imgID,-800,0);
+                animation(clickID,0,0);
+                setAcitve(clickID);
+            } else {
+                resetPos(clickID,-800,0);
+                animation(imgID,800,0);
+                animation(clickID,0,0);
+                setAcitve(clickID);
+            };
+        };
+    };
+};
+//设置active
+function setAcitve(clickID) {
+    for (var i=0;i<5;i++) {
+        if (spanList[i].getAttribute('id') === (clickID+'span')) {
+            spanList[i].className = 'active';
+        } else {
+            spanList[i].className ='';
+        };
+    };
+};
+//箭头变化
+function arrow() {
+    //rigt
+    var right = document.getElementById('right');
+    right.onclick = function() {
+        clearInterval(intervalID);
+        nowImg();
+        var imgID = document.querySelector('.now').getAttribute('id');
+        var nextID = parseInt(imgID)+1;
+        nextID = (nextID === 6?1:nextID).toString();
+        console.log(nextID);
+        resetPos(nextID,800,0);
+        animation(imgID,-800,0);
+        animation(nextID,0,0);
+        setAcitve(nextID);
+    };
+    var left = document.getElementById('left');
+    left.onclick = function () {
+        clearInterval(intervalID);
+        nowImg();
+        var imgID = document.querySelector('.now').getAttribute('id');
+        var nextID = parseInt(imgID)-1;
+        nextID = (nextID === 0?5:nextID).toString();
+        console.log(nextID);
+        resetPos(nextID,-800,0);
+        animation(imgID,800,0);
+        animation(nextID,0,0);
+        setAcitve(nextID);
+    };
+};
 window.onload = function() {
+    getConfig();
     var btn = document.getElementById('btn');
     var c = {};
     interval.value = '2秒';
@@ -113,7 +163,7 @@ window.onload = function() {
         c = getConfig();
         autoMove(c.trueMove, c.rotation, c.interval);
     };
-    getConfig();
     spanClick();
+    arrow();
     autoMove(getConfig().trueMove, getConfig().rotation);
 };
