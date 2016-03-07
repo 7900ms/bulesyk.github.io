@@ -3,7 +3,8 @@ html, body {
     margin: 0;
     line-height: 1.3;
     font-size: 16px;
-    /*font-family: 'Open Sans',serif;*/
+    font-family: 'Open Sans',serif;
+    font-weight: 300;
     color: #3e3e40;
 }
 body {
@@ -12,8 +13,7 @@ body {
 a {
     text-decoration: none;
     color: #204056;
-    font-family: 'Open Sans',serif;
-    font-weight: 100;
+
 }
 /* @header*/
 header {
@@ -31,11 +31,11 @@ header img, header a {
     vertical-align: middle;
 }
 header .text {
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 header section {
     float: right;
 }
 header section a {
-    margin-left: 1rem;
+    margin-left: 1.2rem;
 }
