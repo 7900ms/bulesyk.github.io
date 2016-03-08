@@ -55,6 +55,7 @@ function animation(elemID, finalX, finalY, startX, startY, fps, interval) {
  */
 function setPos(elem, left, top) {
     elem.parentNode.style.position = 'relative';
+    elem.style.position = 'absolute';
     elem.style.left = left + 'px';
     elem.style.top = top + 'px';
 };
