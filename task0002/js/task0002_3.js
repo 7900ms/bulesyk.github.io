@@ -1,3 +1,5 @@
+// @从tool.js中引入的需要的函数
+
 /* @移动动画
  * @para elem(elemObj) 需要移动的元素
  * @para finalX(number) 移动的最终X轴位置
