@@ -137,13 +137,11 @@
      text-align: center;
      min-height: 20rem;
      right: 34px;
-     display: none;
  }
  .banner .account {
      width: 18rem;
      right: -5px;
      text-align: left;
-     display: none;
  }
  .banner .top-triangle {
      position: absolute;
