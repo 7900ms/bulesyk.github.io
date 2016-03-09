@@ -235,6 +235,7 @@ function getConfig() {
 };
 //点击箭头的移动
 function clickArrowMove(clickArrow) {
+    clearInterval(intervalId);
     var clickArrow = this;
     if (clickArrow.getAttribute('id') === 'right') {
         var imgIdn = parseInt($('.now').getAttribute('id').replace(/\D/g, ''));
@@ -258,6 +259,7 @@ function removeImg() {
 };
 //点击小圆点图片的移动
 function clickSpanMove(clickSpan) {
+    clearInterval(intervalId);
     var spanIdn = clickSpan.getAttribute('id').replace(/\D/g, '');
     var imgIdn = $('.now').getAttribute('id').replace(/\D/g, '');
     if (spanIdn > imgIdn) {
