@@ -55,7 +55,12 @@
      height: 50px;
      width: 100%;
      background-color: #fff;
-     margin-bottom: 1px;
+ }
+ hr {
+     border: 0;
+     margin: 0;
+     height: 1px;
+     background-color: #ccc;
  }
  header .container {
      line-height: 50px;
@@ -111,8 +116,6 @@
      padding: 16px 80px;
      background-color: #30a392;
      margin: 16px 0;
- }
- .banner .button a {
      color: #fff;
  }
  .banner .button:hover {
