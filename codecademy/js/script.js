@@ -5,10 +5,8 @@ function config() {
     for (var i=0,len=cSkills.length;i<len;i++) {
         cSkills[i].style.display = 'none';
     };
-    $('.noti').style.display = 'none';
-    $('.account').style.display = 'none';
 };
-function clickEvent() {
+(function clickEvent() {
     $('.in-skill').onclick = function(){
         this.style.backgroundColor = '#d5d5d5';
         $('.c-skill').style.backgroundColor = '#e8e8e8';
@@ -29,9 +27,25 @@ function clickEvent() {
         };
         return false;
     };
-};
+    $('#notification').onclick = function() {
+        $('.noti').style.zIndex = '1';
+
+        $('.account').style.zIndex = '-1';
+        return false;
+    };
+    $('#header-head').onclick = function() {
+        console.log('1');
+        console.log($('.account'));
+        $('.account').style.zIndex = '1';
+        $('.noti').style.zIndex = '-1';
+        return false;
+    };
+    $('article').onclick = function() {
+        $('.noti').style.zIndex = '-1';
+        $('.account').style.zIndex = '-1';
+    };
+})();
 
 window.onload = function() {
     config();
-    clickEvent();
 };

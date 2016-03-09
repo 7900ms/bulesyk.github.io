@@ -138,19 +138,21 @@
      top: 0;
      border: 1px solid #ccc;
      background-color: #fff;
+     position: absolute;
+     z-index: -1;
  }
  .banner .noti {
      text-align: center;
      min-height: 320px;
      height: 320px;
      right: 34px;
-     /*display: none;*/
  }
  .banner .account {
      width: 288px;
      right: -5px;
      text-align: left;
-     /*display: none;*/
+     position: absolute;
+     z-index: -1;
  }
  .banner .top-triangle {
      position: absolute;
