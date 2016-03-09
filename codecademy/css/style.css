@@ -3,11 +3,11 @@
  body {
      margin: 0;
      line-height: 1.3;
-     font-size: 14px;
-     font-family: 'Open Sans', serif;
-     font-weight: 300;
+     font-size: 16px;
+     font-family: cursive,sans-serif;
      color: #3e3e40;
      background-color: #e9eaea;
+     width: 100%;
      min-width: 960px;
  }
  h1, h3, p {
@@ -39,7 +39,7 @@
  }
  .percentage-text {
      position: absolute;
-     right: -3rem;
+     right: -38px;
      top: -50%;
      color: #34b3a0;
  }
@@ -59,16 +59,16 @@
      vertical-align: middle;
  }
  header .text {
-     font-size: 1rem;
+     font-size: 16px;
  }
  header .inform {
-     opacity: 0.7
+     opacity: 0.7;
  }
  header section {
      float: right;
  }
  header section a {
-     margin-left: 1.2rem;
+     margin-left: 20px;
  }
  header .text:hover {
      opacity: 0.7;
@@ -86,25 +86,25 @@
  }
  .banner .container {
      box-sizing: border-box;
-     padding: 3rem 15rem 0 15rem;
+     padding: 48px 240px 0 240px;
      position: relative;
  }
  .banner h1 {
-     margin: 1rem 0;
+     margin: 16px 0;
      font-weight: normal;
  }
  .banner .percentage {
-     height: 0.5rem;
-     margin: 1rem 0;
+     height: 8px;
+     margin: 16px 0;
  }
  .banner .inner-block {
      width: 12%;
  }
  .banner .button {
      display: inline-block;
-     padding: 1rem 5rem;
+     padding: 16px 80px;
      background-color: #30a392;
-     margin: 1rem 0;
+     margin: 16px 0;
  }
  .banner .button a {
      color: #fff;
@@ -116,19 +116,19 @@
      text-decoration: underline;
  }
  .banner .skills {
-     margin-top: 4rem;
+     margin-top: 64px;
  }
  .banner .skills div {
      display: inline-block;
      background-color: #e8e8e8;
-     padding: 1rem;
+     padding: 16px;
  }
  .banner .skills div:hover, .banner .skills div:active {
      background-color: #d5d5d5;
  }
  .banner .noti, .banner .account {
      position: absolute;
-     width: 20rem;
+     width: 320px;
      box-shadow: 0 0 7px #ccc;
      top: 0;
      border: 1px solid #ccc;
@@ -136,13 +136,16 @@
  }
  .banner .noti {
      text-align: center;
-     min-height: 20rem;
+     min-height: 320px;
+     height: 320px;
      right: 34px;
+     /*display: none;*/
  }
  .banner .account {
-     width: 18rem;
+     width: 288px;
      right: -5px;
      text-align: left;
+     /*display: none;*/
  }
  .banner .top-triangle {
      position: absolute;
@@ -151,44 +154,44 @@
      font-size: 0;
  }
  .banner .noti div.text {
-     padding: 1rem 0;
+     padding: 16px 0;
      border-bottom: 1px solid #ccc;
  }
  .banner .noti img.inform {
      margin-top: 5rem;
  }
  .banner .noti div.mini-text {
-     font-size: 0.8rem;
+     font-size: 14px;
      opacity: 0.8;
  }
  .banner .introu {
-     padding: 1rem;
+     padding: 16px;
      border-bottom: 1px solid #ccc;
  }
  .banner .introu img.head {
      vertical-align: top;
-     margin-top: 1rem;
+     margin-top: 16px;
  }
  .banner .about-me {
      display: inline-block;
-     margin-left: 1rem;
+     margin-left: 16px;
  }
  .banner .about-me p {
-     margin-top: 0.3rem;
+     margin-top: 5px;
      opacity: 0.7;
  }
  .banner .about-me a {
      color: #fff;
      background-color: #2d3b45;
-     padding: 0.8rem;
-     margin-top: 1rem;
+     padding: 12px;
+     margin-top: 16px;
  }
  .banner .about-me a:hover {
      background-color: #506b7e;
  }
  .banner .account>a {
      display: block;
-     padding: 1rem 2rem;
+     padding: 16px 32px;
  }
  .banner .account>a:last-child {
      opacity: 0.7;
