@@ -4,14 +4,19 @@
      margin: 0;
      line-height: 1.3;
      font-size: 16px;
-     font-family: cursive,sans-serif;
+     font-family: cursive, sans-serif;
      color: #3e3e40;
      background-color: #e9eaea;
      width: 100%;
      min-width: 960px;
+     height: 2000px;
  }
- h1, h3, p {
+ h1, h3, p, ul {
      margin: 0;
+ }
+ ul {
+     padding: 0;
+     list-style-type: none;
  }
  a {
      text-decoration: none;
@@ -21,6 +26,7 @@
  a:active {
      text-decoration: underline;
  }
+
  /*@all pages*/
 
  .container {
@@ -118,12 +124,11 @@
  .banner .skills {
      margin-top: 64px;
  }
- .banner .skills div {
-     display: inline-block;
+ .banner .skills a {
      background-color: #e8e8e8;
      padding: 16px;
  }
- .banner .skills div:hover, .banner .skills div:active {
+ .banner .skills a:hover, .banner .skills a:active {
      background-color: #d5d5d5;
  }
  .banner .noti, .banner .account {
@@ -196,7 +201,63 @@
  .banner .account>a:last-child {
      opacity: 0.7;
  }
-.banner .account>a:hover {
-    text-decoration: none;
-    background-color: #e8e8e8;
-}
+ .banner .account>a:hover {
+     text-decoration: none;
+     background-color: #e8e8e8;
+ }
+ /*@skills*/
+
+ .skills-list {
+     padding: 30px 0;
+     background-color: #d5d5d5;
+ }
+ .skills-list span.text {
+     display: inline-block;
+     width: 280px;
+ }
+ .skills-list a {
+     display: block;
+     background-color: #fff;
+     padding: 20px;
+     position: relative;
+ }
+ .skills-list a:hover {
+     background-color: #30a392;
+     color: #fff;
+ }
+ .skills-list a:hover .inner-block {
+     background-color: #fff;
+ }
+ .skills-list a:hover .percentage-text {
+     color: inherit;
+ }
+ .skills-list li {
+     border-bottom: 1px solid #ccc;
+ }
+ .skills-list span.last-time {
+     position: absolute;
+     top: 100%;
+     right: 100px;
+     font-size: 14px;
+     display: none;
+ }
+ .skills-list span.arrow {
+     float: right;
+ }
+ .skills-list .percentage {
+     width: 300px;
+     height: 10px;
+     display: inline-block;
+ }
+ .skills-list .percentage .inner-block {
+     width: 12%;
+ }
+ .skills-list .c-skills .inner-block {
+     width: 100%;
+ }
+ .skills-list li:last-child {
+     border-bottom: none;
+ }
+ /*.skills-list li.c-skills {
+     display: none;
+ }*/
