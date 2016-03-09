@@ -44,6 +44,20 @@ function config() {
         $('.noti').style.zIndex = '-1';
         $('.account').style.zIndex = '-1';
     };
+    var skills = $('.skills-list .skills');
+    for (var i=0,len=skills.length;i<len;i++) {
+        skills[i].onmouseenter = function() {
+            var theLastTime = this.getElementsByTagName('span')[2];
+            theLastTime.style.zIndex = '1';
+            setPos(theLastTime,700,50);
+            animation(theLastTime,700,22,5);
+        };
+        skills[i].onmouseleave = function() {
+            var theLastTime = this.getElementsByTagName('span')[2];
+            theLastTime.style.zIndex = '-1';
+            setPos(theLastTime,700,50);
+        };
+    };
 })();
 
 window.onload = function() {

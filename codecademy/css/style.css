@@ -26,7 +26,9 @@
  a:active {
      text-decoration: underline;
  }
-
+ a:focus {
+     outline-style: none;
+ }
  /*@all pages*/
 
  .container {
@@ -244,7 +246,7 @@
      top: 100%;
      right: 100px;
      font-size: 14px;
-     display: none;
+     z-index: -1;
  }
  .skills-list span.arrow {
      float: right;
@@ -263,6 +265,3 @@
  .skills-list li:last-child {
      border-bottom: none;
  }
- /*.skills-list li.c-skills {
-     display: none;
- }*/

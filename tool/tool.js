@@ -10,7 +10,7 @@
  * @para interval(number) (可选) 默认为10 每次动画改变的间隔
  * @return true 动画完成后
  */
-function animation(elem, finalX, finalY, constant, speed, startX, startY, fps, interval) {
+function animation(elem, finalX, finalY, interval, startX, startY, fps, constant, speed) {
     //设置默认的fps和interval
     clearTimeout(elem.rotation);
     fps = fps || 30;
@@ -22,8 +22,12 @@ function animation(elem, finalX, finalY, constant, speed, startX, startY, fps, i
     //初始化位置
     elem.style.position = 'absolute';
     elem.parentNode.position = 'relative';
-    elem.style.left = elem.style.left ? elem.style.left : startX;
-    elem.style.top = elem.style.top ? elem.style.top : startY;
+    if (!elem.style.left) {
+        elem.style.left = startX + 'px';
+    };
+    if (!elem.style.top) {
+        elem.style.top = startY + 'px';
+    };
     (function move() {
         var left = parseInt(elem.style.left),
             top = parseInt(elem.style.top);
