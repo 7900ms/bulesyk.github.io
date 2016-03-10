@@ -203,10 +203,14 @@ function delegateEvent(elem, tag, event, listener) {
  * @return 无
  */
 function addEvent(elem, event, listener) {
-    if (elem.addEventListener) {
-        elem.addEventListener(event, listener, false);
-    } else {
-        elem.attachEvent('on' + event, listener);
+    try {
+        if (elem.addEventListener) {
+            elem.addEventListener(event, listener, false);
+        } else {
+            elem.attachEvent('on' + event, listener);
+        };
+    } catch(e) {
+
     };
 };
 /* @取消事件
@@ -221,4 +225,12 @@ function removeEvent(elem, event, listener) {
     } else {
         elem.detachEvent('on' + event, listener);
     };
+};
+/* @判断是否子节点
+ * @para parElem(elemObj) 父节点
+ * @para elem(elemObj) 子节点
+ * @return 是(包括相同)返回true 否返回false
+ */
+function containChild(){
+    //好像都支持contains?
 };

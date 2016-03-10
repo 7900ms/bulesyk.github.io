@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>吴立宁的简历</title>
+    <style>
+        .container {
+            width: 960px;
+            margin: 50px auto;
+        }
+        .clearfloat:after {
+            content: '.';
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .clearfloat {
+            zoom: 1;
+        }
+        /*@头部*/
+        .header img {
+            width: 100px;
+        }
+        .header .resume {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .header .name {
+            font-size: 32px;
+        }
+        .header .contact {
+            display: inline-block;
+            float: right;
+        }
+        .header .contact span,
+        .header .contact a {
+            margin-left: 10px;
+        }
+        .header a, .footer a {
+            color: #0095dd;
+        }
+        .article p,.article h3 {
+            text-indent: 32px;
+            color: #333;
+        }
+        .article a {
+            color: #705000;
+        }
+        .article a.code {
+            margin-left: 3px;
+        }
+        .footer .container p:first-child {
+            float: left;
+        }
+        .footer .container p:last-child {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="http://bulesyk.github.io/myhead.jpg" alt="吴立宁" />
+            <div class="resume">
+                <p>
+                    <span class="name">吴立宁</span>
+                    <br />男 21岁 大三 西安邮电大学 通信工程专业
+                </p>
+            </div>
+            <div class="contact">
+                <p>
+                    电话:<span>18829289425</span>
+                    <br />邮箱:<span>wulining441@outlook.com</span>
+                    <br />Demo:<a href="http://bulesyk.github.io/" target="_blank">http://bulesyk.github.io</a>
+                    <br />Github:<a href="https://github.com/bulesyk" target="_blank">https://github.com/bulesyk</a>
+                    <br />Articles:<a href="https://github.com/bulesyk/article" target="_blank">https://github.com/bulesyk/article</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="article">
+        <div class="container">
+            <h1>自我介绍</h1>
+            <div class="introduction">
+                <h3>学习经历</h3>
+                <p class="study">
+                    我叫吴立宁，西安邮电大学通信工程专业大三学生，大概是15年12月中旬自学Python时接触到前端，比较喜欢这种“所见即所得”的表现方式，将重心放在了前端，之前学校只讲过一些C语言和数据结构的知识，刚开始在主要在w3cschool,慕课,codecademy学习，知乎一些大牛的技术回答对我的学习路线的规划上有很大帮助，还有计蒜客的数据结构，Mozilla mdn的参考，汉化做的真的是太棒了，希望有一天也能贡献一点翻译，后来主要是书籍和一些大牛大博客和技术文章，买了《精通CSS：高级Web标准解决方案（第2版）》《JavaScript高级程序设计（第3版）》《JavascriptDOM编程艺术》等等，虽然有书中有些内容不是很新，但是可以学到很多教程中没有的基础和细节，比如数据在内存中的储存方式，执行和作用域链等等，《DOM》看了不止一遍，希望以后能贯彻渐进平稳退化的思想，正在努力学习英语，总有一天不用划词翻译就能看懂英文文档，还做了百度前端技术学院的任务，学到了很多之前没见过东西，比如深度克隆，常用函数的封装，一个minijQuery的实现等等。
+                </p>
+                <h3>掌握技能</h3>
+                <p class="level">
+                    对Html标签还算熟悉，了解标签的语义化，这也是为了使得页面更像一个真正的Document，而不是Div族，益于搜索引擎的优化，一直是手写代码(开始知道这个词还以为是不用IDE或编辑器！)，CSS布局熟练(但是Flex布局只看过阮一峰老师的介绍，还没有在实际场景中使用过)，了解常见的属性，喜欢了解对象实现的细节，比如line-height和vertical-algin这一对<a href="https://github.com/bulesyk/article/blob/master/line-height%E5%92%8Cvertical-align.md" target="_blank" class="article">[详细了解line-height和vertical-align]</a>，比如其实一直都在的bfc[bfc]等等。JavaScript知道常见函数，内建对象的用法，知道DOM常用的属性和方法，task0002里写的轮播图的小组件，真的让我接触到很多以前只是学的时候觉得简单，但是真正用起来就不一样的，比如setTimeout不是简简单单的“过一定时间后执行函数”，浏览器的监听事件的方式等等，还是对浏览器的异步执行，函数的闭包理解不够深，经过几次的修改，现在这个组件可以轻松配置在任意页面使用，在codecademy里学过一点点jquery和bootstrap，jquery简直是太方便了,但练习中一直用的原生js，task0002中也练习了一个小ajax搜索提示，也是没有在实际的项目中使用过，还模仿了慕课的主页，codecademy的主页，优酷电影页面。
+                </p>
+                <h3>性格特点</h3>
+                <p class="character">
+                    积极乐观但不太爱说话，不爱生气，习惯冷静（淡定），极客，热爱前端，热爱互联网，喜欢新鲜事物。
+                </p>
+            </div>
+            <h1>练习DEMO</h1>
+            <div class="pactice">
+                <h3><a href="http://bulesyk.github.io/task0002/task0002_3.html" target="_blank">轮播图</a><a href="https://github.com/bulesyk/bulesyk.github.io/blob/master/task0002/js/task0002_3.js" target="_blank" class="code">[源码]</a></h3>
+                <p class="describe">
+                    可以在任意页面中使用，只要在html中创建一个id为'imgholder'的div，设置任意数量的img，图片大小根据imgholder适应，小圆点，箭头，都是动态创建，可以配置图片转换间隔，是否循环，方向，图片数量。
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="contact clearfloat">
+                <p>
+                    姓名:吴立宁
+                    <br />电话:<span>18829289425</span>
+                    <br />邮箱:<span>wulining441@outlook.com</span>
+                </p>
+                <p>
+                    Demo:<a href="http://bulesyk.github.io/" target="_blank">http://bulesyk.github.io</a>
+                    <br />Github:<a href="https://github.com/bulesyk" target="_blank">https://github.com/bulesyk</a>
+                    <br />Articles:<a href="https://github.com/bulesyk/article" target="_blank">https://github.com/bulesyk/article</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
