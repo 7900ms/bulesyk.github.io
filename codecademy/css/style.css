@@ -324,3 +324,15 @@ div.web-skills div.web-per .percentage {
 div.web-skills div.web-per .inner-block {
     width: 12%;
 }
+div.web-skills div.web-per .all-per {
+    width: 100%;
+}
+div.web-skills li:last-child {
+    opacity: 0.5;
+    position: relative;
+}
+div.web-skills li:last-child #right-triangle {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
