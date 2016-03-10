@@ -340,6 +340,7 @@ ul.web li:last-child #right-triangle {
 }
 ul.web li:last-child:hover {
     background-color: #fff;
+    cursor: auto;
 }
 /*@languages*/
 ul.languages li h3 {
