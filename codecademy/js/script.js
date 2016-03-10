@@ -43,7 +43,6 @@ function config() {
         $('.noti').style.zIndex = '1';
         addClass(this, 'now');
         addEvent($('.now'), 'click', noDisplay);
-
         function noDisplay() {
             $('.noti').style.zIndex = '-1';
             removeClass(this, 'now');
@@ -59,7 +58,6 @@ function config() {
         $('.account').style.zIndex = '1';
         addClass(this, 'now');
         addEvent($('.now'), 'click', noDisplay);
-
         function noDisplay() {
             $('.account').style.zIndex = '-1';
             removeClass(this, 'now');

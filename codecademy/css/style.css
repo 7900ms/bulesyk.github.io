@@ -359,3 +359,40 @@ ul.languages li {
 ul.languages li:hover img.hover-light {
     z-index: 1;
 }
+ul.goals li {
+    padding: 0;
+}
+ul.goals li:hover {
+    background-color: #fff;
+}
+ul.goals li:hover a {
+    color: #204056;
+}
+ul.goals li img {
+    width: 100%;
+    height: 160px;
+}
+ul.goals .goals-img {
+    transition: height 0.5s;
+    height: 130px;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+ul.goals .goals-mask {
+    transition: opacity 0.3s;
+    height: 100%;
+    width: 100%;
+    background-color: #06295e;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+ul.goals li:hover:hover .goals-mask {
+    opacity: 0;
+}
+ul.goals li:hover:hover .goals-img {
+    height: 160px;
+}
