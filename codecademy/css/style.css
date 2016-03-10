@@ -290,9 +290,11 @@ div.web-skills li {
     display: inline-block;
     margin: 10px;
     vertical-align: middle;
+    position: relative;
 }
 div.web-skills li:hover {
     background-color: #30a392;
+    cursor: pointer;
 }
 div.web-skills li:hover a,div.web-skills li:hover .percentage-text {
     color: #fff;
@@ -312,14 +314,14 @@ div.web-skills div.web-per {
     border-top: 1px solid #ccc;
     box-sizing: border-box;
     padding: 20px 40px;
-    position: relative;
-    right: 20px;
-    top: 18px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 div.web-skills div.web-per .percentage {
     background-color: #d5d5d5;
     position: relative;
-    right: 18px;
+    left: -18px;
 }
 div.web-skills div.web-per .inner-block {
     width: 12%;
@@ -327,15 +329,32 @@ div.web-skills div.web-per .inner-block {
 div.web-skills div.web-per .all-per {
     width: 100%;
 }
-div.web-skills li:last-child {
+ul.web li:last-child {
     opacity: 0.5;
     position: relative;
 }
-div.web-skills li:last-child #right-triangle {
+ul.web li:last-child #right-triangle {
     position: absolute;
     right: 0;
     top: 0;
 }
-div.web-skills li:last-child:hover {
+ul.web li:last-child:hover {
     background-color: #fff;
+}
+/*@languages*/
+ul.languages li h3 {
+    margin: 20px 0;
+}
+ul.languages img.hover-light {
+    position: absolute;
+    top: 40px;
+    left: 98px;
+    z-index: -1;
+}
+ul.languages li {
+    height: 300px;
+    position: relative;
+}
+ul.languages li:hover img.hover-light {
+    z-index: 1;
 }
