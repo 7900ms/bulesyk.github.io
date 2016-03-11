@@ -55,6 +55,13 @@
      top: -50%;
      color: #34b3a0;
  }
+ .clearfloat:after {
+     content: '.';
+     height: 0;
+     display: block;
+     clear: both;
+     visibility: hidden;
+ }
  /* @header*/
 
  header {
@@ -136,6 +143,9 @@
  .banner .skills a {
      background-color: #e8e8e8;
      padding: 16px;
+ }
+ .banner .skills a.in-skill {
+     background-color: #d5d5d5;
  }
  .banner .skills a:hover, .banner .skills a:active {
      background-color: #d5d5d5;
@@ -226,6 +236,9 @@
      display: inline-block;
      width: 280px;
  }
+ .skills-list .c-skills {
+     display: none;
+ }
  .skills-list a {
      display: block;
      background-color: #fff;
@@ -275,124 +288,176 @@
      text-align: center;
      padding: 50px;
  }
- div.web-skills a{
+ div.web-skills a {
      display: inline;
  }
  div.web-skills .container>h1, div.web-skills .container>p {
      margin: 20px 0;
  }
-div.web-skills li {
-    background-color: #fff;
-    width: 280px;
-    height: 340px;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 10px;
-    vertical-align: middle;
-    position: relative;
+ div.web-skills li {
+     background-color: #fff;
+     width: 280px;
+     height: 340px;
+     padding: 40px 20px;
+     box-sizing: border-box;
+     display: inline-block;
+     margin: 10px;
+     vertical-align: middle;
+     position: relative;
+ }
+ div.web-skills li:hover {
+     background-color: #30a392;
+     cursor: pointer;
+ }
+ div.web-skills li:hover a, div.web-skills li:hover .percentage-text {
+     color: #fff;
+ }
+ div.web-skills li:hover .inner-block {
+     background-color: #fff;
+ }
+ div.web-skills li h3 {
+     font-size: 20px;
+     margin: 10px 0;
+ }
+ div.web-skills li p {
+     margin: 10px 0;
+ }
+ div.web-skills div.web-per {
+     width: 280px;
+     border-top: 1px solid #ccc;
+     box-sizing: border-box;
+     padding: 20px 40px;
+     position: absolute;
+     left: 0;
+     bottom: 0;
+ }
+ div.web-skills div.web-per .percentage {
+     background-color: #d5d5d5;
+     position: relative;
+     left: -18px;
+ }
+ div.web-skills div.web-per .inner-block {
+     width: 12%;
+ }
+ div.web-skills div.web-per .all-per {
+     width: 100%;
+ }
+ ul.web li:last-child {
+     opacity: 0.5;
+     position: relative;
+ }
+ ul.web li:last-child #right-triangle {
+     position: absolute;
+     right: 0;
+     top: 0;
+ }
+ ul.web li:last-child:hover {
+     background-color: #fff;
+     cursor: auto;
+ }
+ /*@languages*/
+
+ ul.languages li h3 {
+     margin: 20px 0;
+ }
+ ul.languages img.hover-light {
+     position: absolute;
+     top: 40px;
+     left: 98px;
+     z-index: -1;
+ }
+ ul.languages li {
+     height: 300px;
+     position: relative;
+ }
+ ul.languages li:hover img.hover-light {
+     z-index: 1;
+ }
+ ul.goals li {
+     padding: 0;
+ }
+ ul.goals li:hover {
+     background-color: #fff;
+ }
+ ul.goals li:hover a {
+     color: #204056;
+ }
+ ul.goals li img {
+     width: 100%;
+     height: 160px;
+ }
+ ul.goals .goals-img {
+     transition: height 0.5s;
+     height: 130px;
+     position: relative;
+     margin-bottom: 20px;
+     overflow: hidden;
+ }
+ ul.goals .goals-mask {
+     transition: opacity 0.3s;
+     height: 100%;
+     width: 100%;
+     background-color: #06295e;
+     opacity: 0.5;
+     position: absolute;
+     top: 0;
+     left: 0;
+     z-index: 1;
+ }
+ ul.goals li:hover:hover .goals-mask {
+     opacity: 0;
+ }
+ ul.goals li:hover:hover .goals-img {
+     height: 160px;
+ }
+ div.web-skills h1:last-child a:hover {
+     text-decoration: underline;
+ }
+ /*@footer*/
+
+ footer {
+     background-color: #d5d5d5;
+     padding: 30px;
+ }
+ footer hr {
+     background-color: #fff;
+ }
+ footer a:hover {
+     text-decoration: underline;
+ }
+ footer h3 {
+     margin-bottom: 16px;
+ }
+ footer ul {
+     margin: 20px 0;
+ }
+  footer .contact {
+      float: left;
+      margin-right: 100px;
+  }
+ footer .contact p {
+     margin: 40px 0;
+ }
+ footer .contact .imgs img {
+     opacity: 0.7;
+ }
+ footer .contact .imgs img:hover {
+     opacity: 1;
+     cursor: pointer;
+ }
+footer .company {
+    float: left;
 }
-div.web-skills li:hover {
-    background-color: #30a392;
-    cursor: pointer;
+.learn-list ,.language-list {
+    float: right;
 }
-div.web-skills li:hover a,div.web-skills li:hover .percentage-text {
-    color: #fff;
+.lisence {
+    width: 960px;
+    margin: 0 auto;
 }
-div.web-skills li:hover .inner-block {
-    background-color: #fff;
+.lisence a:last-child {
+    float: right;
 }
-div.web-skills li h3 {
-    font-size: 20px;
-    margin: 10px 0;
-}
-div.web-skills li p {
-    margin: 10px 0;
-}
-div.web-skills div.web-per {
-    width: 280px;
-    border-top: 1px solid #ccc;
-    box-sizing: border-box;
-    padding: 20px 40px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-div.web-skills div.web-per .percentage {
-    background-color: #d5d5d5;
-    position: relative;
-    left: -18px;
-}
-div.web-skills div.web-per .inner-block {
-    width: 12%;
-}
-div.web-skills div.web-per .all-per {
-    width: 100%;
-}
-ul.web li:last-child {
-    opacity: 0.5;
-    position: relative;
-}
-ul.web li:last-child #right-triangle {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-ul.web li:last-child:hover {
-    background-color: #fff;
-    cursor: auto;
-}
-/*@languages*/
-ul.languages li h3 {
-    margin: 20px 0;
-}
-ul.languages img.hover-light {
-    position: absolute;
-    top: 40px;
-    left: 98px;
-    z-index: -1;
-}
-ul.languages li {
-    height: 300px;
-    position: relative;
-}
-ul.languages li:hover img.hover-light {
-    z-index: 1;
-}
-ul.goals li {
-    padding: 0;
-}
-ul.goals li:hover {
-    background-color: #fff;
-}
-ul.goals li:hover a {
-    color: #204056;
-}
-ul.goals li img {
-    width: 100%;
-    height: 160px;
-}
-ul.goals .goals-img {
-    transition: height 0.5s;
-    height: 130px;
-    position: relative;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-ul.goals .goals-mask {
-    transition: opacity 0.3s;
-    height: 100%;
-    width: 100%;
-    background-color: #06295e;
-    opacity: 0.5;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-ul.goals li:hover:hover .goals-mask {
-    opacity: 0;
-}
-ul.goals li:hover:hover .goals-img {
-    height: 160px;
+#lisence {
+    margin-left: 380px;
 }

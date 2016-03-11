@@ -1,10 +1,5 @@
 //初始化配置
 function config() {
-    $('.in-skill').style.backgroundColor = '#d5d5d5';
-    var cSkills = $('.c-skills');
-    for (var i = 0, len = cSkills.length; i < len; i++) {
-        cSkills[i].style.display = 'none';
-    };
     var links = $('a');
     for (var i = 0, len = links.length; i < len; i++) {
         links[i].onclick = function() {
