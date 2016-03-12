@@ -10,7 +10,7 @@
  * @para interval(number) (可选) 默认为10 每次动画改变的间隔
  * @return true 动画完成后
  */
-function animation(elem, finalX, finalY, interval, startX, startY, fps, constant, speed) {
+function animation(elem, finalX, finalY, constant, speed, startX, startY, fps, interval) {
     //设置默认的fps和interval
     clearTimeout(elem.rotation);
     fps = fps || 30;
@@ -22,12 +22,8 @@ function animation(elem, finalX, finalY, interval, startX, startY, fps, constant
     //初始化位置
     elem.style.position = 'absolute';
     elem.parentNode.position = 'relative';
-    if (!elem.style.left) {
-        elem.style.left = startX + 'px';
-    };
-    if (!elem.style.top) {
-        elem.style.top = startY + 'px';
-    };
+    elem.style.left = elem.style.left ? elem.style.left : startX;
+    elem.style.top = elem.style.top ? elem.style.top : startY;
     (function move() {
         var left = parseInt(elem.style.left),
             top = parseInt(elem.style.top);
@@ -134,6 +130,10 @@ function addClass(elem, className) {
  * @return 无
  */
 function removeClass(elem, className) {
+    var reg = new RegExp(className);
+    if (!reg.test(elem.className)) {
+        return;
+    };
     var classNames = elem.className.split(/\s+/);
     for (var i = 0, len = classNames.length; i < len; i++) {
         if (classNames[i] === className) {
@@ -203,14 +203,10 @@ function delegateEvent(elem, tag, event, listener) {
  * @return 无
  */
 function addEvent(elem, event, listener) {
-    try {
-        if (elem.addEventListener) {
-            elem.addEventListener(event, listener, false);
-        } else {
-            elem.attachEvent('on' + event, listener);
-        };
-    } catch(e) {
-
+    if (elem.addEventListener) {
+        elem.addEventListener(event, listener, false);
+    } else {
+        elem.attachEvent('on' + event, listener);
     };
 };
 /* @取消事件
@@ -225,12 +221,4 @@ function removeEvent(elem, event, listener) {
     } else {
         elem.detachEvent('on' + event, listener);
     };
-};
-/* @判断是否子节点
- * @para parElem(elemObj) 父节点
- * @para elem(elemObj) 子节点
- * @return 是(包括相同)返回true 否返回false
- */
-function containChild(){
-    //好像都支持contains?
 };
