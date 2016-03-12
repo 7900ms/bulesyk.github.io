@@ -1,3 +1,4 @@
+//封装Ajax方法
 function ajax(url, options) {
     var ajaxObj = new XMLHttpRequest();
     if (options.date) {
@@ -32,7 +33,7 @@ function ajax(url, options) {
         };
     };
 };
-
+//初始化配置
 function config() {
     var suggestion = document.createElement('ul');
     suggestion.style.cssText = 'list-style-type:none;padding:0;margin:0;';
@@ -40,33 +41,50 @@ function config() {
     suggestion.setAttribute('id', 'suggestion');
     $('.container').appendChild(suggestion);
     setPos(suggestion, 0, 95);
-    delegateEvent($('#suggestion'),'li','click',function(target){
-        var choiceValue = target.firstChild.firstChild.nodeValue + target.lastChild.nodeValue;
-        $('#search').value = choiceValue;
-    })
-    addEvent($('#search'),'focus',function(){
-        var i =0;
-        addEvent($('html'),'keydown',function(e){
-            e = e || window.event;
-            if (e.keyCode === 40) {
-                if (i<$('li').length) {
-                    removeClass($('.active'),'active');
-                    addClass($('li')[i],'active');
-                    i++;
-                }
-            } else if (e.keyCode === 38) {
-                if (i !==1 ){
-                    i--;
-                    removeClass($('.active'),'active');
-                    addClass($('li')[i-1], 'active');
-                }
-            } else if (e.keyCode === 13) {
-                $('#search').value = $('li')[i-1].firstChild.firstChild.nodeValue +$('li')[i-1].lastChild.nodeValue;
-            }
-        })
-    })
 }
+//鼠标点击事件
+function clickEvent(target) {
+    var choiceValue = target.firstChild.firstChild.nodeValue + target.lastChild.nodeValue;
+    $('#search').value = choiceValue;
+}
+//keydown事件
+var i;
 
+function keyDown(e) {
+    console.log(e.keyCode,i,$('li').length);
+    e = e || window.event;
+    var list = $('li').length || 1;
+    if (e.keyCode === 40) {
+        if (i < list) {
+            removeClass($('.active'), 'active');
+            if($('li').length) {
+                i++;
+                addClass($('li')[i-1], 'active');
+                console.log(i);
+            } else {
+                i++;
+                addClass($('li'),'active');
+                console.log(i);
+            }
+        }
+    } else if (e.keyCode === 38) {
+        if (i !== 1) {
+            removeClass($('.active'), 'active');
+            if($('li').length) {
+                i--;
+                addClass($('li')[i-1], 'active');
+                console.log(i);
+            } else {
+                i--;
+                addClass($('li'),'active');
+                console.log(i);
+            }
+        }
+    } else if (e.keyCode === 13) {
+        $('#search').value = $('li')[i - 1].firstChild.firstChild.nodeValue + $('li')[i - 1].lastChild.nodeValue;
+    }
+}
+//提取建议
 function perpareSuggestion(suggestion) {
     if (!suggestion) {
         return;
@@ -87,6 +105,7 @@ function perpareSuggestion(suggestion) {
 window.onload = function() {
     config();
     addEvent($('#search'), 'input', function() {
+        i=0;
         ajax('http://bulesyk.github.io/suggest.json', {
             onsuccess: function(responseText) {
                 if ($('#search').value) {
@@ -98,4 +117,8 @@ window.onload = function() {
             }
         })
     });
+    addEvent($('#search'), 'focus', function() {
+        addEvent($('html'), 'keydown', keyDown);
+    });
+    delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
 };
