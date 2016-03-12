@@ -49,10 +49,10 @@ function clickEvent(target) {
 }
 //keydown事件
 var i;
-
+// 为了key的循环定义的全局变量
 function keyDown(e) {
-    console.log(e.keyCode,i,$('li').length);
     e = e || window.event;
+    //因为tool中$的原因,我的$如果只返回一个elem则它不是一个list
     var list = $('li').length || 1;
     if (e.keyCode === 40) {
         if (i < list) {
@@ -104,6 +104,7 @@ function perpareSuggestion(suggestion) {
 }
 window.onload = function() {
     config();
+    //绑定事件
     addEvent($('#search'), 'input', function() {
         i=0;
         ajax('http://bulesyk.github.io/suggest.json', {

@@ -1,3 +1,4 @@
+//定义全局使用的元素
 var inputDate = document.getElementById('date');
 var btn = document.getElementById('btn');
 var result = document.getElementById('result');
@@ -12,7 +13,7 @@ function getValue() {
         return null;
     }
 }
-
+//输出值
 function outputTime() {
     var rotation;
     btn.onclick = function() {
