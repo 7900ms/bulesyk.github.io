@@ -132,6 +132,7 @@ function addClass(elem, className) {
 function removeClass(elem, className) {
     var reg = new RegExp(className);
     if (!reg.test(elem.className)) {
+        console.log('取消样式失败');
         return;
     };
     var classNames = elem.className.split(/\s+/);

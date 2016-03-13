@@ -1,0 +1,331 @@
+/*@reset styles*/
+
+body, h1, h3, p, ul {
+    margin: 0;
+}
+body {
+    color: #666;
+    line-height: 1.4;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+input, ul, button {
+    padding: 0;
+}
+img, input, button {
+    border: 0;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.clearfloat:after {
+    content: '.';
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+/*@additional message*/
+
+#additional-message {
+    background-color: #eee;
+    padding: 5px 20px 5px 40px;
+    font-size: 12px;
+}
+#additional-message a:hover {
+    color: #f44f09;
+}
+#additional-message .wapper {
+    float: right;
+    display: flex;
+}
+#additional-message .wapper a {
+    margin: 0 10px;
+}
+
+/*@header setting*/
+
+header {
+    width: 100%;
+    max-width: 1400px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0 20px 0 40px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    display: flex;
+}
+.triangle {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid #666;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+#header-logo-img {
+    display: block;
+}
+#header-search {
+    width: 460px;
+    height: 40px;
+    border: 2px solid #999;
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: none;
+    background: url(../img/rank.png) no-repeat;
+    background-position: 98% 50%;
+    vertical-align: middle;
+}
+#header-search:focus {
+    outline: none;
+    border-color: #3eabff;
+    box-shadow: 0 0 1px #3eabff;
+}
+#header-submit {
+    line-height: 40px;
+    width: 90px;
+    background: url(../img/search-img.png) no-repeat;
+    background-position: 14% 50%;
+    background-color: #2a89de;
+    color: #fff;
+    font-size: 18px;
+    vertical-align: middle;
+}
+#header-submit span {
+    margin-left: 12px;
+}
+header .container {
+    position: relative;
+}
+#suggestion {
+    border: 2px solid #3eabff;
+    border-top: none;
+    box-shadow: 0 0 1px #3eabff;
+    padding: 10px;
+    position: absolute;
+    width: 436px;
+    display: none;
+    background-color: #fff;
+    color: #eee;
+}
+#suggestion .active {
+    background-color: #7bbacf;
+}
+/*@message的全局定义*/
+#upload-message, #noti-message, #information-message {
+    position: absolute;
+    top: 100%;
+    box-shadow: 0 0 5px #aaa;
+    width: 330px;
+    display: none;
+}
+.wapper-message {
+    display: flex;
+    align-items: baseline;
+}
+.handle {
+    margin-left: 10px;
+}
+.handle:hover>img{
+    opacity: 0.7;
+}
+.wapper .last:hover>img {
+    opacity: 1;
+}
+.handle:hover {
+    cursor: pointer;
+}
+#header-head-img, #top-arrow-img {
+    vertical-align: top;
+}
+.triangle-img {
+    position: absolute;
+    bottom: 100%;
+}
+/*@上传视频*/
+#upload-message {
+    background-color: #fff;
+    padding: 30px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    left: 70%;
+    box-sizing: border-box;
+    height: 140px;
+}
+#upload-message .item {
+    width: 50%;
+}
+#upload-message .item a {
+    margin-left: 10px;
+}
+#upload-message .triangle-img {
+    left: 36%;
+}
+#upload-message a:hover {
+    color: #f00;
+}
+/*@消息定义*/
+#noti-message {
+    left: 70%;
+}
+#noti-message .triangle-img {
+    left: 56%;
+}
+#noti-message-class {
+    background-color: #f9be29;
+    text-align: center;
+}
+#noti-message-class .button {
+    display: inline-block;
+    width: 32%;
+    padding: 10px 0;
+    color: #fff;
+}
+#noti-message-class .active {
+    color: #f00;
+    border-bottom: 2px solid #f00;
+}
+#noti-message-imgwapper {
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+#noti-message-all {
+    text-align: right;
+    padding: 5px 0;
+    background-color: #eee;
+}
+#noti-message-all a {
+    color: #3d98ec;
+}
+/*@informessage*/
+#information-message {
+    left: 70%;
+}
+#information-message .triangle-img {
+    left: 78%;
+}
+.head-information {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.account {
+    position: relative;
+}
+.account a:hover {
+    color: #f00;
+}
+.setting, .logout {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.setting {
+    right: 30px;
+}
+.information-details {
+    display: inline-block;
+    vertical-align: top;
+    color: #f00;
+}
+.information-details p {
+    margin-bottom: 5px;
+    color: #f00;
+    font-size: 22px;
+}
+.head-information .icons {
+    display: flex;
+    justify-content: space-around;
+}
+/*@定义等级*/
+.level {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 20px;
+}
+.level a {
+    color: #3d98ec;
+}
+.level .first {
+    margin-right: 80px;
+    font-size: 120%;
+}
+.level-percent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.percent {
+    height: 1.2em;
+    width: 90%;
+    background-color: #ccc;
+}
+.inner-percent {
+    height: 100%;
+    width: 18%;
+    background-color: #f9be29;
+    border-top-right-radius: 22%;
+    border-bottom-right-radius: 22%;
+    font-size: 90%;
+    color: #fff;
+}
+.hours {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+.hours span {
+    height: 1.2em;
+    padding: 5px;
+    border-radius: 22%;
+    font-size: 90%;
+    background-color: #ccc;
+}
+.hours .first-hours {
+    background: #f9be29;
+    color: #fff;
+}
+/*@task*/
+.task {
+    padding: 5px 20px;
+    background-color: #fff;
+    height: 120px;
+}
+.task .first {
+    font-size: 120%;
+    margin-bottom: 5px;
+}
+.inner-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inner-task .button {
+    padding: 5px 10px;
+    background-color: #ff9100;
+    color: #fff;
+}
+.sign-gift {
+    align-self: flex-start;
+}
+/*@myhobby*/
+.my-hobby,.my-hobby-a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #fff;
+}
+.my-hobby-a a:hover {
+    color: #f00;
+}
