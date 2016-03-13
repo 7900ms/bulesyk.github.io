@@ -1,28 +1,29 @@
 //绑定upload,noti,information hover事件
 var setTimeoutId;
-function addHandleEvent(elemId,display) {
-    addEvent($(elemId),'mouseenter',function(){
+
+function addHandleEvent(elemId, display) {
+    addEvent($(elemId), 'mouseenter', function() {
         clearTimeout(setTimeoutId);
-        removeClass($(elemId+'-message'),'others');
-        for (var i=0,len=$('.others').length;i<len;i++) {
+        removeClass($(elemId + '-message'), 'others');
+        for (var i = 0, len = $('.others').length; i < len; i++) {
             $('.others')[i].style.display = 'none';
         }
-        $(elemId+'-message').style.display = display;
+        $(elemId + '-message').style.display = display;
     });
-    addEvent($(elemId),'mouseleave',function(){
-        addClass($(elemId+'-message'),'others');
-        setTimeoutId = setTimeout(function(){
-            $(elemId+'-message').style.display = 'none';
-        },500);
+    addEvent($(elemId), 'mouseleave', function() {
+        addClass($(elemId + '-message'), 'others');
+        setTimeoutId = setTimeout(function() {
+            $(elemId + '-message').style.display = 'none';
+        }, 500);
     });
 };
 // 添加消息提示的点击不同样式
 function addNotiClassEvent() {
     var button = $('#noti-message-class a');
-    for (var i=0,len=button.length;i<len;i++) {
-        addEvent(button[i],'click',function(){
-            removeClass($('#noti-message-class .active')[0],'active');
-            addClass(this,'active');
+    for (var i = 0, len = button.length; i < len; i++) {
+        addEvent(button[i], 'click', function() {
+            removeClass($('#noti-message-class .active')[0], 'active');
+            addClass(this, 'active');
         });
     };
 };
@@ -45,6 +46,7 @@ function ajax(url, options) {
     ajaxObj.onreadystatechange = function() {
         if (ajaxObj.readyState === 4 && ajaxObj.status === 200) {
             try {
+                console.log(ajaxObj.responseText);
                 var responseText = JSON.parse(ajaxObj.responseText)
             } catch (e) {
                 console.log('不是JSON数据');
@@ -63,9 +65,9 @@ function ajax(url, options) {
 };
 //搜索onfocus事件添加
 function getHistoryAjax() {
-    addEvent($('#header-search'),'focus',function(){
+    addEvent($('#header-search'), 'focus', function() {
         ajax('http://bulesyk.github.io/youkumovies/json/youkusuggestion.json', {
-            onsuccess:function(responseText) {
+            onsuccess: function(responseText) {
                 console.log(responseText);
             }
         });
@@ -78,46 +80,32 @@ function getHistoryAjax() {
 //@取消a的默认行为
 function removeA() {
     var as = document.getElementsByTagName('a');
-    for (var i=0,len=as.length;i<len;i++) {
+    for (var i = 0, len = as.length; i < len; i++) {
         as[i].onclick = function() {
             return false;
         };
     };
 };
-window.onload = function(){
+window.onload = function() {
     removeA();
     addNotiClassEvent();
-    addHandleEvent('#upload','flex');
-    addHandleEvent('#noti','block');
-    addHandleEvent('#information','block');
-
-
-
-
-
-
-
-
-
-
-    config();
-    addEvent($('#header-search'), 'input', function() {
-        i=0;
+    addHandleEvent('#upload', 'flex');
+    addHandleEvent('#noti', 'block');
+    addHandleEvent('#information', 'block');
+    addEvent($('#header-search'), 'focus', function() {
+        addEvent($('html'), 'keydown', keyDownEvent);
         ajax('http://bulesyk.github.io/suggest.json', {
             onsuccess: function(responseText) {
-                if ($('#header-search').value) {
-                    perpareSuggestion(responseText[$('#header-search').value[0]]);
-                } else {
-                    $('#suggestion').innerHTML = '';
-                    $('#suggestion').style.border = 'none';
-                }
+                $('#suggestion').style.display = 'block';
+                $('#suggestion').innerHTML = '';
+            },
+            onfail: function() {
+                $('#suggestion').style.display = 'block';
+                $('#suggestion').innerHTML = '没有找到记录!';
             }
         })
     });
-    addEvent($('#header-search'), 'focus', function() {
-        addEvent($('html'), 'keydown', keyDown);
-    });
-    delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
+
 }
 
 
@@ -127,9 +115,32 @@ window.onload = function(){
 
 
 
+config();
+addEvent($('#header-search'), 'input', function() {
+    i = 0;
+    ajax('http://bulesyk.github.io/suggest.json', {
+        onsuccess: function(responseText) {
+            if ($('#header-search').value) {
+                perpareSuggestion(responseText[$('#header-search').value[0]]);
+            } else {
+                $('#suggestion').innerHTML = '';
+                $('#suggestion').style.border = 'none';
+            }
+        }
+    })
+});
+delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
 
-function config() {
-}
+
+
+
+
+
+
+
+
+
+function config() {}
 //鼠标点击事件
 function clickEvent(target) {
     var choiceValue = target.firstChild.firstChild.nodeValue + target.lastChild.nodeValue;
@@ -138,33 +149,33 @@ function clickEvent(target) {
 //keydown事件
 var i;
 
-function keyDown(e) {
-    console.log(e.keyCode,i,$('li').length);
+function keyDownEvent(e) {
+    console.log(e.keyCode, i, $('li').length);
     e = e || window.event;
     var list = $('li').length || 1;
     if (e.keyCode === 40) {
         if (i < list) {
             removeClass($('.active'), 'active');
-            if($('li').length) {
+            if ($('li').length) {
                 i++;
-                addClass($('li')[i-1], 'active');
+                addClass($('li')[i - 1], 'active');
                 console.log(i);
             } else {
                 i++;
-                addClass($('li'),'active');
+                addClass($('li'), 'active');
                 console.log(i);
             }
         }
     } else if (e.keyCode === 38) {
         if (i !== 1) {
             removeClass($('.active'), 'active');
-            if($('li').length) {
+            if ($('li').length) {
                 i--;
-                addClass($('li')[i-1], 'active');
+                addClass($('li')[i - 1], 'active');
                 console.log(i);
             } else {
                 i--;
-                addClass($('li'),'active');
+                addClass($('li'), 'active');
                 console.log(i);
             }
         }
