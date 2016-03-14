@@ -192,35 +192,104 @@ article {
 }
 .search-date select {
     -webkit-appearance: none;
+    appearance: none;
     padding: 5px 20px 5px 10px;
-    margin-left: 10px;
+    margin: 0 10px 5px 10px;
     background: url(../img/bottom-arrow.png) no-repeat 94% 50%;
-    margin-bottom: 5px;
+    height: 30px;
+}
+.search-date select:focus {
+    outline-color: #16d529;
+    border: 1px solid #16d529;
 }
 .search-date {
     display: flex;
     padding: 20px 40px;
     background-color: #fff;
+    box-shadow: 0 0 3px #40a6e6;
 }
 .choice1 {
-    margin-right: 40px;
+    margin-right: 20px;
 }
 .choice2 {
     position: relative;
-    margin-right: 50px;
+    margin-right: 40px;
 }
 .choice2 select {
     width: 120px;
 }
-#change-img,#change-text {
+#change-img, #change-text {
     position: absolute;
-    left: 98%;
+    left: 92%;
     top: 20%;
 }
 #change-text {
-    top:35%;
-    left: 106%;
+    top: 35%;
+    left: 100%;
     z-index: 1;
     color: #fff;
     font-size: 12px;
+}
+.choice3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    width: 300px;
+    margin-right: 30px;
+}
+#choice3-date, #choice3-project {
+    width: 120px;
+}
+.search-date .btn {
+    background-color: #39a3da;
+    color: #fff;
+    height: 20px;
+    padding: 5px 10px;
+    align-self: center;
+}
+.search-date .btn:hover {
+    background-color: #16d529;
+    color: #f00;
+}
+/*@日期*/
+.calendar-time {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    width: 100%;
+}
+.calendar-time div {
+    height: 64px;
+    box-sizing: border-box;
+    padding: 10px 10px 5px 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar-time .time {
+    font-size: 12px;
+    color: #000;
+}
+.calendar-time .times {
+    width: 110px;
+}
+.calendar-time .money {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f04a3a;
+}
+.calendar-time .symple {
+    font-size: 14px;
+    color: #ccc;
+}
+#left-arrow,#right-arrow {
+    justify-content: center;
+}
+#calendar-time {
+    flex-direction: row;
+    width: 116px;
 }
