@@ -79,37 +79,19 @@ header form {
 
 /*@定义背景颜色*/
 
-#just-background-left, #just-background-right,#just-background-first-line {
-    height: 100%;
-    width: 22%;
-    background-color: #151c39;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    z-index: -1;
-}
-#just-background-right {
-    width: 78%;
-    left: 22%;
-    background-color: #eeeded;
-}
-#just-background-first-line {
-    height: 30px;
-    width: 78%;
-    left: 22%;
-    background-color: #fff;
-}
 
 /*@article styles*/
 
-article .container {
+article {
     display: flex;
-    width: 1160px;
-    margin: 0 auto;
 }
 .information-class {
-    width: 17.4%;
+    width: 22%;
     color: #eee;
+    background-color: #151c39;
+    padding-left: 95px;
+    min-height: 1200px;
+    box-sizing: border-box;
 }
 .account {
     padding: 20px 0;
@@ -186,13 +168,16 @@ article .container {
 }
 
 /*@详细内容*/
+
 .information-content {
-    width: 82.6%;
     font-size: 14px;
+    width: 78%;
     color: #aaa;
+    background-color: #eeeded;
 }
 .first-line {
     padding-left: 20px;
+    background-color: #fff;
 }
 .first-line span, .first-line a {
     margin: 0 5px;
@@ -200,4 +185,42 @@ article .container {
 }
 .first-line .active, .first-line a:hover {
     color: #40a6e6;
+}
+.information-content .container {
+    width: 890px;
+    margin: 20px auto;
+}
+.search-date select {
+    -webkit-appearance: none;
+    padding: 5px 20px 5px 10px;
+    margin-left: 10px;
+    background: url(../img/bottom-arrow.png) no-repeat 94% 50%;
+    margin-bottom: 5px;
+}
+.search-date {
+    display: flex;
+    padding: 20px 40px;
+    background-color: #fff;
+}
+.choice1 {
+    margin-right: 40px;
+}
+.choice2 {
+    position: relative;
+    margin-right: 50px;
+}
+.choice2 select {
+    width: 120px;
+}
+#change-img,#change-text {
+    position: absolute;
+    left: 98%;
+    top: 20%;
+}
+#change-text {
+    top:35%;
+    left: 106%;
+    z-index: 1;
+    color: #fff;
+    font-size: 12px;
 }
