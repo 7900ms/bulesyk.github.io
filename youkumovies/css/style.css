@@ -115,10 +115,12 @@ header .container {
     width: 436px;
     display: none;
     background-color: #fff;
-    color: #eee;
+    color: #000;
+    line-height: 2;
 }
-#suggestion .active {
-    background-color: #7bbacf;
+#suggestion .active,#suggestion li:hover {
+    background-color: #c9eeee;
+    cursor: pointer;
 }
 /*@message的全局定义*/
 #upload-message, #noti-message, #information-message {

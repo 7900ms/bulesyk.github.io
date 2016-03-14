@@ -1,5 +1,5 @@
 //绑定upload,noti,information hover事件
-var setTimeoutId;
+var setTimeoutId, i;
 
 function addHandleEvent(elemId, display) {
     addEvent($(elemId), 'mouseenter', function() {
@@ -66,7 +66,6 @@ function ajax(url, options) {
 
 
 
-//@取消a的默认行为
 function removeA() {
     var as = document.getElementsByTagName('a');
     for (var i = 0, len = as.length; i < len; i++) {
@@ -77,7 +76,6 @@ function removeA() {
 };
 //提取建议
 function perpareSuggestion(suggestion) {
-    console.log(suggestion)
     if (!suggestion) {
         return;
     };
@@ -85,23 +83,23 @@ function perpareSuggestion(suggestion) {
     var list = [];
     if (suggestion[0] === '没有记录') {
         for (var i = 0, len = suggestion.length; i < len; i++) {
-            console.log(suggestion)
             list[i] = document.createElement('li');
-            list[i].innerHTML =   'asd' ;
-            console.log(list[i])
+            list[i].innerHTML = suggestion[i];
             $('#suggestion').appendChild(list[i]);
+            console.log(list[i], $('#suggestion'));
+        }
+    } else {
+        var reg = new RegExp('^' + $('#header-search').value, 'i');
+        console.log(reg)
+        for (var i = 0, len = suggestion.length; i < len; i++) {
+            var letter = reg.exec(suggestion[i]);
+            if (letter) {
+                list[i] = document.createElement('li');
+                list[i].innerHTML = '<span style="color:#e93030;">' + letter + '</span>' + RegExp.rightContext;
+                $('#suggestion').appendChild(list[i]);
+            }
         }
     }
-
-    // var reg = new RegExp('^' + $('#header-search').value, 'i');
-    // for (var i = 0, len = suggestion.length; i < len; i++) {
-    //     var letter = reg.exec(suggestion[i]);
-    //     if (letter) {
-    //         list[i] = document.createElement('li');
-    //         list[i].innerHTML = '<span style="color:#e93030;">' + letter + '</span>' + RegExp.rightContext;
-    //         $('#suggestion').appendChild(list[i]);
-    //     }
-    // }
 }
 window.onload = function() {
     removeA();
@@ -116,7 +114,6 @@ window.onload = function() {
                 $('#suggestion').style.display = 'block';
                 console.log(responseText.history)
                 perpareSuggestion(responseText.history);
-                $('#suggestion').innerHTML = '';
             },
             onfail: function() {
                 $('#suggestion').style.display = 'block';
@@ -124,7 +121,19 @@ window.onload = function() {
             }
         })
     });
-
+    addEvent($('#header-search'), 'input', function() {
+        ajax('http://bulesyk.github.io/suggest.json', {
+            onsuccess: function(responseText) {
+                console.log(responseText);
+                if ($('#header-search').value) {
+                    perpareSuggestion(responseText[$('#header-search').value[0]]);
+                } else {
+                    $('#suggestion').innerHTML = '';
+                    $('#suggestion').style.border = 'none';
+                }
+            }
+        })
+    });
 }
 
 
