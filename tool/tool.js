@@ -132,7 +132,6 @@ function addClass(elem, className) {
 function removeClass(elem, className) {
     var reg = new RegExp(className);
     if (!reg.test(elem.className)) {
-        console.log('取消样式失败');
         return;
     };
     var classNames = elem.className.split(/\s+/);
@@ -206,7 +205,7 @@ function delegateEvent(elem, tag, event, listener) {
 function addEvent(elem, event, listener) {
     if (elem.addEventListener) {
         elem.addEventListener(event, listener, false);
-    } else {
+    } else if(elem.attachEvent){
         elem.attachEvent('on' + event, listener);
     };
 };

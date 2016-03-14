@@ -69,9 +69,21 @@ function config() {
         if (!($('.account').contains(e.target) || $('.noti').contains(e.target))) {
             $('.account').style.zIndex = '-1';
             $('.noti').style.zIndex = '-1';
+        } else {
+            addEvent($('.now'), 'click', noDisplay);
+            function noDisplay() {
+                removeClass(this, 'now');
+                $('.account').style.zIndex = '-1';
+                $('.noti').style.zIndex = '-1';
+                addEvent($('#notification'), 'click', notiDisplay);
+                addEvent($('#header-head'), 'click', accountDisplay);
+                // addEvent(this, 'click', accountDisplay);
+                // addEvent(this, 'click', notiDisplay);
+            };
         };
     };
     addEvent($('article'), 'click', hiddenDisplay);
+    //上次学习时间
     var skills = $('.skills-list .skills');
     for (var i = 0, len = skills.length; i < len; i++) {
         skills[i].onmouseenter = function() {
