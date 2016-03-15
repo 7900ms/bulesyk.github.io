@@ -79,12 +79,10 @@ function perpareSuggestion(suggestion) {
     if (!suggestion) {
         return;
     };
-    console.log(suggestion);
     $('#suggestion').style.display = 'block';
     $('#suggestion').innerHTML = '';
     var list = [];
     var reg = new RegExp('^' + $('#header-search').value, 'i');
-    console.log(reg)
     for (var i = 0, len = suggestion.length; i < len; i++) {
         var letter = reg.exec(suggestion[i]);
         if (letter) {
@@ -101,21 +99,17 @@ function clickEvent(target) {
 }
 //按键获取值事件
 function keyDownEvent(e) {
-    console.log(e.keyCode, i, $('#suggestion li').length);
     e = e || window.event;
     var list = $('#suggestion li').length || 1;
     if (e.keyCode === 40) {
         if (i < list) {
-            console.log(e.keyCode, i, $('#suggestion li').length);
             removeClass($('.active'), 'active');
             if ($('#suggestion li').length) {
                 i++;
                 addClass($('#suggestion li')[i - 1], 'active');
-                console.log(i);
             } else {
                 i++;
                 addClass($('#suggestion li'), 'active');
-                console.log(i);
             };
         }
     } else if (e.keyCode === 38) {
@@ -124,11 +118,9 @@ function keyDownEvent(e) {
             if ($('#suggestion li').length) {
                 i--;
                 addClass($('#suggestion li')[i - 1], 'active');
-                console.log(i);
             } else {
                 i--;
                 addClass($('#suggestion li'), 'active');
-                console.log(i);
             };
         }
     } else if (e.keyCode === 13) {
@@ -142,11 +134,10 @@ window.onload = function() {
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');
-    addEvent($('#header-search'), 'input', function() {
+    addEvent($('#header-search'), 'input', function(e) {
         i=0;
         ajax('http://bulesyk.github.io/suggest.json', {
             onsuccess: function(responseText) {
-                console.log(responseText);
                 if ($('#header-search').value) {
                     perpareSuggestion(responseText[$('#header-search').value[0]]);
                 } else {
@@ -156,7 +147,8 @@ window.onload = function() {
             }
         })
     });
-    addEvent($('#header-search'), 'focus', function() {
+    // addEvent($('#header-search'),'click',function)
+    addEvent($('#header-search'), 'focus', function(e) {
         addEvent($('html'), 'keydown', keyDownEvent);
     });
     delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
