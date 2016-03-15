@@ -596,7 +596,7 @@ article {
     display: inline-block;
 }
 .car-rank .percent {
-    height: 8px;
+    height: 6px;
     width: 200px;
     margin-left: 5px;
     background-color: #ccc;
