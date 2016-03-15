@@ -276,6 +276,7 @@ article {
 }
 .calendar-time .times {
     width: 110px;
+    border-top: 5px solid #fff;
 }
 .calendar-time .money {
     font-size: 20px;
@@ -292,4 +293,136 @@ article {
 #calendar-time {
     flex-direction: row;
     width: 116px;
+}
+.calendar-time .times:hover , .calendar-time .active {
+    border-top: 5px solid #3fa6e8;
+    cursor: pointer;
+}
+/*@统计*/
+.count {
+    margin: 20px 0;
+}
+.count p:first-child {
+    color: #000;
+}
+.bargain-count {
+    display: flex;
+    justify-content: space-between;
+}
+.bargain-count .items {
+    height: 70px;
+    width: 200px;
+    padding: 10px;
+    border-left: 3px solid;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+.bargain-count .text {
+    line-height: 1.8;
+}
+.bargain-count .text p:first-child {
+    color: #000;
+}
+.bargain-count .text p:last-child {
+    font-size: 12px;
+}
+.bargain-count .square {
+    float: right;
+    height: 50px;
+    width: 50px;
+}
+#count-items1 {
+    border-color: #51f28b;
+}
+#count-items2 {
+    border-color: #3fa6e8;
+}
+#count-items3 {
+    border-color: #d42a33;
+}
+#count-items4 {
+    border-color: #ccd057;
+}
+#count-items1 .square  {
+    background-color: #51f28b;
+}
+#count-items2 .square  {
+    background-color: #3fa6e8;
+}
+#count-items3 .square  {
+    background-color: #d42a33;
+}
+#count-items4 .square  {
+    background-color: #ccd057;
+}
+/*@项目*/
+.projects {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.projects-table {
+    width: 530px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+.projects .projects-first-line {
+    padding: 5px 20px;
+    background-color: #f1f6f9;
+    border-radius: 15px 15px 0 0;
+}
+.projects .table {
+    height: 500px;
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+    padding: 0 20px;
+    position: relative;
+}
+.projects .items {
+    display: inline-block;
+    margin: 20px 0;
+    color: #444;
+}
+.projects .items {
+
+}
+.projects .items:hover .handle,.projects .active .handle{
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    z-index: 2;
+}
+.projects .items:hover .table-wapper,.projects .active .table-wapper {
+    z-index: 1;
+}
+.projects .handle {
+    display: inline-block;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 15px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    position: relative;
+}
+.projects .table-wapper {
+    padding: 20px 30px;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    border: 1px solid #ccc;
+}
+.projects .content {
+    width: 420px;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+.projects .content td {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    color: #777;
+}
+.projects .content td:hover {
+    background-color: #eee;
 }

@@ -79,49 +79,71 @@ function perpareSuggestion(suggestion) {
     if (!suggestion) {
         return;
     };
+    console.log(suggestion);
+    $('#suggestion').style.display = 'block';
     $('#suggestion').innerHTML = '';
     var list = [];
-    if (suggestion[0] === '没有记录') {
-        for (var i = 0, len = suggestion.length; i < len; i++) {
+    var reg = new RegExp('^' + $('#header-search').value, 'i');
+    console.log(reg)
+    for (var i = 0, len = suggestion.length; i < len; i++) {
+        var letter = reg.exec(suggestion[i]);
+        if (letter) {
             list[i] = document.createElement('li');
-            list[i].innerHTML = suggestion[i];
+            list[i].innerHTML = '<span style="color:#e93030;">' + letter + '</span>' + RegExp.rightContext;
             $('#suggestion').appendChild(list[i]);
-            console.log(list[i], $('#suggestion'));
-        }
-    } else {
-        var reg = new RegExp('^' + $('#header-search').value, 'i');
-        console.log(reg)
-        for (var i = 0, len = suggestion.length; i < len; i++) {
-            var letter = reg.exec(suggestion[i]);
-            if (letter) {
-                list[i] = document.createElement('li');
-                list[i].innerHTML = '<span style="color:#e93030;">' + letter + '</span>' + RegExp.rightContext;
-                $('#suggestion').appendChild(list[i]);
-            }
         }
     }
 }
+//鼠标点击获取值事件
+function clickEvent(target) {
+    var choiceValue = target.firstChild.firstChild.nodeValue + target.lastChild.nodeValue;
+    $('#header-search').value = choiceValue;
+}
+//按键获取值事件
+function keyDownEvent(e) {
+    console.log(e.keyCode, i, $('#suggestion li').length);
+    e = e || window.event;
+    var list = $('#suggestion li').length || 1;
+    if (e.keyCode === 40) {
+        if (i < list) {
+            console.log(e.keyCode, i, $('#suggestion li').length);
+            removeClass($('.active'), 'active');
+            if ($('#suggestion li').length) {
+                i++;
+                addClass($('#suggestion li')[i - 1], 'active');
+                console.log(i);
+            } else {
+                i++;
+                addClass($('#suggestion li'), 'active');
+                console.log(i);
+            };
+        }
+    } else if (e.keyCode === 38) {
+        if (i !== 1) {
+            removeClass($('.active'), 'active');
+            if ($('#suggestion li').length) {
+                i--;
+                addClass($('#suggestion li')[i - 1], 'active');
+                console.log(i);
+            } else {
+                i--;
+                addClass($('#suggestion li'), 'active');
+                console.log(i);
+            };
+        }
+    } else if (e.keyCode === 13) {
+        $('#header-search').value = $('#suggestion li')[i - 1].firstChild.firstChild.nodeValue + $('#suggestion li')[i - 1].lastChild.nodeValue;
+    };
+}
+
 window.onload = function() {
     removeA();
     addNotiClassEvent();
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');
-    addEvent($('#header-search'), 'focus', function() {
-        // addEvent($('html'), 'keydown', keyDownEvent);
-        ajax('http://bulesyk.github.io/suggest.json', {
-            onsuccess: function(responseText) {
-                $('#suggestion').style.display = 'block';
-                console.log(responseText.history)
-                perpareSuggestion(responseText.history);
-            },
-            onfail: function() {
-                $('#suggestion').style.display = 'block';
-                $('#suggestion').innerHTML = '没有找到记录!';
-            }
-        })
-    });
     addEvent($('#header-search'), 'input', function() {
+        i=0;
         ajax('http://bulesyk.github.io/suggest.json', {
             onsuccess: function(responseText) {
                 console.log(responseText);
@@ -134,67 +156,8 @@ window.onload = function() {
             }
         })
     });
-}
-
-
-
-
-
-
-
-
-
-// delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// function config() {}
-// //鼠标点击事件
-// function clickEvent(target) {
-//     var choiceValue = target.firstChild.firstChild.nodeValue + target.lastChild.nodeValue;
-//     $('#header-search').value = choiceValue;
-// }
-// //keydown事件
-// var i;
-//
-// function keyDownEvent(e) {
-//     console.log(e.keyCode, i, $('li').length);
-//     e = e || window.event;
-//     var list = $('li').length || 1;
-//     if (e.keyCode === 40) {
-//         if (i < list) {
-//             removeClass($('.active'), 'active');
-//             if ($('li').length) {
-//                 i++;
-//                 addClass($('li')[i - 1], 'active');
-//                 console.log(i);
-//             } else {
-//                 i++;
-//                 addClass($('li'), 'active');
-//                 console.log(i);
-//             }
-//         }
-//     } else if (e.keyCode === 38) {
-//         if (i !== 1) {
-//             removeClass($('.active'), 'active');
-//             if ($('li').length) {
-//                 i--;
-//                 addClass($('li')[i - 1], 'active');
-//                 console.log(i);
-//             } else {
-//                 i--;
-//                 addClass($('li'), 'active');
-//                 console.log(i);
-//             }
-//         }
-//     } else if (e.keyCode === 13) {
-//         $('#header-search').value = $('li')[i - 1].firstChild.firstChild.nodeValue + $('li')[i - 1].lastChild.nodeValue;
-//     }
-// }
-// //提取建议
+    addEvent($('#header-search'), 'focus', function() {
+        addEvent($('html'), 'keydown', keyDownEvent);
+    });
+    delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
+};
