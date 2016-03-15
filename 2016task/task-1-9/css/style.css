@@ -15,7 +15,7 @@ img, input,select {
 }
 body {
     line-height: 1.4;
-    min-height: 1200px;
+    min-width: 1200px;
     font-family: sans-serif;
 }
 a {
@@ -523,11 +523,11 @@ article {
 }
 .calendar-car-rank>div {
     border-radius: 15px;
-    width: 40%;
     border: 1px solid #ccc;
 }
 .calendar {
     background-color: #fff;
+    width: 40%;
 }
 .calendar form {
     display: flex;
@@ -574,4 +574,8 @@ article {
 }
 .calendar .active {
     border: 1px solid #f6d33f;
+}
+.car-rank {
+    width: 58%;
+    background-color: #fff;
 }
