@@ -579,3 +579,73 @@ article {
     width: 58%;
     background-color: #fff;
 }
+.car-rank .table-wapper {
+    padding: 20px 40px;
+    color: #444;
+}
+.car-rank table {
+    border-collapse: collapse;
+}
+.car-rank td,.car-rank th {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+}
+.car-rank span {
+    vertical-align: middle;
+    display: inline-block;
+}
+.car-rank .percent {
+    height: 8px;
+    width: 200px;
+    margin-left: 5px;
+    background-color: #ccc;
+    text-align: left;
+}
+.car-rank .inner-percent {
+    height: 100%;
+    background-color: #66ebdb;
+    vertical-align: top;
+}
+.car-rank tbody tr:hover {
+    background-color: #b1f5ed;
+    cursor: pointer;
+}
+#rank-1 .inner-percent{
+    width: 80%;
+    background-color: #f13225;
+}
+#rank-2 .inner-percent{
+    width: 75%;
+    background-color: #fa7d37;
+}
+#rank-3 .inner-percent{
+    width: 70%;
+    background-color: #f1a025;
+}
+#rank-4 .inner-percent{
+    width: 65%;
+}
+#rank-5 .inner-percent{
+    width: 60%;
+}
+
+#rank-6 .inner-percent{
+    width: 57%;
+}
+
+#rank-7 .inner-percent{
+    width: 51%;
+}
+
+#rank-8 .inner-percent{
+    width: 48%;
+}
+
+#rank-9 .inner-percent{
+    width: 44%;
+}
+
+#rank-10 .inner-percent{
+    width: 30%;
+}
