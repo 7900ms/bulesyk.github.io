@@ -16,7 +16,7 @@ img, input,select {
 body {
     line-height: 1.4;
     min-width: 1200px;
-    font-family: sans-serif;
+    font-family: Arial,Verdana,Helvetica,sans-serif;
 }
 a {
     text-decoration: none;
@@ -28,9 +28,11 @@ a:focus ,a:active{
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
     appearance: none;
+}
+/*@ie*/
+select::-ms-expand{
+    display: none;
 }
 select::-moz-focus,select::-moz-active {
     outline: none;
@@ -48,11 +50,13 @@ header .container {
     width: 1160px;
     height: 50px;
     margin: 0 auto;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 header .wapper {
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,6 +65,7 @@ header .wapper {
     display: block;
 }
 header form {
+    display: -webkit-flex;
     display: flex;
     margin-right: 20px;
 }
@@ -96,6 +101,7 @@ header form {
 /*@article styles*/
 
 article {
+    display: -webkit-flex;
     display: flex;
 }
 .information-class {
@@ -108,6 +114,7 @@ article {
 }
 .account {
     padding: 20px 0;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -140,6 +147,7 @@ article {
 }
 .collection-and-fans {
     width: 150px;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
@@ -216,40 +224,44 @@ article {
     border: 1px solid #16d529;
 }
 .search-date {
+    display: -webkit-flex;
     display: flex;
     padding: 20px 40px;
     background-color: #fff;
 }
 .choice1 {
-    margin-right: 20px;
+    margin-right: 10px;
+    width: 170px;
 }
 .choice2 {
     position: relative;
     margin-right: 40px;
+    width: 200px;
 }
 .choice2 select {
     width: 120px;
 }
 #change-img, #change-text {
     position: absolute;
-    left: 94%;
+    left: 88%;
     top: 20%;
 }
 #change-text {
     top: 35%;
-    left: 102%;
+    left: 95.5%;
     z-index: 1;
     color: #fff;
     font-size: 12px;
 }
 .choice3 {
+    display: -webkit-flex;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     height: 70px;
     width: 340px;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 #choice3-date, #choice3-project {
     width: 120px;
@@ -257,9 +269,12 @@ article {
 .search-date .btn {
     background-color: #39a3da;
     color: #fff;
-    height: 20px;
+    line-height: 20px;
     padding: 5px 10px;
     align-self: center;
+    display: inline-block;
+    width: 50px;
+    text-align: center;
 }
 .search-date .btn:hover {
     background-color: #16d529;
@@ -267,6 +282,7 @@ article {
 }
 /*@日期*/
 .calendar-time {
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
@@ -277,6 +293,7 @@ article {
     box-sizing: border-box;
     padding: 10px 10px 5px 10px;
     background-color: #fff;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -318,6 +335,7 @@ article {
     color: #000;
 }
 .bargain-count {
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
 }
@@ -327,6 +345,7 @@ article {
     padding: 10px;
     border-left: 3px solid;
     box-sizing: border-box;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
     background-color: #fff;
@@ -372,6 +391,7 @@ article {
 /*@项目*/
 .projects {
     margin: 20px 0;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
 }
@@ -473,6 +493,7 @@ article {
     width: 80px;
 }
 .money-container {
+    display: -webkit-flex;
     display: flex;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -488,6 +509,7 @@ article {
 .sure-container {
     margin-top: 1px solid #ccc;
     padding: 10px 40px;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -518,6 +540,7 @@ article {
 /*bottom*/
 .calendar-car-rank {
     margin: 20px 0;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
 
@@ -531,6 +554,7 @@ article {
     width: 40%;
 }
 .calendar form {
+    display: -webkit-flex;
     display: flex;
     margin-top: 10px;
     justify-content: space-between;
