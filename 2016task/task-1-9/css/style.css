@@ -123,7 +123,8 @@ article {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: #bababe;
+    background: url(../img/head.png) no-repeat center center;
+    background-size: 50px 50px;
 }
 
 /*@圆圈*/
@@ -564,6 +565,9 @@ article {
     width: 45px;
     padding: 10px 0;
     margin: 1px 0;
+}.calendar tbody td:hover {
+    background-color: #b1f5ed;
+    cursor: pointer;
 }
 .calendar td span {
     display: block;
