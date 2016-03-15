@@ -1,10 +1,10 @@
-@bugfix
+/*@bugfix
 @测试
 @在windows下的firefox/edge/ie11 ubuntu下的chrome/firefox/ 效果几乎相同
-@在window下的默认的chrome “&or;” 实体显示的超级大,字体也和其他不同,改变了chrome默认的字体(默认为宋体)后显示正常
+@在window下的默认的chrome “&or;” 实体显示的超级大,字体也和其他不同,改变了chrome默认的字体(默认为宋体)后显示正常*/
 /*@reset styles*/
 
-h1, h3, ul, p {
+body,h1, h3, ul, p {
 	margin: 0;
 }
 ul, input {
@@ -21,7 +21,6 @@ body {
 	line-height: 1.4;
 	min-width: 1200px;
 	font-family: Arial, Verdana, Helvetica, sans-serif;
-    margin: 0;
 }
 a {
 	text-decoration: none;
