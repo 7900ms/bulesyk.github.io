@@ -103,6 +103,7 @@ function keyDownEvent(e) {
     var list = $('#suggestion li').length || 1;
     if (e.keyCode === 40) {
         if (i < list) {
+            e.preventDefault();
             removeClass($('.active'), 'active');
             if ($('#suggestion li').length) {
                 i++;
@@ -114,6 +115,7 @@ function keyDownEvent(e) {
         }
     } else if (e.keyCode === 38) {
         if (i !== 1) {
+            e.preventDefault();
             removeClass($('.active'), 'active');
             if ($('#suggestion li').length) {
                 i--;
@@ -124,6 +126,7 @@ function keyDownEvent(e) {
             };
         }
     } else if (e.keyCode === 13) {
+        e.preventDefault();
         $('#header-search').value = $('#suggestion li')[i - 1].firstChild.firstChild.nodeValue + $('#suggestion li')[i - 1].lastChild.nodeValue;
     };
 }
