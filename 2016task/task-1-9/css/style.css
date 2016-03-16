@@ -150,9 +150,9 @@ article>.container {
 	margin: 0 auto;
 }
 .information-class {
-    width: 22%;
+    width: 18%;
     color: #eee;
-    /*background-color: #151c39;*/
+    background-color: #151c39;
     min-height: 1200px;
     box-sizing: border-box;
 }
