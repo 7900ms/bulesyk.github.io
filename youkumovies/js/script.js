@@ -66,14 +66,6 @@ function ajax(url, options) {
 
 
 
-function removeA() {
-    var as = document.getElementsByTagName('a');
-    for (var i = 0, len = as.length; i < len; i++) {
-        as[i].onclick = function() {
-            return false;
-        };
-    };
-};
 //提取建议
 function perpareSuggestion(suggestion) {
     if (!suggestion) {
@@ -126,13 +118,11 @@ function keyDownEvent(e) {
             };
         }
     } else if (e.keyCode === 13) {
-        e.preventDefault();
         $('#header-search').value = $('#suggestion li')[i - 1].firstChild.firstChild.nodeValue + $('#suggestion li')[i - 1].lastChild.nodeValue;
     };
 }
 
-window.onload = function() {
-    removeA();
+(function() {
     addNotiClassEvent();
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
@@ -155,4 +145,4 @@ window.onload = function() {
         addEvent($('html'), 'keydown', keyDownEvent);
     });
     delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
-};
+})();

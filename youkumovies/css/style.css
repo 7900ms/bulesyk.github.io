@@ -7,7 +7,7 @@ body {
     color: #666;
     line-height: 1.4;
     font-size: 14px;
-    font-family: Arial,sans-serif;
+    font-family: Arial, sans-serif;
 }
 input, ul, button {
     padding: 0;
@@ -30,29 +30,10 @@ a {
     clear: both;
 }
 
-/*@additional message*/
-
-#additional-message {
-    background-color: #eee;
-    padding: 5px 20px 5px 40px;
-    font-size: 12px;
-}
-#additional-message a:hover {
-    color: #f44f09;
-}
-#additional-message .wapper {
-    float: right;
-    display: flex;
-}
-#additional-message .wapper a {
-    margin: 0 10px;
-}
-
 /*@header setting*/
 
 header {
     width: 100%;
-    max-width: 1400px;
     height: 60px;
     margin: 0 auto;
     padding: 0 20px 0 40px;
@@ -60,8 +41,12 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
-    position: relative;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    displey: -webkit-fixed;
     display: flex;
+    background-color: #fff;
 }
 .triangle {
     display: inline-block;
@@ -70,6 +55,7 @@ header {
     border-top: 5px solid #666;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
+    transition: transform 0.5s;
 }
 #header-logo-img {
     display: block;
@@ -118,11 +104,13 @@ header .container {
     color: #000;
     line-height: 2;
 }
-#suggestion .active,#suggestion li:hover {
+#suggestion .active, #suggestion li:hover {
     background-color: #c9eeee;
     cursor: pointer;
 }
+
 /*@message的全局定义*/
+
 #upload-message, #noti-message, #information-message {
     position: absolute;
     top: 100%;
@@ -131,13 +119,17 @@ header .container {
     display: none;
 }
 .wapper-message {
+    displey: -webkit-fixed;
     display: flex;
     align-items: baseline;
+}
+.wapper-message .wapper:hover .triangle {
+    transform: rotate(180deg);
 }
 .handle {
     margin-left: 10px;
 }
-.handle:hover>img{
+.handle:hover>img {
     opacity: 0.7;
 }
 .wapper .last:hover>img {
@@ -153,7 +145,9 @@ header .container {
     position: absolute;
     bottom: 100%;
 }
+
 /*@上传视频*/
+
 #upload-message {
     background-color: #fff;
     padding: 30px;
@@ -175,7 +169,9 @@ header .container {
 #upload-message a:hover {
     color: #f00;
 }
+
 /*@消息定义*/
+
 #noti-message {
     left: 70%;
 }
@@ -198,6 +194,7 @@ header .container {
 }
 #noti-message-imgwapper {
     height: 340px;
+    displey: -webkit-fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,7 +208,9 @@ header .container {
 #noti-message-all a {
     color: #3d98ec;
 }
+
 /*@informessage*/
+
 #information-message {
     left: 70%;
 }
@@ -247,10 +246,13 @@ header .container {
     font-size: 22px;
 }
 .head-information .icons {
+    displey: -webkit-fixed;
     display: flex;
     justify-content: space-around;
 }
+
 /*@定义等级*/
+
 .level {
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -264,6 +266,7 @@ header .container {
     font-size: 120%;
 }
 .level-percent {
+    displey: -webkit-fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -283,6 +286,7 @@ header .container {
     color: #fff;
 }
 .hours {
+    displey: -webkit-fixed;
     display: flex;
     justify-content: space-between;
     margin: 5px 0;
@@ -298,7 +302,9 @@ header .container {
     background: #f9be29;
     color: #fff;
 }
+
 /*@task*/
+
 .task {
     padding: 5px 20px;
     background-color: #fff;
@@ -309,6 +315,7 @@ header .container {
     margin-bottom: 5px;
 }
 .inner-task {
+    displey: -webkit-fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -321,8 +328,11 @@ header .container {
 .sign-gift {
     align-self: flex-start;
 }
+
 /*@myhobby*/
-.my-hobby,.my-hobby-a {
+
+.my-hobby, .my-hobby-a {
+    displey: -webkit-fixed;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -330,4 +340,153 @@ header .container {
 }
 .my-hobby-a a:hover {
     color: #f00;
+}
+
+/*@侧边栏*/
+
+#left-icons {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    background-color: #f5f5f5;
+}
+.left-icons-top {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+}
+.left-icons-wapper {
+    width: 50px;
+    height: 56px;
+    displey: -webkit-fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.left-icons-wapper:hover {
+    cursor: pointer;
+    background-color: #dff8f9;
+}
+.left-icons-bottom {
+    padding: 15px 0;
+}
+#left-icons-channel {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 50px;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#right-icons {
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+}
+#right-icons img {
+    border: 1px solid #ccc;
+}
+#right-icons img:last-child {
+    border-top: none;
+}
+#right-icons img:hover ,#left-icons-channel:hover {
+    cursor: pointer;
+}
+/*@正文内容*/
+
+article {
+    width: 1200px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.menu {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-end;
+}
+.menu a {
+    padding: 10px 8px 6px 8px;
+    border-bottom: 3px solid #ccc;
+}
+.menu .active {
+    color: #4882d9;
+    border-bottom-color: #4882d9;
+}
+.menu a:hover {
+    color: #df6849;
+    border-bottom-color: #df6849;
+}
+.button-big {
+    font-size: 18px;
+}
+.level2 a ,.level2 .active,.level2 a:hover {
+    border: none;
+}
+.right-top-hock span {
+    line-height: 1;
+    background-color: #f00;
+    color: #fff;
+    border-radius: 3px;
+    vertical-align: super;
+    font-size: 12px;
+}
+#carousel-figure {
+    margin: 10px 0;
+    height: 410px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 1px #000;
+}
+#imgholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#spanholder {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+#spanholder span {
+    display: inline-block;
+    background-color: #fff;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    box-shadow: 0 0 3px #3fb9a3;
+}
+#spanholder span:hover,#spanholder .active {
+    background-color: #54d1cd;
+    cursor: pointer;
+}
+#left ,#right{
+    position: absolute;
+    top: 44%;
+    font-size: 40px;
+    color: #eee;
+    text-shadow: 0 0 3px #000;
+    opacity: 0.6;
+}
+#left:hover,#right:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+#left {
+    left: 10px;
+}
+#right {
+    right: 10px;
 }
