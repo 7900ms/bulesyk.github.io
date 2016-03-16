@@ -1,7 +1,12 @@
 /*@bugfix
-@测试
+@测试分辨率为1366*768
 @在windows下的firefox/edge/ie11 ubuntu下的chrome/firefox/ 效果几乎相同
-@在window下的默认的chrome “&or;” 实体显示的超级大,字体也和其他不同,改变了chrome默认的字体(默认为宋体)后显示正常*/
+@在window下的默认的chrome “&or;” 实体显示的超级大,字体也和其他不同,改变了chrome默认的字体(默认为宋体)后显示正常
+@未在mac下测试
+[3.16更新]
+注:布局主要使用了flex,兼容性ie10+,从review来看,分辨率不同显示效果差距很
+取消了search输入汉字时背景图片还在的问题
+*/
 /*@reset styles*/
 
 body,h1, h3, ul, p {
@@ -86,7 +91,10 @@ header form {
 	outline: none;
 	width: 280px;
 }
-
+#search:focus {
+    background: none;
+    background-color: #fff;
+}
 /*@左右半圆*/
 
 #input-left, #input-right {
@@ -453,7 +461,7 @@ article {
 .projects .table-wapper {
 	padding: 20px 30px;
 	position: absolute;
-	top: 51px;
+	top: 50px;
 	left: 20px;
 	border: 1px solid #ccc;
 }
