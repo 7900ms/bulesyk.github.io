@@ -4,12 +4,11 @@
      margin: 0;
      line-height: 1.3;
      font-size: 16px;
-     font-family: Arial,sans-serif;
+     font-family: Verdana, Arial, sans-serif;
      color: #3e3e40;
      background-color: #e9eaea;
      width: 100%;
      min-width: 960px;
-     height: 2000px;
  }
  h1, h3, p, ul {
      margin: 0;
@@ -103,8 +102,7 @@
  /*@article**/
  /*@banner*/
 
- article {}
- article .banner {
+ .banner {
      background-color: #fff;
      text-align: center;
  }
@@ -264,6 +262,7 @@
      right: 100px;
      font-size: 14px;
      z-index: -1;
+     width: 200px;
  }
  .skills-list span.arrow {
      float: right;
@@ -284,17 +283,17 @@
  }
  /*@web skills*/
 
- div.web-skills {
+ .web-skills {
      text-align: center;
      padding: 50px;
  }
- div.web-skills a {
+ .web-skills a {
      display: inline;
  }
- div.web-skills .container>h1, div.web-skills .container>p {
+ .web-skills .container>h1, div.web-skills .container>p {
      margin: 20px 0;
  }
- div.web-skills li {
+ .web-skills li {
      background-color: #fff;
      width: 280px;
      height: 340px;
@@ -305,24 +304,24 @@
      vertical-align: middle;
      position: relative;
  }
- div.web-skills li:hover {
+ .web-skills li:hover {
      background-color: #30a392;
      cursor: pointer;
  }
- div.web-skills li:hover a, div.web-skills li:hover .percentage-text {
+ .web-skills li:hover a, div.web-skills li:hover .percentage-text {
      color: #fff;
  }
- div.web-skills li:hover .inner-block {
+ .web-skills li:hover .inner-block {
      background-color: #fff;
  }
- div.web-skills li h3 {
+ .web-skills li h3 {
      font-size: 20px;
      margin: 10px 0;
  }
- div.web-skills li p {
+ .web-skills li p {
      margin: 10px 0;
  }
- div.web-skills div.web-per {
+ .web-skills div.web-per {
      width: 280px;
      border-top: 1px solid #ccc;
      box-sizing: border-box;
@@ -331,69 +330,69 @@
      left: 0;
      bottom: 0;
  }
- div.web-skills div.web-per .percentage {
+ .web-skills div.web-per .percentage {
      background-color: #d5d5d5;
      position: relative;
      left: -18px;
  }
- div.web-skills div.web-per .inner-block {
+ .web-skills div.web-per .inner-block {
      width: 12%;
  }
- div.web-skills div.web-per .all-per {
+ .web-skills div.web-per .all-per {
      width: 100%;
  }
- ul.web li:last-child {
+ .web li:last-child {
      opacity: 0.5;
      position: relative;
  }
- ul.web li:last-child #right-triangle {
+ .web li:last-child #right-triangle {
      position: absolute;
      right: 0;
      top: 0;
  }
- ul.web li:last-child:hover {
+ .web li:last-child:hover {
      background-color: #fff;
      cursor: auto;
  }
  /*@languages*/
 
- ul.languages li h3 {
+ .languages li h3 {
      margin: 20px 0;
  }
- ul.languages img.hover-light {
+ .languages img.hover-light {
      position: absolute;
      top: 40px;
      left: 98px;
      z-index: -1;
  }
- ul.languages li {
+ .languages li {
      height: 300px;
      position: relative;
  }
- ul.languages li:hover img.hover-light {
+ .languages li:hover img.hover-light {
      z-index: 1;
  }
- ul.goals li {
+ .goals li {
      padding: 0;
  }
- ul.goals li:hover {
+ .goals li:hover {
      background-color: #fff;
  }
- ul.goals li:hover a {
+ .goals li:hover a {
      color: #204056;
  }
- ul.goals li img {
+ .goals li img {
      width: 100%;
      height: 160px;
  }
- ul.goals .goals-img {
+ .goals .goals-img {
      transition: height 0.5s;
      height: 130px;
      position: relative;
      margin-bottom: 20px;
      overflow: hidden;
  }
- ul.goals .goals-mask {
+ .goals .goals-mask {
      transition: opacity 0.3s;
      height: 100%;
      width: 100%;
@@ -404,13 +403,13 @@
      left: 0;
      z-index: 1;
  }
- ul.goals li:hover:hover .goals-mask {
+ .goals li:hover:hover .goals-mask {
      opacity: 0;
  }
- ul.goals li:hover:hover .goals-img {
+ .goals li:hover:hover .goals-img {
      height: 160px;
  }
- div.web-skills h1:last-child a:hover {
+ .web-skills h1:last-child a:hover {
      text-decoration: underline;
  }
  /*@footer*/
@@ -432,10 +431,10 @@
  footer ul {
      margin: 20px 0;
  }
-  footer .contact {
-      float: left;
-      margin-right: 100px;
-  }
+ footer .contact {
+     float: left;
+     margin-right: 100px;
+ }
  footer .contact p {
      margin: 40px 0;
  }
@@ -446,19 +445,19 @@
      opacity: 1;
      cursor: pointer;
  }
-footer .company {
-    float: left;
-}
-.learn-list ,.language-list {
-    float: right;
-}
-.lisence {
-    width: 960px;
-    margin: 0 auto;
-}
-.lisence a:last-child {
-    float: right;
-}
-#lisence {
-    margin-left: 380px;
-}
+ footer .company {
+     float: left;
+ }
+ .learn-list, .language-list {
+     float: right;
+ }
+ .lisence {
+     width: 960px;
+     margin: 0 auto;
+ }
+ .lisence a:last-child {
+     float: right;
+ }
+ #lisence {
+     margin-left: 380px;
+ }

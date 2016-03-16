@@ -96,7 +96,7 @@ function keyDownEvent(e) {
     if (e.keyCode === 40) {
         if (i < list) {
             e.preventDefault();
-            removeClass($('.active'), 'active');
+            removeClass($('#suggestion .active')[0], 'active');
             if ($('#suggestion li').length) {
                 i++;
                 addClass($('#suggestion li')[i - 1], 'active');
@@ -108,7 +108,7 @@ function keyDownEvent(e) {
     } else if (e.keyCode === 38) {
         if (i !== 1) {
             e.preventDefault();
-            removeClass($('.active'), 'active');
+            removeClass($('#suggestion .active')[0], 'active');
             if ($('#suggestion li').length) {
                 i--;
                 addClass($('#suggestion li')[i - 1], 'active');
@@ -128,19 +128,25 @@ function keyDownEvent(e) {
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');
     addEvent($('#header-search'), 'input', function(e) {
-        i=0;
+        i = 0;
         ajax('http://bulesyk.github.io/suggest.json', {
             onsuccess: function(responseText) {
+                console.log($('#header-search').value);
                 if ($('#header-search').value) {
                     perpareSuggestion(responseText[$('#header-search').value[0]]);
                 } else {
                     $('#suggestion').innerHTML = '';
-                    $('#suggestion').style.border = 'none';
+                    $('#suggestion').style.display = 'none';
                 }
             }
         })
     });
-    // addEvent($('#header-search'),'click',function)
+    addEvent($('#header-search'), 'keydown', function(e) {
+        var e = e || window.event;
+        if (e.keyCode === 38 || e.keyCode === 40) {
+            e.preventDefault();
+        }
+    });
     addEvent($('#header-search'), 'focus', function(e) {
         addEvent($('html'), 'keydown', keyDownEvent);
     });

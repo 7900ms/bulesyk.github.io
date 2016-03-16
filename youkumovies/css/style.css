@@ -7,13 +7,14 @@ body {
     color: #666;
     line-height: 1.4;
     font-size: 14px;
-    font-family: Arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
 }
 input, ul, button {
     padding: 0;
 }
 img, input, button {
     border: 0;
+    outline: none;
 }
 ul {
     list-style-type: none;
@@ -337,6 +338,7 @@ header .container {
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #fff;
+    padding-bottom: 10px;
 }
 .my-hobby-a a:hover {
     color: #f00;
@@ -396,9 +398,10 @@ header .container {
 #right-icons img:last-child {
     border-top: none;
 }
-#right-icons img:hover ,#left-icons-channel:hover {
+#right-icons img:hover, #left-icons-channel:hover {
     cursor: pointer;
 }
+
 /*@正文内容*/
 
 article {
@@ -429,7 +432,7 @@ article {
 .button-big {
     font-size: 18px;
 }
-.level2 a ,.level2 .active,.level2 a:hover {
+.level2 a, .level2 .active, .level2 a:hover {
     border: none;
 }
 .right-top-hock span {
@@ -468,19 +471,19 @@ article {
     margin: 0 5px;
     box-shadow: 0 0 3px #3fb9a3;
 }
-#spanholder span:hover,#spanholder .active {
+#spanholder span:hover, #spanholder .active {
     background-color: #54d1cd;
     cursor: pointer;
 }
-#left ,#right{
+#left, #right {
     position: absolute;
-    top: 44%;
+    top: 42%;
     font-size: 40px;
     color: #eee;
     text-shadow: 0 0 3px #000;
     opacity: 0.6;
 }
-#left:hover,#right:hover {
+#left:hover, #right:hover {
     opacity: 1;
     cursor: pointer;
 }
@@ -489,4 +492,35 @@ article {
 }
 #right {
     right: 10px;
+}
+
+/*@分类*/
+
+#class-wapper {
+    display: -webkit-flex;
+    display: flex;
+    margin: 20px 0;
+}
+.main-class {
+    width: 300px;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.8;
+}
+.main-class h3 {
+    font-size: 14px;
+    width: 40%;
+    margin-right: 60%;
+    text-align: center;
+    background-color: #909090;
+    color: #fff;
+}
+.main-class .item {
+    font-size: 13px;
+    margin-right: 15px;
+    line-height: 2.5;
+}
+.main-class .item:hover {
+    color: #e4521d;
 }

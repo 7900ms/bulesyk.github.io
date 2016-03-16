@@ -130,6 +130,9 @@ function addClass(elem, className) {
  * @return 无
  */
 function removeClass(elem, className) {
+    if(!elem) {
+        return;
+    }
     var reg = new RegExp(className);
     if (!reg.test(elem.className)) {
         return;

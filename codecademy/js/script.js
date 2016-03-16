@@ -1,15 +1,12 @@
-//初始化配置
-function config() {
-    var links = $('a');
-    for (var i = 0, len = links.length; i < len; i++) {
-        links[i].onclick = function() {
-            return false;
-        };
-    };
-};
 (function clickEvent() {
     //in-skills显示
-    function inSkillDisplay() {
+    function inSkillDisplay(e) {
+        var e = e || window.event;
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
         this.style.backgroundColor = '#d5d5d5';
         $('.c-skill').style.backgroundColor = '#e8e8e8';
         $('.in-skills').style.display = 'block';
@@ -20,7 +17,12 @@ function config() {
     };
     addEvent($('.in-skill'), 'click', inSkillDisplay);
     //c-skills显示
-    function cSkillDisplay() {
+    function cSkillDisplay(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
         this.style.backgroundColor = '#d5d5d5';
         $('.in-skill').style.backgroundColor = '#e8e8e8';
         $('.in-skills').style.display = 'none';
@@ -38,6 +40,7 @@ function config() {
         $('.noti').style.zIndex = '1';
         addClass(this, 'now');
         addEvent($('.now'), 'click', noDisplay);
+
         function noDisplay() {
             $('.noti').style.zIndex = '-1';
             removeClass(this, 'now');
@@ -53,6 +56,7 @@ function config() {
         $('.account').style.zIndex = '1';
         addClass(this, 'now');
         addEvent($('.now'), 'click', noDisplay);
+
         function noDisplay() {
             $('.account').style.zIndex = '-1';
             removeClass(this, 'now');
@@ -71,6 +75,7 @@ function config() {
             $('.noti').style.zIndex = '-1';
         } else {
             addEvent($('.now'), 'click', noDisplay);
+
             function noDisplay() {
                 removeClass(this, 'now');
                 $('.account').style.zIndex = '-1';
@@ -99,7 +104,3 @@ function config() {
         };
     };
 })();
-
-window.onload = function() {
-    config();
-};
