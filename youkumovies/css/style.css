@@ -500,6 +500,7 @@ article {
     display: -webkit-flex;
     display: flex;
     margin: 20px 0;
+    border-bottom: 2px solid #ccc;
 }
 .main-class {
     width: 300px;
@@ -523,4 +524,71 @@ article {
 }
 .main-class .item:hover {
     color: #e4521d;
+}
+#hearld-willbeon-wapper {
+    display: -webkit-flex;
+    display: flex;
+    margin: 20px 0;
+}
+.movie-container {
+    width: 70%;
+    height: 300px;
+}
+.movie-container .imgs-container {
+    position: absolute;
+    top: 50px;
+}
+.movie-container .img-wapper {
+    position: relative;
+    box-shadow: 0 0 5px #000;
+    width: 200px;
+    height: 110px;
+}
+.movie-container .img-wapper img {
+    display: block;
+}
+.movie-container .button {
+    padding: 5px 10px;
+    background-color: #06a7e1;
+    color: #eee;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+.movie-container .text-wapper-dark {
+    width: 200px;
+    height: 110px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+}
+.movie-container .text-wapper {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: #aaa;
+}
+.movie-container .first {
+    color: #eee;
+    display: block;
+}
+.movie-container .download {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.choice1 {
+    position: relative;
+}
+.choice1 .handle {
+    font-size: 20px;
+    line-height: 2;
+    padding: 5px 10px;
+    color: #555;
+}
+.choice1 .active ,.choice1 .handle:hover {
+    background-color: #0d7fd2;
+    color: #fff;
 }
