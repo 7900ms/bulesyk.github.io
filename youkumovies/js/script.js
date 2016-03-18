@@ -21,7 +21,13 @@ function addHandleEvent(elemId, display) {
 function addNotiClassEvent() {
     var button = $('#noti-message-class a');
     for (var i = 0, len = button.length; i < len; i++) {
-        addEvent(button[i], 'click', function() {
+        addEvent(button[i], 'click', function(e) {
+            var e = e || window.event;
+            if (e.preventDefault) {
+                e.preventDefault()
+            } else {
+                e.returnValue = false;
+            };
             removeClass($('#noti-message-class .active')[0], 'active');
             addClass(this, 'active');
         });
@@ -166,8 +172,19 @@ function autoSelfMake() {
     }
     autoSelfMakeId = setInterval(autoMove, 2000);
 }
+//观看记录点击取消
+function removePlayHistory() {
+    var closes = $('.in-movies .close');
+    for (var i=0,len=closes.length;i<len;i++) {
+        closes[i].onclick = function(){
+            this.parentNode.style.display = 'none';
+            return false;
+        };
+    };
+}
 (function() {
     addNotiClassEvent();
+    removePlayHistory();
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');

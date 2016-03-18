@@ -33,7 +33,58 @@ a {
     visibility: hidden;
     clear: both;
 }
-
+/*@定义一个全局的imgwapper和textwapper*/
+.img-wapper {
+    position: relative;
+}
+.img-wapper:hover {
+    cursor: pointer;
+}
+.img-wapper .button {
+    padding: 5px 10px;
+    background-color: #06a7e1;
+    color: #eee;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+.img-wapper .button:hover {
+    background-color: #1ce311;
+    color: #fff;
+}
+.img-wapper img {
+    display: block;
+}
+.img-wapper .first {
+    color: #eee;
+    display: block;
+}
+.img-wapper .second {
+    color: #ddd;
+}
+.img-wapper .download {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.text-wapper-dark {
+    width: 100%;
+    height: 110px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
+    padding: 5px 5px 0 5px;
+    box-sizing: border-box;
+    display: none;
+}
+.text-wapper {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: #bbb;
+}
 /*@header setting*/
 
 header {
@@ -47,7 +98,7 @@ header {
     border-bottom: 1px solid #ccc;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 999;
     displey: -webkit-fixed;
     display: flex;
     background-color: #fff;
@@ -215,7 +266,9 @@ header .container {
 #noti-message-all a {
     color: #3d98ec;
 }
-
+#noti-message-all a:hover {
+    color: #e92f2f;
+}
 /*@informessage*/
 
 #information-message {
@@ -267,6 +320,9 @@ header .container {
 }
 .level a {
     color: #3d98ec;
+}
+.level a:hover {
+    color: #e42323;
 }
 .level .first {
     margin-right: 80px;
@@ -331,6 +387,9 @@ header .container {
     padding: 5px 10px;
     background-color: #ff9100;
     color: #fff;
+}
+.inner-task .button:hover {
+    background-color: #0fac36;
 }
 .sign-gift {
     align-self: flex-start;
@@ -567,59 +626,13 @@ article {
     left: 2px;
 }
 .movie-container .img-wapper {
-    position: relative;
     box-shadow: 0 0 1px #ccc;
     width: 200px;
     height: 110px;
 }
-.movie-container .img-wapper img {
-    display: block;
-}
-.movie-container .button {
-    padding: 5px 10px;
-    background-color: #06a7e1;
-    color: #eee;
-    position: absolute;
-    left: 5px;
-    bottom: 5px;
-}
-.movie-container .button:hover {
-    background-color: #1ce311;
-    color: #c94208;
-}
-.movie-container .text-wapper-dark {
-    width: 200px;
-    height: 110px;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    top: 0;
-    padding: 5px 5px 0 5px;
-    box-sizing: border-box;
-    display: none;
-}
-.movie-container .text-wapper {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    color: #bbb;
-}
-.img-wapper .first {
-    color: #eee;
-    display: block;
-}
-.img-wapper .second {
-    color: #ddd;
-}
 .movie-container .third {
     display: block;
     color: #aaa;
-}
-.movie-container .download {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
 }
 .choice .handle {
     font-size: 20px;
@@ -650,9 +663,6 @@ article {
     align-content: space-between;
     height: 236px;
 }
-.img-wapper:hover {
-    cursor: pointer;
-}
 .movie-container .img-wapper:hover .text-wapper {
     display: none;
 }
@@ -662,29 +672,27 @@ article {
 }
 .in-movies {
     width: 300px;
+    height: 290px;
+    overflow: hidden;
 }
 .in-movies h1 {
     line-height: 50px;
 }
 .in-movies .img-wapper {
-    position: relative;
     height: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     width: 100%;
 }
 .in-movies .img-wapper img {
     float: left;
     margin-right: 10px;
 }
-.in-movies .img-wapper img:hover {
-    cursor: pointer;
-}
-.in-movies .img-wapper>a {
+.in-movies .img-wapper .close {
     position: absolute;
     right: 0;
     top: 30%;
 }
-.in-movies .img-wapper>a:hover {
+.in-movies .img-wapper .close:hover {
     color: #e02323;
 }
 .in-movies .first {
@@ -737,19 +745,11 @@ article {
 .self-choice:hover .imgs-wapper {
     z-index: 2;
 }
-.self-choice .imgs-wapper .img-wapper {
-    position: relative;
-}
 .self-choice .imgs-wapper {
     width: 644px;
 }
 .self-choice .imgs-wapper span {
     display: block;
-}
-.self-choice .imgs-wapper .text-wapper {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
 }
 .self-choice .img-wapper-big {
     float: left;
