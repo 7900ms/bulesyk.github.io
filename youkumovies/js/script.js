@@ -121,9 +121,54 @@ function keyDownEvent(e) {
         $('#header-search').value = $('#suggestion li')[i - 1].firstChild.firstChild.nodeValue + $('#suggestion li')[i - 1].lastChild.nodeValue;
     };
 }
-
+// 最新预告最新上映三秒一换
+var autoChangeMovieId;
+function autoChangeMovie() {
+    var choices = $(".movie-container .choice");
+    var i = 0;
+    for (var j=0,len=choices.length;j<len;j++) {
+        addEvent(choices[j],'mouseenter',function(){
+            clearInterval(autoChangeMovieId);
+        });
+        addEvent(choices[j],'mouseleave',function(){
+            autoChangeMovieId = setInterval(autoMove, 3000);
+        });
+    }
+    function autoMove() {
+        i++;
+        var active = $(".movie-container .active")[0];
+        removeClass(active, 'active');
+        addClass(choices[i], 'active');
+        i = i === 1 ? -1 : i;
+    }
+    autoChangeMovieId = setInterval(autoMove, 3000);
+}
+// 自制轴三秒一换
+var autoSelfMakeId;
+function autoSelfMake() {
+    var choices = $(".self-container .self-choice");
+    var i = 0;
+    var length = choices.length;
+    for (var j=0,len=choices.length;j<len;j++) {
+        addEvent(choices[j],'mouseenter',function(){
+            clearInterval(autoSelfMakeId);
+        });
+        addEvent(choices[j],'mouseleave',function(){
+            autoSelfMakeId = setInterval(autoMove, 3000);
+        });
+    }
+    function autoMove() {
+        i++;
+        var active = $(".self-container .active")[0];
+        removeClass(active, 'active');
+        addClass(choices[i], 'active');
+        i = i === length-1 ? -1 : i;
+    }
+    autoSelfMakeId = setInterval(autoMove, 3000);
+}
 (function() {
     addNotiClassEvent();
+    autoSelfMake();
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');
@@ -131,7 +176,6 @@ function keyDownEvent(e) {
         i = 0;
         ajax('http://bulesyk.github.io/suggest.json', {
             onsuccess: function(responseText) {
-                console.log($('#header-search').value);
                 if ($('#header-search').value) {
                     perpareSuggestion(responseText[$('#header-search').value[0]]);
                 } else {
@@ -151,4 +195,5 @@ function keyDownEvent(e) {
         addEvent($('html'), 'keydown', keyDownEvent);
     });
     delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
+    autoChangeMovie()
 })();

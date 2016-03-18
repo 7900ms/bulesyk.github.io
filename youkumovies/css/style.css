@@ -16,6 +16,9 @@ img, input, button {
     border: 0;
     outline: none;
 }
+img {
+    display: block;
+}
 ul {
     list-style-type: none;
 }
@@ -48,6 +51,9 @@ header {
     displey: -webkit-fixed;
     display: flex;
     background-color: #fff;
+}
+header img {
+    display: inline-block;
 }
 .triangle {
     display: inline-block;
@@ -127,7 +133,7 @@ header .container {
 .wapper-message .wapper:hover .triangle {
     transform: rotate(180deg);
 }
-.handle {
+.wapper-message .handle {
     margin-left: 10px;
 }
 .handle:hover>img {
@@ -412,6 +418,19 @@ article {
     left: 0;
     margin: auto;
 }
+#stop-animation {
+    position: absolute;
+    right: 0;
+    top: 54px;
+    padding: 2px;
+    background-color: #ddd;
+    box-shadow: 0 0 1px #000;
+    border: 1px solid #ccc;
+}
+#stop-animation:hover {
+    color: #f00;
+    cursor: pointer;
+}
 .menu {
     display: -webkit-flex;
     display: flex;
@@ -525,22 +544,30 @@ article {
 .main-class .item:hover {
     color: #e4521d;
 }
+
+/*电影*/
+
 #hearld-willbeon-wapper {
     display: -webkit-flex;
     display: flex;
     margin: 20px 0;
+    justify-content: space-between;
 }
 .movie-container {
     width: 70%;
     height: 300px;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
 }
 .movie-container .imgs-container {
     position: absolute;
     top: 50px;
+    left: 2px;
 }
 .movie-container .img-wapper {
     position: relative;
-    box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 1px #ccc;
     width: 200px;
     height: 110px;
 }
@@ -555,22 +582,36 @@ article {
     left: 5px;
     bottom: 5px;
 }
+.movie-container .button:hover {
+    background-color: #1ce311;
+    color: #c94208;
+}
 .movie-container .text-wapper-dark {
     width: 200px;
     height: 110px;
     background-color: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 0;
+    padding: 5px 5px 0 5px;
+    box-sizing: border-box;
+    display: none;
 }
 .movie-container .text-wapper {
     position: absolute;
     bottom: 5px;
     left: 5px;
-    color: #aaa;
+    color: #bbb;
 }
-.movie-container .first {
+.img-wapper .first {
     color: #eee;
     display: block;
+}
+.img-wapper .second {
+    color: #ddd;
+}
+.movie-container .third {
+    display: block;
+    color: #aaa;
 }
 .movie-container .download {
     width: 20px;
@@ -579,16 +620,139 @@ article {
     right: 5px;
     bottom: 5px;
 }
-.choice1 {
-    position: relative;
-}
-.choice1 .handle {
+.choice .handle {
     font-size: 20px;
     line-height: 2;
     padding: 5px 10px;
     color: #555;
 }
-.choice1 .active ,.choice1 .handle:hover {
+.movie-container .active .imgs-container {
+    z-index: 1;
+}
+.choice:hover .imgs-container {
+    z-index: 2;
+}
+.active .handle {
     background-color: #0d7fd2;
     color: #fff;
+}
+.choice:hover .handle {
+    color: #fff;
+    background-color: #e02323;
+}
+.imgs-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 860px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 236px;
+}
+.img-wapper:hover {
+    cursor: pointer;
+}
+.movie-container .img-wapper:hover .text-wapper {
+    display: none;
+}
+.movie-container .img-wapper:hover .text-wapper-dark {
+    display: block;
+    z-index: 1;
+}
+.in-movies {
+    width: 300px;
+}
+.in-movies h1 {
+    line-height: 50px;
+}
+.in-movies .img-wapper {
+    position: relative;
+    height: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.in-movies .img-wapper img {
+    float: left;
+    margin-right: 10px;
+}
+.in-movies .img-wapper img:hover {
+    cursor: pointer;
+}
+.in-movies .img-wapper>a {
+    position: absolute;
+    right: 0;
+    top: 30%;
+}
+.in-movies .img-wapper>a:hover {
+    color: #e02323;
+}
+.in-movies .first {
+    color: #222;
+}
+.in-movies .second {
+    color: #aaa;
+}
+.in-movies .first:hover {
+    color: #e02323;
+}
+.self-make {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.self-container {
+    position: relative;
+}
+.self-container h1 {
+    line-height: 50px;
+}
+.self-container .imgs-wapper {
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    padding-left: 20px;
+}
+.self-container .handle {
+    display: inline-block;
+    width: 190px;
+    line-height: 34px;
+    padding-left: 10px;
+    background-color: #ddd;
+    color: #444;
+}
+.self-container .active .handle {
+    background-color: #0d7fd2;
+    color: #fff;
+}
+.self-choice:hover .handle {
+    background-color: #e02323;
+    color: #fff;
+}
+.self-container .active .imgs-wapper {
+    z-index: 1;
+}
+.self-choice:hover .imgs-wapper {
+    z-index: 2;
+}
+.self-choice .imgs-wapper .img-wapper {
+    position: relative;
+}
+.self-choice .imgs-wapper {
+    width: 644px;
+}
+.self-choice .imgs-wapper span {
+    display: block;
+}
+.self-choice .imgs-wapper .text-wapper {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+.self-choice .img-wapper-big {
+    float: left;
+}
+.self-choice .img-wapper-small {
+    float: right;
+    margin-bottom: 20px;
 }

@@ -173,6 +173,7 @@
         <span>频道</span>
     </div>
     <article>
+        <button id="stop-animation">停止所有动画</button>
         <div class="menu level1">
             <a href="" class="button-big">首页</a>
             <a href="" class="button-big">电视剧</a>
@@ -287,26 +288,463 @@
         </div>
         <div id="hearld-willbeon-wapper">
             <div class="movie-container">
-                <div class="choice1">
+                <div class="choice1 choice active">
                     <a href="" class="handle">最新预告</a>
                     <div class="imgs-container">
                         <div class="img-wapper">
-                            <img src="img/movie-img-2.png" alt="">
+                            <img src="img/movie-img-1.png" alt="">
                             <p class="text-wapper">
                                 <span class="first">火锅英雄</span>
-                                <span class="second">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <span class="second">我是电影的简介</span>
                             </p>
                             <div class="text-wapper-dark">
                                 <span class="first">火锅英雄</span>
-                                <span class="second">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
                                 <a href="" class="button">播放</a>
-                                <img src="img/download.png" alt="" class="download">
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">荒野猎人</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">荒野猎人</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-3.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">明天</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">明天</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-4.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">后天</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">后天</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-5.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">忍者神龟</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">忍者神龟</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-6.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">机械姬</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">机械姬</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-7.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">禁闭岛</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">禁闭岛</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-8.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">恐怖游轮</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">恐怖游轮</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="choice2 choice">
+                    <a href="" class="handle">最新上映</a>
+                    <div class="imgs-container">
+                        <div class="img-wapper">
+                            <img src="img/movie-img-8.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">超凡特工</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">超凡特工</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-7.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">蜘蛛侠</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">蜘蛛侠</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-6.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">末日浩劫</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">末日浩劫</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-5.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">音乐僵尸</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">音乐僵尸</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-4.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">我是证人</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">我是证人</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-3.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">美人鱼</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">美人鱼</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">师傅</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">师傅</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
+                            </div>
+                        </div>
+                        <div class="img-wapper">
+                            <img src="img/movie-img-1.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">解救吾先生</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                            <div class="text-wapper-dark">
+                                <span class="first">解救吾先生</span>
+                                <span class="second">我是电影的简介</span>
+                                <span class="third">[预告片]主演:谁谁谁 谁谁谁</span>
+                                <a href="" class="button">播放</a>
+                                <a href=""><img src="img/download.png" alt="" class="download"></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div class="in-movies">
+                <h1>我正在看的电影</h1>
+                <div class="img-wapper">
+                    <img src="img/in-movie-img1.png" alt="">
+                    <div class="text-wapper">
+                        <a href="" class="first">机械姬</a>
+                        <p class="second">看到96%</p>
+                    </div>
+                    <a href="" class="close">&times;</a>
+                </div>
+                <div class="img-wapper">
+                    <img src="img/in-movie-img2.png" alt="">
+                    <div class="text-wapper">
+                        <a href="" class="first">恶棍天使</a>
+                        <p class="second">看到96%</p>
+                    </div>
+                    <a href="" class="close">&times;</a>
+                </div>
+                <div class="img-wapper">
+                    <img src="img/in-movie-img3.png" alt="">
+                    <div class="text-wapper">
+                        <a href="" class="first">老炮儿</a>
+                        <p class="second">看到96%</p>
+                    </div>
+                    <a href="" class="close">&times;</a>
+                </div>
+                <div class="img-wapper">
+                    <img src="img/in-movie-img4.png" alt="">
+                    <div class="text-wapper">
+                        <a href="" class="first">从天而降</a>
+                        <p class="second">看到96%</p>
+                    </div>
+                    <a href="" class="close">&times;</a>
+                </div>
+            </div>
+        </div>
+        <div class="self-make">
+            <div class="self-container">
+                <h1>自制轴连连看</h1>
+                <div class="self-choice active">
+                    <a href="" class="handle">每周一更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img1.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">火锅英雄</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-3.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">老炮儿</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-4.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">美丽中国</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-choice">
+                    <a href="" class="handle">每周二更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">这是什么鬼</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-6.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">优酷电影协会</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">电影路透社</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-choice">
+                    <a href="" class="handle">每周三更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img3.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">原创精选</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-4.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">最美任务</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-8.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">人物呢</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-choice">
+                    <a href="" class="handle">每周四更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img4.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">这是什么鬼</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-3.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">优酷电影协会</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-1.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">电影路透社</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-choice">
+                    <a href="" class="handle">每周五更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">这是什么鬼</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-7.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">优酷电影协会</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">电影路透社</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-choice">
+                    <a href="" class="handle">每周六更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img1.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">这是什么鬼</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-3.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">优酷电影协会</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-1.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">电影路透社</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-choice">
+                    <a href="" class="handle">每周日更新</a>
+                    <div class="imgs-wapper clearfloat">
+                        <div class="img-wapper img-wapper-big">
+                            <img src="img/self-img2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">这是什么鬼</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-6.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">优酷电影协会</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                        <div class="img-wapper-small img-wapper">
+                            <img src="img/movie-img-2.png" alt="">
+                            <p class="text-wapper">
+                                <span class="first">电影路透社</span>
+                                <span class="second">我是电影的简介</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </article>
     <script src="../tool/tool.js"></script>
