@@ -312,11 +312,11 @@ function autoMove(rotation, direct) {
     };
 };
 
-window.onload = function() {
+(function() {
     config();
     removeImg();
     addEvent($('#btn'), 'click', removeImg);
     delegateEvent($('#spanholder'), 'span', 'click', clickSpanMove);
     addEvent($('#right'), 'click', clickArrowMove);
     addEvent($('#left'), 'click', clickArrowMove);
-};
+})();

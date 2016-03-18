@@ -102,7 +102,7 @@ function perpareSuggestion(suggestion) {
     }
     $('#suggestion').style.border = '1px solid #ccc';
 }
-window.onload = function() {
+(function() {
     config();
     //绑定事件
     addEvent($('#search'), 'input', function() {
@@ -122,4 +122,4 @@ window.onload = function() {
         addEvent($('html'), 'keydown', keyDown);
     });
     delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
-};
+})();
