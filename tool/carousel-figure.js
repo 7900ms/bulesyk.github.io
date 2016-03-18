@@ -57,7 +57,7 @@ function removeImg() {
     clearInterval(intervalId);
     rotationId = 0;
     var conf = getConfig();
-    console.log('获取配置',conf);
+    // console.log('获取配置',conf);
     intervalId = setInterval(function(){
         autoMove(conf.rotation, conf.trueMove);
     },conf.interval);
@@ -93,7 +93,7 @@ function moveImg(nextId, direct) {
 //自动移动
 function autoMove(rotation, direct) {
     rotationId++;
-    console.log('循环第'+rotationId+'次')
+    // console.log('循环第'+rotationId+'次')
     var imgIdn = parseInt($('.now').getAttribute('id').replace(/\D/g, ''));
     if (direct) {
         var nextId = imgIdn + 1 === imgs.length ? 0 : imgIdn + 1;

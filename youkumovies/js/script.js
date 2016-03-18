@@ -130,9 +130,9 @@ function autoChangeMovie() {
         addEvent(choices[j],'mouseenter',function(){
             clearInterval(autoChangeMovieId);
         });
-        addEvent(choices[j],'mouseleave',function(){
+        choices[j].onmouseleave = function(){
             autoChangeMovieId = setInterval(autoMove, 3000);
-        });
+        };
     }
     function autoMove() {
         i++;
@@ -143,7 +143,7 @@ function autoChangeMovie() {
     }
     autoChangeMovieId = setInterval(autoMove, 3000);
 }
-// 自制轴三秒一换
+// 自制轴二秒一换
 var autoSelfMakeId;
 function autoSelfMake() {
     var choices = $(".self-container .self-choice");
@@ -153,9 +153,9 @@ function autoSelfMake() {
         addEvent(choices[j],'mouseenter',function(){
             clearInterval(autoSelfMakeId);
         });
-        addEvent(choices[j],'mouseleave',function(){
-            autoSelfMakeId = setInterval(autoMove, 3000);
-        });
+        choices[j].onmouseleave = function(){
+            autoSelfMakeId = setInterval(autoMove, 2000);
+        };
     }
     function autoMove() {
         i++;
@@ -164,11 +164,10 @@ function autoSelfMake() {
         addClass(choices[i], 'active');
         i = i === length-1 ? -1 : i;
     }
-    autoSelfMakeId = setInterval(autoMove, 3000);
+    autoSelfMakeId = setInterval(autoMove, 2000);
 }
 (function() {
     addNotiClassEvent();
-    autoSelfMake();
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');
@@ -195,5 +194,14 @@ function autoSelfMake() {
         addEvent($('html'), 'keydown', keyDownEvent);
     });
     delegateEvent($('#suggestion'), 'li', 'click', clickEvent);
-    autoChangeMovie()
+    autoChangeMovie();
+    autoSelfMake();
+    $('#stop-animation').onclick = function(){
+        clearInterval(autoSelfMakeId);
+        clearInterval(autoChangeMovieId);
+        clearInterval(intervalId);
+        for (var i=0,len=$('.active').length;i<len;i++) {
+            $('.active')[i].onmouseleave = null;
+        };
+    }
 })();

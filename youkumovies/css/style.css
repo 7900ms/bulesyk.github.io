@@ -419,13 +419,14 @@ article {
     margin: auto;
 }
 #stop-animation {
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 54px;
+    top: 61px;
     padding: 2px;
     background-color: #ddd;
     box-shadow: 0 0 1px #000;
     border: 1px solid #ccc;
+    z-index: 1;
 }
 #stop-animation:hover {
     color: #f00;
@@ -695,6 +696,7 @@ article {
 .in-movies .first:hover {
     color: #e02323;
 }
+/*自制节目*/
 .self-make {
     display: -webkit-flex;
     display: flex;
@@ -704,7 +706,7 @@ article {
 .self-container {
     position: relative;
 }
-.self-container h1 {
+.self-make h1 {
     line-height: 50px;
 }
 .self-container .imgs-wapper {
@@ -755,4 +757,20 @@ article {
 .self-choice .img-wapper-small {
     float: right;
     margin-bottom: 20px;
+}
+.free-first-play {
+    width: 300px;
+}
+.free-first-play .img-wapper img {
+    float: left;
+    margin-right: 10px;
+}
+.free-first-play .img-wapper {
+    height: 80px;
+}
+.free-first-play .img-wapper a {
+    color: #222;
+}
+.free-first-play .img-wapper a:hover {
+    color: #e02323;
 }
