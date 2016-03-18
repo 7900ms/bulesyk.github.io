@@ -60,11 +60,9 @@ function keyDown(e) {
             if($('li').length) {
                 i++;
                 addClass($('li')[i-1], 'active');
-                console.log(i);
             } else {
                 i++;
                 addClass($('li'),'active');
-                console.log(i);
             }
         }
     } else if (e.keyCode === 38) {
@@ -73,11 +71,9 @@ function keyDown(e) {
             if($('li').length) {
                 i--;
                 addClass($('li')[i-1], 'active');
-                console.log(i);
             } else {
                 i--;
                 addClass($('li'),'active');
-                console.log(i);
             }
         }
     } else if (e.keyCode === 13) {
