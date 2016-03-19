@@ -33,7 +33,9 @@ a {
     visibility: hidden;
     clear: both;
 }
+
 /*@定义一个全局的imgwapper和textwapper*/
+
 .img-wapper {
     position: relative;
 }
@@ -61,6 +63,7 @@ a {
 }
 .img-wapper .second {
     color: #ddd;
+    display: block;
 }
 .img-wapper .download {
     width: 20px;
@@ -85,6 +88,19 @@ a {
     left: 5px;
     color: #bbb;
 }
+#class-wapper, #hearld-willbeon-wapper, .self-make, .movies-fushihui {
+    margin: 20px 0;
+}
+.more {
+    font-size: 14px;
+    font-style: normal;
+    margin-left: 30px;
+}
+header,.fushihui-container, .wapper-message, #noti-message-imgwapper, .head-information .icons, .level-percent, .hours, .inner-task, .my-hobby, .my-hobby-a, .left-icons-wapper, #left-icons-channel, #right-icons, .menu, #class-wapper, .main-class, #hearld-willbeon-wapper, .movie-container, .imgs-container, .self-make,.chinese-movies, .chinese-movies .imgs-wapper {
+    display: -webkit-flex;
+    display: flex;
+}
+
 /*@header setting*/
 
 header {
@@ -99,8 +115,6 @@ header {
     position: fixed;
     top: 0;
     z-index: 999;
-    displey: -webkit-fixed;
-    display: flex;
     background-color: #fff;
 }
 header img {
@@ -177,8 +191,7 @@ header .container {
     display: none;
 }
 .wapper-message {
-    displey: -webkit-fixed;
-    display: flex;
+    ;
     align-items: baseline;
 }
 .wapper-message .wapper:hover .triangle {
@@ -252,8 +265,6 @@ header .container {
 }
 #noti-message-imgwapper {
     height: 340px;
-    displey: -webkit-fixed;
-    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
@@ -269,6 +280,7 @@ header .container {
 #noti-message-all a:hover {
     color: #e92f2f;
 }
+
 /*@informessage*/
 
 #information-message {
@@ -306,8 +318,6 @@ header .container {
     font-size: 22px;
 }
 .head-information .icons {
-    displey: -webkit-fixed;
-    display: flex;
     justify-content: space-around;
 }
 
@@ -329,8 +339,6 @@ header .container {
     font-size: 120%;
 }
 .level-percent {
-    displey: -webkit-fixed;
-    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -349,8 +357,6 @@ header .container {
     color: #fff;
 }
 .hours {
-    displey: -webkit-fixed;
-    display: flex;
     justify-content: space-between;
     margin: 5px 0;
 }
@@ -378,8 +384,6 @@ header .container {
     margin-bottom: 5px;
 }
 .inner-task {
-    displey: -webkit-fixed;
-    display: flex;
     align-items: center;
     justify-content: space-between;
 }
@@ -398,8 +402,6 @@ header .container {
 /*@myhobby*/
 
 .my-hobby, .my-hobby-a {
-    displey: -webkit-fixed;
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #fff;
@@ -424,8 +426,6 @@ header .container {
 .left-icons-wapper {
     width: 50px;
     height: 56px;
-    displey: -webkit-fixed;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -443,8 +443,6 @@ header .container {
     bottom: 0;
     height: 60px;
     width: 50px;
-    display: -webkit-flex;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -453,8 +451,6 @@ header .container {
     position: fixed;
     right: 0;
     bottom: 20px;
-    display: -webkit-flex;
-    display: flex;
     flex-direction: column;
 }
 #right-icons img {
@@ -492,8 +488,6 @@ article {
     cursor: pointer;
 }
 .menu {
-    display: -webkit-flex;
-    display: flex;
     align-items: flex-end;
 }
 .menu a {
@@ -576,15 +570,10 @@ article {
 /*@分类*/
 
 #class-wapper {
-    display: -webkit-flex;
-    display: flex;
-    margin: 20px 0;
     border-bottom: 2px solid #ccc;
 }
 .main-class {
     width: 300px;
-    display: -webkit-flex;
-    display: flex;
     flex-wrap: wrap;
     line-height: 1.8;
 }
@@ -608,16 +597,11 @@ article {
 /*电影*/
 
 #hearld-willbeon-wapper {
-    display: -webkit-flex;
-    display: flex;
-    margin: 20px 0;
     justify-content: space-between;
 }
 .movie-container {
     width: 70%;
     height: 300px;
-    display: -webkit-flex;
-    display: flex;
     position: relative;
 }
 .movie-container .imgs-container {
@@ -655,8 +639,6 @@ article {
     background-color: #e02323;
 }
 .imgs-container {
-    display: -webkit-flex;
-    display: flex;
     width: 860px;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -704,12 +686,11 @@ article {
 .in-movies .first:hover {
     color: #e02323;
 }
+
 /*自制节目*/
+
 .self-make {
-    display: -webkit-flex;
-    display: flex;
     justify-content: space-between;
-    margin: 20px 0;
 }
 .self-container {
     position: relative;
@@ -773,4 +754,154 @@ article {
 }
 .free-first-play .img-wapper a:hover {
     color: #e02323;
+}
+
+/*华语最好看*/
+
+.chinese-movies {
+    justify-content: space-between;
+}
+.chinese-movies h1 {
+    line-height: 50px;
+}
+.chinese-movies a.more:hover {
+    color: #e02323;
+}
+.chinese-movies .imgs-wapper {
+    width: 860px;
+    height: 300px;
+    justify-content: space-between;
+}
+.chinese-movies .text-wapper-dark {
+    height: 100px;
+    width: 100%;
+}
+.chinese-movies .img-wapper:hover .text-wapper {
+    display: none;
+}
+.chinese-movies .img-wapper:hover .text-wapper-dark {
+    display: block;
+}
+.chinese-movies-rank {
+    width: 300px;
+}
+.chinese-movies-rank .rank-number {
+    display: inline-block;
+    text-align: center;
+    line-height: 22px;
+    width: 22px;
+    background-color: #3b94fc;
+    color: #fff;
+    margin-right: 10px;
+}
+.chinese-movies-rank .one-two-three {
+    background-color: #e02323;
+}
+.chinese-movies-rank a:hover {
+    color: #e02323;
+}
+.chinese-movies-rank .click-count {
+    float: right;
+}
+.chinese-movies-rank ul {
+    height: 300px;
+}
+.chinese-movies-rank ul li {
+    line-height: 30px;
+}
+/*@浮世绘*/
+.movies-fushihui {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+.movies-fushihui h1 {
+    line-height: 50px;
+}
+.fushihui-container {
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+.fushihui-container .main-container {
+    height: 200px;
+    width: 420px;
+    background-color: #f5f5f5;
+    margin-right: 20px;
+}
+.fushihui-container .main-container {
+    display: -webkit-flex;
+    display: flex;
+}
+.fushihui-text-wapper {
+    width: 100%;
+    padding: 20px;
+    color: #444;
+    box-sizing: border-box;
+}
+.fushihui-text-wapper span {
+    margin-right: 5px;
+}
+.fushihui-text-wapper img {
+    display: inline-block;
+}
+.fushihui-text-wapper .title {
+    color: #aaa;
+}
+.fushihui-text-wapper .rank {
+    font-size: 20px;
+    color: #f00;
+    margin-left: 5px;
+}
+.fushihui-container .imgs-wapper{
+    width: 1080px;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+}
+.fushihui-container .imgs-wapper .fushihui-text-wapper {
+    padding: 10px;
+    width: 200px;
+}
+.fushihui-container .img-wapper:hover .text-wapper {
+    display: none;
+}
+.fushihui-container .img-wapper:hover .text-wapper-dark {
+    display: block;
+}
+#move-right-arrow,#move-left-arrow {
+    position: absolute;
+    width: 100px;
+    line-height: 200px;
+    font-size: 50px;
+    z-index: 1;
+    top: 50px;
+    text-align: right;
+    opacity: 0.5;
+    color: #e2e2e2;
+}
+#move-right-arrow:hover {
+    cursor: pointer;
+    background: -webkit-linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background: -moz-linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+#move-right-arrow {
+    right: 0;
+    background: -webkit-linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    background: -moz-linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+#move-left-arrow {
+    text-align: left;
+    background: -webkit-linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    background: -moz-linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    display: none;
+}
+#move-left-arrow:hover {
+    cursor: pointer;
+    background: -webkit-linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background: -moz-linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
