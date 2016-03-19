@@ -182,9 +182,28 @@ function removePlayHistory() {
         };
     };
 }
+// 浮世绘图片准换
+function moveFushihuiImg(){
+    var right = $('#move-right-arrow');
+    var left = $('#move-left-arrow');
+    var img = $('.fushihui-container')
+    console.log(left,right,img);
+    addEvent(right,'click',function(){
+        this.style.display = 'none';
+        setPos(img,0,50);
+        animation(img,-320,50);
+        left.style.display = 'block';
+    });
+    addEvent(left,'click',function(){
+        this.style.display = 'none';
+        animation(img,0,50);
+        right.style.display = 'block';
+    });
+}
 (function() {
     addNotiClassEvent();
     removePlayHistory();
+    moveFushihuiImg();
     addHandleEvent('#upload', 'flex');
     addHandleEvent('#noti', 'block');
     addHandleEvent('#information', 'block');

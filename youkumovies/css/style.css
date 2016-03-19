@@ -88,7 +88,7 @@ a {
     left: 5px;
     color: #bbb;
 }
-#class-wapper, #hearld-willbeon-wapper, .self-make, .movies-fushihui {
+#class-wapper, #hearld-willbeon-wapper, .self-make, .movies-fushihui,.partner {
     margin: 20px 0;
 }
 .more {
@@ -164,6 +164,9 @@ header img {
 header .container {
     position: relative;
 }
+header a:hover {
+    color: #e01e1e;
+}
 #suggestion {
     border: 2px solid #3eabff;
     border-top: none;
@@ -237,9 +240,6 @@ header .container {
 #upload-message .triangle-img {
     left: 36%;
 }
-#upload-message a:hover {
-    color: #f00;
-}
 
 /*@消息定义*/
 
@@ -278,9 +278,8 @@ header .container {
     color: #3d98ec;
 }
 #noti-message-all a:hover {
-    color: #e92f2f;
+    color: #e01e1e;
 }
-
 /*@informessage*/
 
 #information-message {
@@ -295,9 +294,6 @@ header .container {
 }
 .account {
     position: relative;
-}
-.account a:hover {
-    color: #f00;
 }
 .setting, .logout {
     position: absolute;
@@ -330,9 +326,6 @@ header .container {
 }
 .level a {
     color: #3d98ec;
-}
-.level a:hover {
-    color: #e42323;
 }
 .level .first {
     margin-right: 80px;
@@ -407,9 +400,6 @@ header .container {
     background-color: #fff;
     padding-bottom: 10px;
 }
-.my-hobby-a a:hover {
-    color: #f00;
-}
 
 /*@侧边栏*/
 
@@ -473,6 +463,12 @@ article {
     left: 0;
     margin: auto;
 }
+article a:hover {
+    color: #e3592d;
+}
+article h1 {
+    line-height: 50px;
+}
 #stop-animation {
     position: fixed;
     right: 0;
@@ -499,7 +495,6 @@ article {
     border-bottom-color: #4882d9;
 }
 .menu a:hover {
-    color: #df6849;
     border-bottom-color: #df6849;
 }
 .button-big {
@@ -755,7 +750,6 @@ article {
 .free-first-play .img-wapper a:hover {
     color: #e02323;
 }
-
 /*华语最好看*/
 
 .chinese-movies {
@@ -796,9 +790,6 @@ article {
 }
 .chinese-movies-rank .one-two-three {
     background-color: #e02323;
-}
-.chinese-movies-rank a:hover {
-    color: #e02323;
 }
 .chinese-movies-rank .click-count {
     float: right;
@@ -904,4 +895,8 @@ article {
     background: -webkit-linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     background: -moz-linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+/*@合作伙伴*/
+.partner h1 {
+    line-height: 50px;
 }
