@@ -457,11 +457,8 @@ header a:hover {
 
 article {
     width: 1200px;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    left: 0;
-    margin: auto;
+    position: relative;
+    margin: 60px auto 30px auto;
 }
 article a:hover {
     color: #e3592d;
@@ -899,4 +896,77 @@ article h1 {
 /*@合作伙伴*/
 .partner h1 {
     line-height: 50px;
+}
+.partner-container {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+/*@footer styles*/
+footer .container {
+    border-top: 2px solid #ddd;
+    padding: 20px 0;
+    width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    color: #474747;
+    font-size: 12px;
+}
+footer .title {
+    color: #aaa;
+    font-size: 14px;
+}
+.container-1 ,.container-1 .last,.container-2{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    line-height: 28px;
+}
+.container-1 a {
+    margin-left: 5px;
+}
+.container a:hover ,.container-2 .last .first:hover,.container-2 .last .second:hover{
+    color: #e41d1d;
+}
+.container-1 .last {
+    width: 300px;
+    flex-wrap: wrap;
+}
+.container-1 .last a{
+    width: 30%;
+    margin-right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.container-2 {
+    line-height: 26px;
+    margin: 30px 0;
+}
+.container-2 img {
+    display: inline-block;
+    vertical-align: top;
+}
+.container-2 .last {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.container-2 .last .first {
+    color: #474747;
+    font-size: 18px;
+}
+.container-2 .last .second {
+    color: #474747;
+    font-size: 14px;
+}
+.container-3 {
+    text-align: center;
+}
+.container-3 .title,.container-2 .title {
+    font-size: 12px;
+}
+.last-last-last {
+    margin-left: 20px;
 }
