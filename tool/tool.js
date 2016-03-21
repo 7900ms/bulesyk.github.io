@@ -130,7 +130,7 @@ function addClass(elem, className) {
  * @return 无
  */
 function removeClass(elem, className) {
-    if(!elem) {
+    if (!elem) {
         return;
     }
     var reg = new RegExp(className);
@@ -208,7 +208,7 @@ function delegateEvent(elem, tag, event, listener) {
 function addEvent(elem, event, listener) {
     if (elem.addEventListener) {
         elem.addEventListener(event, listener, false);
-    } else if(elem.attachEvent){
+    } else if (elem.attachEvent) {
         elem.attachEvent('on' + event, listener);
     };
 };
