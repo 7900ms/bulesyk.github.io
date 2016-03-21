@@ -19,7 +19,6 @@ function animation(elem, finalX, finalY, constant, speed, startX, startY, fps, i
     startY = startY || 0;
     constant = constant || false;
     speed = speed || 5;
-    //初始化位置
     elem.style.position = 'absolute';
     elem.parentNode.position = 'relative';
     elem.style.left = elem.style.left ? elem.style.left : startX;
