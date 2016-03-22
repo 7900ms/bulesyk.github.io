@@ -7,7 +7,7 @@
 		#result {
 			line-height: 120px;
 		}
-		#result span {
+		#result>span {
 			vertical-align: bottom;
 			box-sizing: border-box;
 			margin: 10px;
@@ -15,18 +15,32 @@
 			color: #fff;
 			display: inline-block;
 		}
-		#result span:hover {
+        #result>span>div {
+            color: #000;
+            line-height: normal;
+        }
+		#result>span:hover {
 			cursor: pointer;
 		}
+        button {
+            vertical-align: top;
+        }
+        #query, #query-btn {
+            vertical-align: 100px;
+            position: relative;
+            right: 230px;
+        }
 	</style>
 </head>
 <body>
-	<input type="text" id="input">
+	<textarea name="value" id="input" cols="30" rows="10" placeholder="请输入10-100内的数字,可以输入多个以空格,回车,','等等分隔"></textarea>
 	<button id="left-in">左侧入</button>
 	<button id="right-in">右侧入</button>
 	<button id="left-out">左侧出</button>
 	<button id="right-out">右侧出</button>
 	<button id="sort">排序</button>
+    <input type="text" id="query">
+    <button id="query-btn">查询</button>
 	<div class="container" id="result">
 		
 	</div>

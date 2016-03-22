@@ -5,24 +5,46 @@ var input = document.getElementById('input'),
 	leftOut = document.getElementById('left-out'),
 	rightOut = document.getElementById('right-out'),
 	result = document.getElementById('result'),
-	spans = result.getElementsByTagName('span');
+	spans = result.getElementsByTagName('span'),
+	texts = result.getElementsByTagName('div'),
+	query = document.getElementById('query'),
+	queryBtn = document.getElementById('query-btn');
 // 创建新元素
-function newElem(number) {
-	number = number || getValue();
-	var newSpan = document.createElement('span');
-	newSpan.style.width = '20px';
-	newSpan.style.height = number + 'px';
-	console.log('已经创建新的', newSpan)
-	return newSpan;
+function newElem(method, array) {
+	var numbers = array || getValue();
+	for (var i = 0, len = numbers.length; i < len; i++) {
+		var newSpan = document.createElement('span');
+		var newSpanText = document.createElement('div');
+		newSpan.style.position = 'relative';
+		newSpanText.innerHTML = numbers[i];
+		newSpanText.style.position = 'absolute';
+		newSpanText.style.bottom = '-1.5em';
+		newSpan.style.width = '20px';
+		newSpan.style.height = numbers[i] + 'px';
+		newSpan.appendChild(newSpanText);
+		switch (method) {
+			case 'leftIn':
+				result.insertBefore(newSpan, spans[0]);
+				break;
+			case 'rightIn':
+				result.appendChild(newSpan);
+				break;
+		}
+	}
 }
 // 获取值
 function getValue() {
-	var inputValue = parseInt(input.value);
-	if (inputValue < 10 || inputValue > 100) {
-		alert("请输入10-100内的数字");
-		return false;
+	var inputValue = getTrueValue(input.value),
+		result = [];
+	for (var i = 0, len = inputValue.length; i < len; i++) {
+		if (inputValue[i] >= 10 && inputValue[i] <= 100) {
+			result.push(inputValue[i]);
+		} else {
+			alert("请输入10-100的数!");
+			return;
+		}
 	}
-	return inputValue;
+	return result;
 }
 // 给每个元素绑定删除事件
 (function itemEvent() {
@@ -37,7 +59,7 @@ function getValue() {
 })();
 // 检测是否超过一定元素
 function checkElemCount(number) {
-	number = number || 10;
+	number = number || 60;
 	if (spans.length > number) {
 		alert("元素超过" + number + "个啦!");
 		return false;
@@ -49,9 +71,9 @@ function checkElemCount(number) {
 	number = number || 5;
 	var spans = [];
 	for (var i = 0; i < 5; i++) {
-		spans[i] = newElem(Math.ceil(Math.random() * 90 + 10));
-		result.appendChild(spans[i]);
+		spans[i] = Math.ceil(Math.random() * 90 + 10);
 	}
+	newElem('rightIn', spans);
 })();
 //排序
 function sortList(nodeList, method) {
@@ -91,19 +113,52 @@ function animation(elem, finalH) {
 		elem.animaionId = setTimeout(autoRun, 100);
 	})();
 }
+// 数组去重
+function uniqArray(array) {
+	var result = [],
+		middle = {};
+	for (var i = 0, len = array.length; i < len; i++) {
+		if (!middle[array[i]]) {
+			middle[array[i]] = true;
+			result[result.length] = array[i];
+		}
+	}
+	return result;
+}
+// 获取优化后的值
+function getTrueValue(value) {
+	var trueValue = value.split(/\s|,|;|\u3001|\003B/g);
+	var resultList = uniqArray(trueValue);
+	resultList = resultList.filter(function(item) {
+		return item !== '';
+	});
+	return resultList;
+}
+//查询后改变颜色
+function changeColor(value) {
+	var reg = new RegExp(value+"\+");
+	for (var i = 0, len = texts.length; i < len; i++) {
+		var match = reg.exec(texts[i].innerHTML);
+		if (match) {
+			texts[i].innerHTML = RegExp.leftContext +'<a style="color:#f00">' + match[0] + '</a>' + RegExp.rightContext;
+			texts[i].parentNode.style.backgroundColor = '#0f0';
+			console.log("已找到高度为"+spans[i].style.height+"的元素!");
+		}
+	}
+}
 //绑定事件
 leftIn.onclick = function(e) {
 	if (!checkElemCount() || !getValue()) {
 		return;
 	};
-	result.insertBefore(newElem(), result.firstChild);
+	newElem('leftIn');
 	console.log("插入新元素成功");
 }
 rightIn.onclick = function(e) {
 	if (!checkElemCount() || !getValue()) {
 		return;
 	};
-	result.appendChild(newElem());
+	newElem('rightIn');
 	console.log("插入新元素成功");
 }
 rightOut.onclick = function(e) {
@@ -118,7 +173,23 @@ leftOut.onclick = function(e) {
 }
 sort.onclick = function(e) {
 	var sortResult = sortList(spans);
-	for (var i=0,len=spans.length;i<len;i++) {
-		animation(spans[i],sortResult[i]);
+	console.log("排序后列表" + sortResult);
+	for (var i = 0, len = spans.length; i < len; i++) {
+		var spanText = spans[i].getElementsByTagName('div')[0];
+		spanText.innerHTML = sortResult[i];
+		animation(spans[i], sortResult[i]);
 	}
+}
+queryBtn.onclick = function(e) {
+	var anchors = result.getElementsByTagName('a');
+	for (var i=0,len=anchors.length;i<len;i++) {
+		anchors[i].style = 'none';
+	}
+	for (i=0,len=spans.length;i<len;i++){
+		if (spans[i].style.backgroundColor === "rgb(0, 255, 0)") {
+			spans[i].style.backgroundColor = '#f00';
+		}
+	}
+	var queryText = query.value;
+	changeColor(queryText);
 }
