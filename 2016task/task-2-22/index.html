@@ -7,18 +7,19 @@
         div {
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
             border: 1px solid #000;
             background-color: #fff;
+            margin: 0 5px;
         }
         .container-1 {
-            width: 600px;
+            width: 100%;
             height: 100px;
             margin-bottom: 20px;
         }
         .container-2,.container-4,.container-8 {
             height: 80px;
-            width: 40%;
+            width: 50%;
         }
         .container-4 {
             height: 50px;
@@ -33,30 +34,54 @@
 </head>
 <body>
     <div class="container-1">
+        Apple
         <div class="container-2">
+            Lumia
             <div class="container-4">
-                <div class="container-8"></div>
-                <div class="container-8"></div>
+                Blackbarry
+                <div class="container-8">
+                    Xiaomi
+                </div>
             </div>
             <div class="container-4">
-                <div class="container-8"></div>
-                <div class="container-8"></div>
+                Samsung
+                <div class="container-8">
+                    Meizu
+                </div>
+                <div class="container-8">
+                    Huawei
+                </div>
+            </div>
+             <div class="container-4">
+                 Oppo
+                <div class="container-8">
+                    Vivo
+                </div>
             </div>
         </div>
         <div class="container-2">
+            Microsoft
             <div class="container-4">
-                <div class="container-8"></div>
-                <div class="container-8"></div>
-            </div>
-            <div class="container-4">
-                <div class="container-8"></div>
-                <div class="container-8"></div>
+                Metal
+                <div class="container-8">
+                    IBM
+                </div>
+                <div class="container-8">
+                    Andriod
+                </div>
+                <div class="container-8">
+                    Google
+                </div>
+                <div class="container-8">
+                    IE
+                </div>
             </div>
         </div>
     </div>
-    <button id="pre">前序</button>
-    <button id="in">中序</button>
-    <button id="post">后序</button>
+    <button id="pre">从前往后</button>
+    <button id="post">从后往前</button>
+    <input type="text" id="search-text">
+    <button id="search">查询</button>
     <script src="script.js"></script>
 </body>
 </html>

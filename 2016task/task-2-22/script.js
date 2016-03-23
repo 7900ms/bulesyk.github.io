@@ -1,27 +1,18 @@
 var root = document.getElementsByTagName('div')[0],
     preBtn = document.getElementById('pre'),
-    inBtn = document.getElementById('in'),
     postBtn = document.getElementById('post'),
+    searchText = document.getElementById('search-text'),
+    search = document.getElementById('search'),
     list = [];
 function preOrder(elem) {
     if (elem) {
         list.push(elem);
-        preOrder(elem.firstElementChild);
-        preOrder(elem.lastElementChild);
-    }
-}
-function inOrder(elem) {
-    if (elem) {
-        inOrder(elem.firstElementChild);
-        list.push(elem);
-        inOrder(elem.lastElementChild);
-    }
-}
-function postOrder(elem) {
-    if (elem) {
-        inOrder(elem.firstElementChild);
-        inOrder(elem.lastElementChild);
-        list.push(elem);
+        var elems = elem.querySelectorAll('div');
+        for (var i = 0, len = elems.length; i < len; i++) {
+            if (elems[i].parentNode === elem) {
+                preOrder(elems[i]);
+            }
+        }
     }
 }
 
@@ -42,31 +33,48 @@ function autoChangeColor(list) {
 }
 preBtn.addEventListener('click', function() {
     clearTimeout(setTimeoutId);
-    if (list[i-1]) {
-        list[i-1].style.removeProperty('background-color');
+    if (list[i - 1]) {
+        list[i - 1].style.removeProperty('background-color');
     }
     list = [];
     preOrder(root);
     i = 0, len = list.length;
     autoChangeColor(list);
 })
-inBtn.addEventListener('click', function() {
+postBtn.addEventListener('click', function() {
     clearTimeout(setTimeoutId);
-    if (list[i-1]) {
-        list[i-1].style.removeProperty('background-color');
+    if (list[i - 1]) {
+        list[i - 1].style.removeProperty('background-color');
     }
-    list = [];
-    inOrder(root);
+    list.reverse();
     i = 0, len = list.length;
     autoChangeColor(list);
 })
-postBtn.addEventListener('click', function() {
+search.addEventListener('click', function(e) {
     clearTimeout(setTimeoutId);
-    if (list[i-1]) {
-        list[i-1].style.removeProperty('background-color');
+    if (list[i - 1]) {
+        list[i - 1].style.removeProperty('background-color');
     }
     list = [];
-    postOrder(root);
+    preOrder(root);
+    var text = searchText.value;
     i = 0, len = list.length;
-    autoChangeColor(list);
+    (function autoChangeColor() {
+        if (list[i - 1]) {
+            list[i - 1].style.removeProperty('background-color');
+        }
+        if (i === len) {
+            alert('未找到选择元素!')
+            return;
+        }
+        list[i].style.backgroundColor = '#0f0';
+        if (list[i].firstChild.nodeValue.toLowerCase().replace(/^\s+|\s+$/g,'') == text.toLowerCase()) {
+            list[i].style.backgroundColor = '#00f';
+            return;
+        }
+        i++;
+        setTimeoutId = setTimeout(function() {
+            autoChangeColor(list);
+        }, 500);
+    })();
 })
