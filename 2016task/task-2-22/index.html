@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-2-22</title>
+    <style>
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        .container-1 {
+            width: 600px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .container-2,.container-4,.container-8 {
+            height: 80px;
+            width: 40%;
+        }
+        .container-4 {
+            height: 50px;
+        }
+        .container-8 {
+            height: 20px;
+        }
+        .choice {
+            background-color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-1">
+        <div class="container-2">
+            <div class="container-4">
+                <div class="container-8"></div>
+                <div class="container-8"></div>
+            </div>
+            <div class="container-4">
+                <div class="container-8"></div>
+                <div class="container-8"></div>
+            </div>
+        </div>
+        <div class="container-2">
+            <div class="container-4">
+                <div class="container-8"></div>
+                <div class="container-8"></div>
+            </div>
+            <div class="container-4">
+                <div class="container-8"></div>
+                <div class="container-8"></div>
+            </div>
+        </div>
+    </div>
+    <button id="pre">前序</button>
+    <button id="in">中序</button>
+    <button id="post">后序</button>
+    <script src="script.js"></script>
+</body>
+</html>
