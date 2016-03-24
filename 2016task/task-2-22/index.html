@@ -6,74 +6,105 @@
     <style>
         div {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex: auto;
+            flex-direction: column;
             border: 1px solid #000;
             background-color: #fff;
-            margin: 0 5px;
+            margin: 5px 0;
+            position: relative;
+            padding: 5px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px;
         }
         div:hover {
             cursor: pointer;
         }
         .container-1 {
-            width: 100%;
-            height: 160px;
             margin-bottom: 20px;
         }
         .container-2,.container-4,.container-8 {
-            height: 80px;
-        }
-        .container-4 {
-            height: 40px;
-        }
-        .container-8 {
-            height: 20px;
+            margin-left: 5%;
         }
         .clicked {
             background-color: #0f0;
         }
+        div span {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background-color: #00f;
+            color: #fff;
+            padding: 2px;
+        }
+        div .handle-hide {
+            background-color: #f00;
+        }
+        div .handle-hide:hover {
+            background-color: #00f;
+        }
+        div span:hover {
+            background-color: #f00;
+        }
+        div .hide {
+            display: none;
+        }
+        div .show {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <div class="container-1">
+    <div class="container-1 show">
         Apple
-        <div class="container-2">
+        <span class="handle">展开</span>
+        <div class="container-2 hide">
             Lumia
-            <div class="container-4">
+            <span class="handle">展开</span>
+            <div class="container-4 hide">
                 Blackbarry
-                <div class="container-8">
+                <span class="handle">展开</span>
+                <div class="container-8 hide">
                     Xiaomi
+                    <!--<span class="handle">展开</span>-->
                 </div>
             </div>
-            <div class="container-4">
+            <div class="container-4 hide">
                 Samsung
-                <div class="container-8">
+                <span class="handle">展开</span>
+                <div class="container-8 hide">
                     Meizu
+                    <!--<span class="handle">展开</span>-->
                 </div>
-                <div class="container-8">
+                <div class="container-8 hide">
                     Huawei
+                    <!--<span class="handle">展开</span>-->
                 </div>
             </div>
-             <div class="container-4">
+             <div class="container-4 hide">
                  Oppo
-                <div class="container-8">
+                 <span class="handle">展开</span>
+                <div class="container-8 hide">
                     Vivo
+                    <!--<span class="handle">展开</span>-->
                 </div>
             </div>
         </div>
-        <div class="container-2">
+        <div class="container-2 hide">
             Microsoft
-            <div class="container-4">
+            <span class="handle">展开</span>
+            <div class="container-4 hide">
                 Metal
-                <div class="container-8">
+                <span class="handle">展开</span>
+                <div class="container-8 hide">
                     IBM
+                    <!--<span class="handle">展开</span>-->
                 </div>
-                <div class="container-8">
+                <div class="container-8 hide">
                     Andriod
+                    <!--<span class="handle">展开</span>-->
                 </div>
-                <div class="container-8">
+                <div class="container-8 hide">
                     Google
+                    <!--<span class="handle">展开</span>-->
                 </div>
             </div>
         </div>

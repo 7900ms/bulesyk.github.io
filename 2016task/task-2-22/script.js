@@ -6,7 +6,9 @@ var root = document.getElementsByTagName('div')[0],
     deleteBtn = document.getElementById('delete'),
     insertText = document.getElementById('insert-text'),
     insertBtn = document.getElementById('insert'),
+    handles = document.querySelectorAll('.handle'),
     list = [];
+// 遍历
 function preOrder(elem) {
     if (elem) {
         list.push(elem);
@@ -111,9 +113,15 @@ insertBtn.addEventListener('click', function(e) {
         alert("请输入值!");
         return;
     }
-    newElem.style.width = '50%';
-    newElem.style.height = Math.floor(clickedElem.offsetHeight * 0.48) + 'px';
+    newElem.style.marginLeft = '5%';
     newElem.innerHTML = value;
+    newElem.className = "hide show";
+    if (!clickedElem.firstElementChild) {
+        var newSpan = document.createElement('span');
+        newSpan.innerHTML = "隐藏";
+        newSpan.className = "handle-hide";
+        clickedElem.appendChild(newSpan);
+    }
     clickedElem.appendChild(newElem);
 });
 // 绑定click事件
@@ -121,14 +129,51 @@ insertBtn.addEventListener('click', function(e) {
     if (list.length === 0) {
         preOrder(root);
     }
-    for (var i = 0, len = list.length; i < len; i++) {
-        list[i].addEventListener('click', function(e) {
-            var e = e || window.event,
-                target = e.target || e.srcElement;
+    root.addEventListener('click', function(e) {
+        var e = e || window.event,
+            target = e.target || e.srcElement;
+        if (target.tagName.toLowerCase() === 'div') {
             if (document.querySelector('.clicked')) {
                 document.querySelector('.clicked').classList.remove('clicked');
             }
+            e.stopPropagation();
             target.classList.add('clicked');
-        });
-    }
+        }
+    });
 })();
+// 返回子元素
+function children(node, tag) {
+    var children = [];
+    var childrens = node.getElementsByTagName(tag.toLowerCase());
+    for (var i = 0, len = childrens.length; i < len; i++) {
+        if (childrens[i].parentNode === node) {
+            children.push(childrens[i]);
+        }
+    }
+    return children;
+}
+// 折叠隐藏事件
+(function handleEvent() {
+    root.addEventListener('click', function(e) {
+        var e = e || window.event,
+            target = e.target || e.srcElement;
+        if (target.tagName.toLowerCase() === 'span') {
+            target.innerHTML = target.innerHTML === "隐藏"?"展示":"隐藏";
+            target.classList.toggle('handle-hide')
+            var childrens = children(target.parentNode, 'div');
+            for (var j = 0, l = childrens.length; j < l; j++) {
+                childrens[j].classList.toggle('show');
+            }
+        }
+    });
+})();
+// 取消没有子代元素的handle
+// (function removeHandle() {
+//     list = [];
+//     preOrder(root);
+//     for (var i = 0, len = list.length; i < len; i++) {
+//         if (list[i].lastElementChild.tagName.toLowerCase() === 'span') {
+//             list[i].lastElementChild.style.display = "none";
+//         }
+//     }
+// })();
