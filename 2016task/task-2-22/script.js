@@ -1,6 +1,4 @@
 var root = document.getElementsByTagName('div')[0],
-    preBtn = document.getElementById('pre'),
-    postBtn = document.getElementById('post'),
     searchText = document.getElementById('search-text'),
     search = document.getElementById('search'),
     deleteBtn = document.getElementById('delete'),
@@ -36,32 +34,6 @@ function autoChangeColor(list) {
         autoChangeColor(list);
     }, 500);
 }
-// 绑定事件
-preBtn.addEventListener('click', function() {
-    clearTimeout(setTimeoutId);
-    if (list[i - 1]) {
-        list[i - 1].style.removeProperty('background-color');
-    }
-    if (document.querySelector('.clicked')) {
-        document.querySelector('.clicked').classList.remove('clicked');
-    }
-    list = [];
-    preOrder(root);
-    i = 0, len = list.length;
-    autoChangeColor(list);
-})
-postBtn.addEventListener('click', function() {
-    clearTimeout(setTimeoutId);
-    if (list[i - 1]) {
-        list[i - 1].style.removeProperty('background-color');
-    }
-    if (document.querySelector('.clicked')) {
-        document.querySelector('.clicked').classList.remove('clicked');
-    }
-    list.reverse();
-    i = 0, len = list.length;
-    autoChangeColor(list);
-})
 // 查找
 search.addEventListener('click', function(e) {
     clearTimeout(setTimeoutId);
@@ -74,6 +46,7 @@ search.addEventListener('click', function(e) {
     i = 0, len = list.length;
     (function autoChangeColor() {
         if (document.querySelector('.clicked')) {
+            document.querySelector('.clicked').style.removeProperty('background-color');
             document.querySelector('.clicked').classList.remove('clicked');
         }
         if (i === len) {
@@ -81,6 +54,13 @@ search.addEventListener('click', function(e) {
             return;
         }
         list[i].classList.add('clicked');
+        list[i].classList.remove('hide');
+        if (list[i].firstElementChild) {
+            list[i].firstElementChild.classList.add('handle-hide');
+            if (list[i].firstElementChild.innerHTML === "展开") {
+                list[i].firstElementChild.innerHTML = "隐藏";
+            }
+        }
         if (list[i].firstChild.nodeValue.toLowerCase().replace(/^\s+|\s+$/g, '') == text.toLowerCase()) {
             list[i].style.backgroundColor = '#00f';
             return;
@@ -115,7 +95,6 @@ insertBtn.addEventListener('click', function(e) {
     }
     newElem.style.marginLeft = '5%';
     newElem.innerHTML = value;
-    newElem.className = "hide show";
     if (!clickedElem.firstElementChild) {
         var newSpan = document.createElement('span');
         newSpan.innerHTML = "隐藏";
@@ -158,22 +137,12 @@ function children(node, tag) {
         var e = e || window.event,
             target = e.target || e.srcElement;
         if (target.tagName.toLowerCase() === 'span') {
-            target.innerHTML = target.innerHTML === "隐藏"?"展示":"隐藏";
+            target.innerHTML = target.innerHTML === "隐藏" ? "展开" : "隐藏";
             target.classList.toggle('handle-hide')
             var childrens = children(target.parentNode, 'div');
             for (var j = 0, l = childrens.length; j < l; j++) {
-                childrens[j].classList.toggle('show');
+                childrens[j].classList.toggle('hide');
             }
         }
     });
 })();
-// 取消没有子代元素的handle
-// (function removeHandle() {
-//     list = [];
-//     preOrder(root);
-//     for (var i = 0, len = list.length; i < len; i++) {
-//         if (list[i].lastElementChild.tagName.toLowerCase() === 'span') {
-//             list[i].lastElementChild.style.display = "none";
-//         }
-//     }
-// })();
