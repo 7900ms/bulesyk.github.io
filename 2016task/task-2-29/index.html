@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task-2-29</title>
+    <link rel="stylesheet" href="../../tool/reset.css">
+    <style>
+        .form {
+            width: 1200px;
+            text-align: center;
+            position: relative;
+            margin: 10px auto;
+        }
+        label {
+            font-weight: bold;
+        }
+        .info {
+            color: #818181;
+            position: absolute;
+            top: 100%;
+            left: 41.5%;
+        }
+        #name,.form button {
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" class="form">
+        <label for="name">名称:</label>
+        <input type="text" id="name">
+        <button class="test">验证</button>
+        <span class="info">必填,长度为4~16个字符</span>
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
