@@ -6,7 +6,7 @@ a{background-color:transparent;text-decoration:none;color:#00bfff;}
 input{box-sizing:border-box;}
 [type='text'],[type='password'],[type='email'],select{border:1px solid #818181;width:200px;}input:focus,select:focus{outline:none;}
 [type='text']:focus,[type='password']:focus,[type='email']:focus,select:focus{border-color:#00bfff;}
-[type='radio']{border: none;}
+[type='radio']:hover{cursor:pointer}
 a:focus,a:active{outline:none;}
 .clearfloat:after{content:'\0020';display:block;height:0;clear:both;}.clearfloat{*zoom:1;}
 .btn,button{display:inline-block;border:1px solid #000;background:none;}button:focus{outline:none;}button:hover{cursor:pointer;background-color:#d5d5d5}
