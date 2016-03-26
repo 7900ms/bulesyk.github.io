@@ -115,6 +115,16 @@ function insertAfter(elem, targetElem) {
  * @return 无
  */
 function addClass(elem, className) {
+    var classNames = elem.className.split(/\s+/);
+    for (var i = 0, len = classNames.length; i < len; i++) {
+        if (classNames[i] === className) {
+            var find = true;
+            break;
+        }
+    }
+    if (find) {
+        return;
+    }
     if (!elem.className) {
         elem.className = className;
     } else {
@@ -145,6 +155,26 @@ function removeClass(elem, className) {
     };
     elem.className = classNames.join(' ');
 };
+/* @给元素去掉/加上类名
+ * @para elem(elemObj) 要去掉/加上的元素
+ * @para className(str) 要去掉/加上的类名
+ * @return 无
+ */
+function toggleClass(elem, className) {
+    var classNames = elem.className.split(/\s+/);
+    for (var i = 0, len = classNames.length; i < len; i++) {
+        if (classNames[i] === className) {
+            classNames.splice(i, 1);
+            var find = true;
+            break;
+        }
+    }
+    if (!find) {
+        addClass(elem, className);
+        return;
+    }
+    elem.className = classNames.join(' ');
+}
 /* @mini$ 取消了之前练习中utils的写法,之前不让用querySelectorAll(),可以选择到第5代,用空格区分
  * @只有二代选择时会返回选择第一代中的第一个元素的后代选择列表,三代选择会返回第二代的第一个元素的后代选择列表
  * para selecter(str) 部分css选择器

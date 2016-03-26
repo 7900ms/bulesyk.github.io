@@ -6,35 +6,70 @@
     <title>task-2-29</title>
     <link rel="stylesheet" href="../../tool/reset.css">
     <style>
-        .form {
+        .container {
             width: 1200px;
-            text-align: center;
-            position: relative;
             margin: 10px auto;
+            text-align: right;
         }
+        
         label {
             font-weight: bold;
         }
+        
         .info {
             color: #818181;
-            position: absolute;
-            top: 100%;
-            left: 41.5%;
+            display: block;
+            text-align: left;
+            margin-left: 32%;
         }
-        #name,.form button {
+        
+        .input-wapper {
+            margin: 10px 0;
+            height: 3em;
+        }
+        
+        .input-wapper input,#submit {
             border-radius: 5px;
             padding: 5px 10px;
+            margin-right: 50%;
+        }
+        
+        .input-wapper .hide {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    <form action="#" class="form">
-        <label for="name">名称:</label>
-        <input type="text" id="name">
-        <button class="test">验证</button>
-        <span class="info">必填,长度为4~16个字符</span>
-    </form>
+    <div class="container">
+        <div class="input-wapper">
+            <label for="name">名称:</label>
+            <input type="text" id="name">
+            <span class="info hide">必填,长度为4~16个字符</span>
+        </div>
+        <div class="input-wapper">
+            <label for="password">密码:</label>
+            <input type="password" id="password">
+            <span class="info hide">必填,长度也为4~16之间</span>
+        </div>
+        <div class="input-wapper">
+            <label for="password-ok">密码确认:</label>
+            <input type="password" id="password-ok">
+            <span class="info hide">必填,与上面密码相同</span>
+        </div>
+        <div class="input-wapper">
+            <label for="email">邮箱:</label>
+            <input type="email" id="email">
+            <span class="info hide">必填</span>
+        </div>
+        <div class="input-wapper">
+            <label for="phone">手机:</label>
+            <input type="text" id="phone">
+            <span class="info hide">选填</span>
+        </div>
+        <button id="submit">提交</button>
+    </div>
+    <script src="../../tool/tool.js"></script>
     <script src="script.js"></script>
 </body>
 
