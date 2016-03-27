@@ -5,7 +5,7 @@
  * 	id: str, input的id,默认判断根据id判断,目前有('name','email','phone') ex:'name'
  * 	type: str, input的type ex 'text'
  *  labelText: str, label内的文字 ex '名称:'
- * 	rules: '必填，长度为4~16个字符', ex '必填，长度为4~16个字符'
+ * 	rules: str, ex '必填，长度为4~16个字符'
  *  // validator: function() { 自定义判断函数
  *  // 	if (!value) return 'empty';
  *  // 	if (success) return true;
