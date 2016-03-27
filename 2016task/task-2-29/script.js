@@ -17,6 +17,7 @@
  *  faileColor: str, 判断错误时的颜色 ex '#f00'
  *  empty: boolean 是否允许为空 ex true
  * }
+ * return elemObj inputWapper inputWapper.inputValue为判断通过时的input值
  */
 function inputWapperGenerate(config) {
 	// 元素生成器
