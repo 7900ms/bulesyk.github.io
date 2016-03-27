@@ -4,13 +4,6 @@
 		infos = document.querySelector('.info'),
 		submitBtn = document.getElementById('submit'),
 		result = {};
-	// 测试输入名称是否要求
-	function testName(value) {
-		var chineseReg = /[^\x00-\xff]/g;
-		value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
-		var valueReg = /^.{4,16}$/;
-		return valueReg.test(value);
-	}
 	// 测试
 	var test = {
 		name: function(value) {
@@ -99,6 +92,7 @@
 				} else {
 					toggleClass(this.parentNode.querySelector('.info'), 'hide');
 					changeColor(this.parentNode, '选填', '#818181');
+					this.parentNode.querySelector('input.text').style.removeProperty('border-color');
 				}
 				break;
 			case "job":
@@ -214,3 +208,73 @@
 		});
 	})(document.querySelector('.multiple-choice'));
 })();
+
+// 表单元素生成
+function inputWapperGenerate(config) {
+	// 元素生成器
+	function elemGenerate(tag, config, text) {
+		var elem = document.createElement(tag);
+		for (var key in config) {
+			elem.setAttribute(key, config[key])
+		}
+		if (text) {
+			elem.innerHTML = text;
+		}
+		return elem;
+	}
+	//创建wapper
+	var inputWapper = (function() {
+		var inputWapper = elemGenerate('div', { class: 'input-wapper' }),
+			label = elemGenerate('label', { for: config.id }, config.labelText),
+			inputText = elemGenerate('input', { class: 'text', type: config.type, id: config.id }),
+			hint = elemGenerate('span', { class: 'info' }, config.rules);
+		inputWapper.appendChild(label);
+		inputWapper.appendChild(inputText);
+		inputWapper.appendChild(hint);
+		return inputWapper;
+	})(config);
+	// 验证程序
+	inputWapper.querySelector('input').validator = function(validator) {
+		var value = this.value.replace(/^\s+|\s+$/g, ''), type = this.id;
+		if (!validator) {
+			// 默认的验证程序
+			validator = function() {
+				if (!value) {
+					return '空';
+				}
+				switch (type) {
+					case 'name':
+						var chineseReg = /[^\x00-\xff]/g;
+						value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
+						var reg = /^.{4,16}$/;
+						return reg.test(value);
+					case 'email':
+						var reg = /^[\w_-]+@[\w_-]+\.com$/;
+						return reg.test(value);
+					case 'phone':
+						var reg = /^\w{11}$/;
+						return reg.test(value);
+					default:
+						return true;
+				}
+			}
+		}
+		return validator();
+	}
+	inputWapper.querySelector('input').addEventListener('blur', function(e) {
+		this.validatorResult = this.validator(config.validator);
+		console.log(this.validatorResult);
+	});
+	return inputWapper;
+}
+var inputWapperName = inputWapperGenerate({
+	id: 'name',
+	type: 'text',
+	labelText: '名称:',
+	rules: '必填，长度为4~16个字符',
+	validator: function() {
+		var reg = /^[\w_-]+@[\w_-]+\.com$/;
+		return reg.test(this.value);
+	}
+});
+document.body.appendChild(inputWapperName);
