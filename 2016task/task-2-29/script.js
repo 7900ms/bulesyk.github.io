@@ -1,4 +1,182 @@
-// 表单测试
+
+// 表单元素生成
+/* 生成表单wapper,包括label,input,rule,判断程序,判断结果
+ * @para obj{
+ * 	id: str, input的id,默认判断根据id判断,目前有('name','email','phone') ex:'name'
+ * 	type: str, input的type ex 'text'
+ *  labelText: str, label内的文字 ex '名称:'
+ * 	rules: '必填，长度为4~16个字符', ex '必填，长度为4~16个字符'
+ *  // validator: function() { 自定义判断函数
+ *  // 	if (!value) return 'empty';
+ *  // 	if (success) return true;
+ *  // 	if (faile) return false;
+ *  // }默认根据id判断,自定义时按照上面格式,
+ *  success: str, 判断正确时的显示内容 ex '名称正确'
+ *  successColor: str , 判断判断正确时的显示颜色 ex '#0f0'
+ *  faile: str, 判断错误时的内容 ex'验证失败'
+ *  faileColor: str, 判断错误时的颜色 ex '#f00'
+ *  empty: boolean 是否允许为空 ex true
+ * }
+ */
+function inputWapperGenerate(config) {
+	// 元素生成器
+	function elemGenerate(tag, config, text) {
+		var elem = document.createElement(tag);
+		for (var key in config) {
+			elem.setAttribute(key, config[key])
+		}
+		if (text) {
+			elem.innerHTML = text;
+		}
+		return elem;
+	}
+	function changeColor(parentElem, text, color) {
+		parentElem.querySelector('.info').innerHTML = text;
+		parentElem.querySelector('.info').style.color = color;
+		parentElem.querySelector('input').style.borderColor = color;
+	}
+	//创建wapper
+	var inputWapper = (function() {
+		var inputWapper = elemGenerate('div', { class: 'input-wapper' }),
+			label = elemGenerate('label', { for: config.id }, config.labelText),
+			inputText = elemGenerate('input', { class: 'text', type: config.type, id: config.id }),
+			hint = elemGenerate('span', { class: 'info hide' }, config.rules);
+		inputWapper.appendChild(label);
+		inputWapper.appendChild(inputText);
+		inputWapper.appendChild(hint);
+		return inputWapper;
+	})(config);
+	// 验证程序
+	inputWapper.querySelector('input').validator = function(validator) {
+		var value = this.value.replace(/^\s+|\s+$/g, ''), type = this.id;
+		if (!validator) {
+			// 默认的验证程序
+			validator = function() {
+				if (!value) {
+					return 'empty';
+				}
+				switch (type) {
+					case 'name':
+						var chineseReg = /[^\x00-\xff]/g;
+						value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
+						var reg = /^.{4,16}$/;
+						return reg.test(value);
+					case 'email':
+						var reg = /^[\w_-]+@[\w_-]+\.com$/;
+						return reg.test(value);
+					case 'phone':
+						var reg = /^\w{11}$/;
+						return reg.test(value);
+					default:
+						return true;
+				}
+			}
+		}
+		return validator();
+	}
+	inputWapper.querySelector('input').addEventListener('focus', function(e) {
+		removeClass(this.parentNode.querySelector('.info'), 'hide');
+		changeColor(this.parentNode, config.rules, '#818181');
+		this.style.removeProperty('border-color');
+	});
+	inputWapper.querySelector('input').addEventListener('blur', function(e) {
+		var validatorResult = this.validator(config.validator);
+		if (config.empty) {
+			if (validatorResult === 'empty') {
+				addClass(this.parentNode.querySelector('.info'), 'hide');
+				changeColor(this.parentNode, '选填', '#818181');
+				this.style.removeProperty('border-color');
+				return;
+			}
+		} else {
+			if (validatorResult === 'empty') {
+				changeColor(this.parentNode, '不能为空', config.faileColor);
+				return;
+			}
+		}
+		if (validatorResult) {
+			changeColor(this.parentNode, config.success, config.successColor);
+			this.parentNode.inputValue = this.value;
+		} else {
+			changeColor(this.parentNode, config.faile, config.faileColor);
+		}
+	});
+	return inputWapper; //inputWapper.inputValue为判断通过时保存的值
+}
+var inputWapperName = inputWapperGenerate({
+	id: 'name',
+	type: 'text',
+	labelText: '名称:',
+	rules: '必填，长度为4~16个字符',
+	success: '名称规范',
+	successColor: '#0f0',
+	faile: '验证失败,长度为4~16个字符',
+	faileColor: '#f00',
+	empty: false
+});
+insertBefore(inputWapperName,document.querySelector('.multiple-choice'));
+var inputWapperPassword = inputWapperGenerate({
+	id: 'password',
+	type: 'password',
+	labelText: '密码:',
+	rules: '必填，长度和上面一样为4~16个字符',
+	validator: function() {
+		var value = document.getElementById('password').value;
+		if (!value) return 'empty';
+		var chineseReg = /[^\x00-\xff]/g;
+		value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
+		var reg = /^.{4,16}$/;
+		return reg.test(value);
+	},
+	success: '密码规范',
+	successColor: '#0f0',
+	faile: '验证失败,长度为4~16个字符',
+	faileColor: '#f00',
+	empty: false
+});
+insertBefore(inputWapperPassword,document.querySelector('.multiple-choice'));
+var inputWapperPasswordOk = inputWapperGenerate({
+	id: 'password-ok',
+	type: 'password',
+	labelText: '密码确认:',
+	rules: '必填，和上面密码相同',
+	validator: function() {
+		var value = document.getElementById('password-ok').value;
+		if (!value) return 'empty';
+		return (value === document.getElementById('password').value);
+	},
+	success: '密码正确',
+	successColor: '#0f0',
+	faile: '验证失败',
+	faileColor: '#f00',
+	empty: false
+});
+insertBefore(inputWapperPasswordOk,document.querySelector('.multiple-choice'));
+var inputWapperEmail = inputWapperGenerate({
+	id: 'email',
+	type: 'email',
+	labelText: '邮箱:',
+	rules: '必填',
+	success: '邮箱正确',
+	successColor: '#0f0',
+	faile: '验证失败',
+	faileColor: '#f00',
+	empty: false
+});
+insertBefore(inputWapperEmail,document.querySelector('.multiple-choice'));
+var inputWapperPhone = inputWapperGenerate({
+	id: 'phone',
+	type: 'text',
+	labelText: '电话:',
+	rules: '选填',
+	success: '电话正确',
+	successColor: '#0f0',
+	faile: '验证失败',
+	faileColor: '#f00',
+	empty: true
+});
+insertBefore(inputWapperPhone,document.querySelector('.multiple-choice'));
+// 之前的包括select的表单判断
 (function Form() {
 	var inputBoxs = document.querySelectorAll('input.text'),
 		infos = document.querySelector('.info'),
@@ -208,73 +386,3 @@
 		});
 	})(document.querySelector('.multiple-choice'));
 })();
-
-// 表单元素生成
-function inputWapperGenerate(config) {
-	// 元素生成器
-	function elemGenerate(tag, config, text) {
-		var elem = document.createElement(tag);
-		for (var key in config) {
-			elem.setAttribute(key, config[key])
-		}
-		if (text) {
-			elem.innerHTML = text;
-		}
-		return elem;
-	}
-	//创建wapper
-	var inputWapper = (function() {
-		var inputWapper = elemGenerate('div', { class: 'input-wapper' }),
-			label = elemGenerate('label', { for: config.id }, config.labelText),
-			inputText = elemGenerate('input', { class: 'text', type: config.type, id: config.id }),
-			hint = elemGenerate('span', { class: 'info' }, config.rules);
-		inputWapper.appendChild(label);
-		inputWapper.appendChild(inputText);
-		inputWapper.appendChild(hint);
-		return inputWapper;
-	})(config);
-	// 验证程序
-	inputWapper.querySelector('input').validator = function(validator) {
-		var value = this.value.replace(/^\s+|\s+$/g, ''), type = this.id;
-		if (!validator) {
-			// 默认的验证程序
-			validator = function() {
-				if (!value) {
-					return '空';
-				}
-				switch (type) {
-					case 'name':
-						var chineseReg = /[^\x00-\xff]/g;
-						value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
-						var reg = /^.{4,16}$/;
-						return reg.test(value);
-					case 'email':
-						var reg = /^[\w_-]+@[\w_-]+\.com$/;
-						return reg.test(value);
-					case 'phone':
-						var reg = /^\w{11}$/;
-						return reg.test(value);
-					default:
-						return true;
-				}
-			}
-		}
-		return validator();
-	}
-	inputWapper.querySelector('input').addEventListener('blur', function(e) {
-		this.validatorResult = this.validator(config.validator);
-		console.log(this.validatorResult);
-	});
-	return inputWapper;
-}
-var inputWapperName = inputWapperGenerate({
-	id: 'name',
-	type: 'text',
-	labelText: '名称:',
-	rules: '必填，长度为4~16个字符',
-	validator: function() {
-		var reg = /^[\w_-]+@[\w_-]+\.com$/;
-		return reg.test(this.value);
-	}
-});
-document.body.appendChild(inputWapperName);
