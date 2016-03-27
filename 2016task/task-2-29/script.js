@@ -176,7 +176,7 @@ var inputWapperPhone = inputWapperGenerate({
 	empty: true
 });
 insertBefore(inputWapperPhone,document.querySelector('.multiple-choice'));
-// 之前的包括select的表单判断
+// 之前的包括select的表单判断,
 (function Form() {
 	var inputBoxs = document.querySelectorAll('input.text'),
 		infos = document.querySelector('.info'),
