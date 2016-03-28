@@ -20,7 +20,7 @@
  * return elemObj inputWapper inputWapper.inputValue为判断通过时的input值
  */
 function inputWapperGenerate(config) {
-	// 元素生成器
+	// 元素生成器吗
 	function elemGenerate(tag, config, text) {
 		var elem = document.createElement(tag);
 		for (var key in config) {
