@@ -174,9 +174,9 @@ var w = (function() {
 			return e;
 		},
 		// 添加事件可以传入参数
-		addEvent: function(event, listener, config, elem) {
+		addEvent: function(event, listener, config) {
 			if (!event || !listener) return;
-			var that = elem || this;
+			var that = this;
 			var len = that.length;
 			that['listener' + listener.name] = function(e) {
 				var e = that.getEvent(e);
@@ -313,6 +313,7 @@ var w = (function() {
 				elem.style.left = left + 'px';
 				elem.style.top = top + 'px';
 				elem.setTimeoutId = setTimeout(autoMove, interval);
+				return elem;
 			})();
 		},
 		// 重置位置
@@ -321,6 +322,7 @@ var w = (function() {
 			elem.style.position = 'absolute';
 			elem.style.left = left + 'px';
 			elem.style.top = top + 'px';
+			return elem;
 		},
 		carousel: function(containerConfig, imgsConfig, ruleConfig) {
 			var carousel = new Carousel(containerConfig, imgsConfig, ruleConfig);
@@ -385,7 +387,7 @@ var w = (function() {
 	}
 	// 轮播图
 	Carousel.prototype = new WTool();
-	function Carousel(containerConfig, imgs, cssConfig, conf) {
+	function Carousel(containerConfig, imgs, cssConfig) {
 		var that = this,
 			id = containerConfig.id,
 			tool = new WTool();
