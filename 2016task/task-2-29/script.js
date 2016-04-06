@@ -1,4 +1,3 @@
-
 // 表单元素生成
 /* 生成表单wapper,包括label,input,rule,判断程序,判断结果
  * @para obj{
@@ -31,6 +30,7 @@ function inputWapperGenerate(config) {
 		}
 		return elem;
 	}
+
 	function changeColor(parentElem, text, color) {
 		parentElem.querySelector('.info').innerHTML = text;
 		parentElem.querySelector('.info').style.color = color;
@@ -38,10 +38,20 @@ function inputWapperGenerate(config) {
 	}
 	//创建wapper
 	var inputWapper = (function() {
-		var inputWapper = elemGenerate('div', { class: 'input-wapper' }),
-			label = elemGenerate('label', { for: config.id }, config.labelText),
-			inputText = elemGenerate('input', { class: 'text', type: config.type, id: config.id }),
-			hint = elemGenerate('span', { class: 'info hide' }, config.rules);
+		var inputWapper = elemGenerate('div', {
+				class: 'input-wapper'
+			}),
+			label = elemGenerate('label', {
+				for: config.id
+			}, config.labelText),
+			inputText = elemGenerate('input', {
+				class: 'text',
+				type: config.type,
+				id: config.id
+			}),
+			hint = elemGenerate('span', {
+				class: 'info hide'
+			}, config.rules);
 		inputWapper.appendChild(label);
 		inputWapper.appendChild(inputText);
 		inputWapper.appendChild(hint);
@@ -49,7 +59,8 @@ function inputWapperGenerate(config) {
 	})(config);
 	// 验证程序
 	inputWapper.querySelector('input').validator = function(validator) {
-		var value = this.value.replace(/^\s+|\s+$/g, ''), type = this.id;
+		var value = this.value.replace(/^\s+|\s+$/g, ''),
+			type = this.id;
 		if (!validator) {
 			// 默认的验证程序
 			validator = function() {
@@ -115,7 +126,7 @@ var inputWapperName = inputWapperGenerate({
 	faileColor: '#f00',
 	empty: false
 });
-insertBefore(inputWapperName,document.querySelector('.multiple-choice'));
+insertBefore(inputWapperName, document.querySelector('.multiple-choice'));
 var inputWapperPassword = inputWapperGenerate({
 	id: 'password',
 	type: 'password',
@@ -135,7 +146,7 @@ var inputWapperPassword = inputWapperGenerate({
 	faileColor: '#f00',
 	empty: false
 });
-insertBefore(inputWapperPassword,document.querySelector('.multiple-choice'));
+insertBefore(inputWapperPassword, document.querySelector('.multiple-choice'));
 var inputWapperPasswordOk = inputWapperGenerate({
 	id: 'password-ok',
 	type: 'password',
@@ -152,7 +163,7 @@ var inputWapperPasswordOk = inputWapperGenerate({
 	faileColor: '#f00',
 	empty: false
 });
-insertBefore(inputWapperPasswordOk,document.querySelector('.multiple-choice'));
+insertBefore(inputWapperPasswordOk, document.querySelector('.multiple-choice'));
 var inputWapperEmail = inputWapperGenerate({
 	id: 'email',
 	type: 'email',
@@ -164,7 +175,7 @@ var inputWapperEmail = inputWapperGenerate({
 	faileColor: '#f00',
 	empty: false
 });
-insertBefore(inputWapperEmail,document.querySelector('.multiple-choice'));
+insertBefore(inputWapperEmail, document.querySelector('.multiple-choice'));
 var inputWapperPhone = inputWapperGenerate({
 	id: 'phone',
 	type: 'text',
@@ -176,7 +187,7 @@ var inputWapperPhone = inputWapperGenerate({
 	faileColor: '#f00',
 	empty: true
 });
-insertBefore(inputWapperPhone,document.querySelector('.multiple-choice'));
+insertBefore(inputWapperPhone, document.querySelector('.multiple-choice'));
 // 之前的包括select的表单判断,
 (function Form() {
 	var inputBoxs = document.querySelectorAll('input.text'),
@@ -185,22 +196,22 @@ insertBefore(inputWapperPhone,document.querySelector('.multiple-choice'));
 		result = {};
 	// 测试
 	var test = {
-		name: function(value) {
-			var chineseReg = /[^\x00-\xff]/g;
-			value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
-			var valueReg = /^.{4,16}$/;
-			return valueReg.test(value);
-		},
-		email: function(value) {
-			var reg = /[\w_-]+@[\w_-]+\.com/;
-			return reg.test(value);
-		},
-		phone: function(value) {
-			var reg = /\w{11}/;
-			return reg.test(value);
+			name: function(value) {
+				var chineseReg = /[^\x00-\xff]/g;
+				value = value.replace(/^\s+|\s+$/g, '').replace(chineseReg, 'zz');
+				var valueReg = /^.{4,16}$/;
+				return valueReg.test(value);
+			},
+			email: function(value) {
+				var reg = /[\w_-]+@[\w_-]+\.com/;
+				return reg.test(value);
+			},
+			phone: function(value) {
+				var reg = /\w{11}/;
+				return reg.test(value);
+			}
 		}
-	}
-	//改变颜色函数
+		//改变颜色函数
 	function changeColor(parentElem, text, color) {
 		parentElem.querySelector('.info').innerHTML = text;
 		parentElem.querySelector('.info').style.color = color;
@@ -303,7 +314,8 @@ insertBefore(inputWapperPhone,document.querySelector('.multiple-choice'));
 		}
 		// 检测有几input验证成功的
 		var form = (function checkNumbers() {
-			var count = 0, resultStr = '';
+			var count = 0,
+				resultStr = '';
 			var event = new Event('blur');
 			for (var i = 0, len = inputBoxs.length; i < len; i++) {
 				inputBoxs[i].dispatchEvent(event);

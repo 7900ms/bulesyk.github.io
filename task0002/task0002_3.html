@@ -2,29 +2,70 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>轮播图</title>
-    <link rel="stylesheet" href="css/task0002_3.css">
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<link rel="stylesheet" href="../tool/reset.css">
+	<style media="screen">
+		#contral {
+			margin: 10px auto;
+			width: 800px;
+		}
+
+		[type='text'] {
+			padding: 3px;
+		}
+
+		[type='checkbox'] {
+			vertical-align: middle;
+		}
+	</style>
 </head>
 
 <body>
-    <div id="contral">
-        <label for="interval">循环间隔:</label><input type="text" id="interval" name="interval" placeholder="单位为秒">
-        <label for="rotation">循环?</label><input id="rotation" name="rotation" type="checkbox">
-        <label for="trueMove">正序?</label><input id="trueMove" name="trueMove" type="checkbox">
-        <button id="btn">确定</button>
-        <p>图片来自infinity标签页背景</p>
-    </div>
-    <div id="container">
-        <div id="imgholder">
-            <img src="image/1.jpg" alt="1">
-            <img src="image/2.jpg" alt="2">
-            <img src="image/3.jpg" alt="3">
-            <img src="image/4.jpg" alt="4">
-            <img src="image/5.jpg" alt="5">
-        </div>
-    </div>
-    <script src="js/task0002_3.js"></script>
+	<div id="contral">
+		<label for="interval">循环间隔:</label>
+		<input type="text" id="interval" name="interval" placeholder="单位为秒" value="3秒">
+		<label for="rotation">循环?</label>
+		<input id="rotation" name="rotation" type="checkbox" checked="true">
+		<label for="trueMove">正序?</label>
+		<input id="trueMove" name="trueMove" type="checkbox" checked="true">
+		<button id="btn">确定</button>
+		<p>图片来自infinity标签页背景</p>
+	</div>
+	<script src="../../wTool/wTool.js" charset="utf-8" id="script"></script>
+	<script>
+		var carousel = w().carousel({
+			id: 'img-container'
+		}, {
+			img11: 'C:\\Users\\bulesyk\\Documents\\Git\\wTool\\1.jpg',
+			img22: 'C:\\Users\\bulesyk\\Documents\\Git\\wTool\\2.jpg',
+			img33: 'C:\\Users\\bulesyk\\Documents\\Git\\wTool\\3.jpg',
+			img44: 'C:\\Users\\bulesyk\\Documents\\Git\\wTool\\4.jpg',
+			img55: 'C:\\Users\\bulesyk\\Documents\\Git\\wTool\\5.jpg'
+		}, {
+			width: '800px',
+			height: '400px',
+			position: 'relative',
+			overflow: 'hidden',
+			margin: '0 auto',
+		});
+		document.body.insertBefore(carousel.containerBox,w('#script')[0]);
+		function getConfig() {
+			return {
+				interval: parseFloat(w('#interval')[0].value) * 1000,
+				autoMove: w('#rotation')[0].checked,
+				direct: w('#trueMove')[0].checked
+			}
+		}
+		function fn(e) {
+			var conf = getConfig();
+			console.log(conf);
+			carousel.stop();
+			carousel.start(conf);
+		}
+		w('#btn').addEvent('click', fn);
+		carousel.start(getConfig());
+	</script>
 </body>
 
 </html>
