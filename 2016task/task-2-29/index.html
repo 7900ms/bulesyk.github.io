@@ -2,109 +2,83 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>task-2-29</title>
-	<link rel="stylesheet" href="../../tool/reset.css">
-	<style>
-		.container {
-			width: 1200px;
-			margin: 10px auto;
-			text-align: right;
-		}
-
-		label {
-			font-weight: bold;
-			margin: 0 5px;
-		}
-
-		.info {
-			color: #818181;
-			text-align: left;
-			display: block;
-			padding-left: 100px;
-		}
-
-		.input-wapper,
-		.multiple-choice {
-			margin: 0 auto;
-			height: 4em;
-			width: 400px;
-			text-align: right;
-		}
-
-		#in-schoole {
-			margin-left: 100px;
-		}
-
-		#in-schoole+label {
-			margin-right: 4.5em;
-		}
-
-		#schoole-city {
-			width: 90px;
-			margin-right: 30px;
-		}
-
-		#schoole-name {
-			width: 180px;
-		}
-
-		.input-wapper .text,
-		#submit,
-		.select {
-			border-radius: 5px;
-			padding: 5px 10px;
-		}
-
-		.input-wapper .text {
-			width: 300px;
-		}
-
-		.multiple-choice {
-			text-align: left;
-			height: 6em;
-		}
-
-		.multiple-choice .input-wapper {
-			margin-top: 10px;
-		}
-
-		.hide {
-			display: none !important;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <title>task-2-29</title>
+    <link rel="stylesheet" href="../../tool/reset.css">
+	<script src='../../tool/wTool.js'></script>
 </head>
 
 <body>
-	<div class="container">
-
-		<div class="multiple-choice">
-			<input type="radio" id="in-schoole" class="choice checked" checked='true'>
-			<label for="in-schoole">在校生</label>
-			<input type="radio" id="notin-schoole" class="choice">
-			<label for="not-schoole">非在校生</label>
-			<div class="input-wapper in-schoole">
-				<label for="schoole">学校:</label>
-				<select name="schoole-city" id="schoole-city" class="select">
-					<option value="city">城市</option>
-					<option value="beijing">北京</option>
-					<option value="shanghai">上海</option>
-				</select><!--
-			 --><select name="schoole-name" id="schoole-name" class="select">
-					<option value="name">学校</option>
-				</select>
-			</div>
-			<div class="input-wapper notin-schoole hide">
-				<label for="job">就业单位:</label>
-				<input type="text" id="job" class="text">
-			</div>
-		</div>
-		<div class="input-wapper">
-			<button id="submit">提交</button>
-		</div>
-	</div>
-	<script src="../../tool/tool.js" id="script-first"></script>
-	<script src="script.js"></script>
+    <script type="text/javascript" id='script'>
+		var form = w().formsGenerate({
+			id:'form'
+		},{
+			name:{
+				id: 'name',
+				type: 'text',
+				label: '名称:',
+				rules: '必填，长度为4~16个字符',
+				success: '名称规范',
+				successColor: '#0f0',
+				faile: '验证失败,长度为4~16个字符',
+				faileColor: '#f00',
+				empty: false
+			},
+			password:{
+				id: 'password',
+				type: 'password',
+				label: '密码:',
+				rules: '必填，长度和上面一样为4~16个字符',
+				success: '密码规范',
+				successColor: '#0f0',
+				faile: '验证失败,长度为4~16个字符',
+				faileColor: '#f00',
+				empty: false
+			},
+			passwordOk:{
+				id: 'password-ok',
+				type: 'password',
+				label: '密码确认:',
+				rules: '必填，和上面密码相同',
+				validator: function() {
+					if (!this.value) return 'empty';
+					return (this.value === w('#password')[0].value);
+				},
+				success: '密码正确',
+				successColor: '#0f0',
+				faile: '验证失败',
+				faileColor: '#f00',
+				empty: false
+			},
+			email:{
+				id: 'email',
+				type: 'email',
+				label: '邮箱:',
+				rules: '必填',
+				success: '邮箱正确',
+				successColor: '#0f0',
+				faile: '验证失败',
+				faileColor: '#f00',
+				empty: false
+			},
+			phone:{
+				id: 'phone',
+				type: 'text',
+				label: '电话:',
+				rules: '选填',
+				success: '电话正确',
+				successColor: '#0f0',
+				faile: '验证失败',
+				faileColor: '#f00',
+				empty: true
+			}
+		},{
+			width:'500px',
+			margin:'50px auto'
+		});
+		w('body')[0].insertBefore(form.formsContainerBox,w('#script')[0]);
+		form.start();
+    </script>
 </body>
 
 </html>
