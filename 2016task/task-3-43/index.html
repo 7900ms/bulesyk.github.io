@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>多功能相册之拼图布局</title>
+	<link rel="stylesheet" href="../../tool/reset.css">
+	<script src="../../tool/vue.js"></script>
+	<script src="../../tool/jquery-2.2.2.js"></script>
+</head>
+
+<body>
+	<style>
+		body {
+			height: 1000px;
+		}
+
+		#container {
+			width: 1200px;
+			height: 675px;
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+		}
+
+		#container div {
+			overflow: hidden;
+		}
+		/*一张图片*/
+
+		.one-img div {
+			width: 100%;
+			height: 100%;
+		}
+		/*两张图片*/
+
+		.two-imgs div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.two-imgs div:first-of-type {
+			-webkit-clip-path: polygon(0 0, 66% 0, 33% 100%, 0 100%);
+			clip-path: polygon(0 0, 66% 0, 33% 100%, 0 100%);
+		}
+
+		.two-imgs div:last-of-type {
+			-webkit-clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
+			clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
+		}
+		/*三张图片*/
+
+		.three-imgs {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+		}
+
+		.three-imgs div:nth-of-type(1) {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+		/*四张图片*/
+
+		.four-imgs {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.four-imgs div {
+			width: 50%;
+			height: 50%;
+		}
+	</style>
+	<div id="container" v-bind:class="classObj">
+		<div v-for="img in imgs" v-bind:style="img"></div>
+	</div>
+	<script>
+		(function close() {
+			Vue.config.debug = true;
+			var myData = {
+				imgs: [{
+					background: 'url(../../imgs/1005506.jpg) no-repeat left top /cover'
+				}, {
+					background: 'url(../../imgs/408197.jpg) no-repeat left top /cover'
+				}, {
+					background: 'url(../../imgs/1245107.jpg) no-repeat left top /cover'
+				}, {
+					background: 'url(../../imgs/437017.jpg) no-repeat left top /cover'
+				}],
+				classObj: {
+					'one-img': false,
+					'two-imgs': false,
+					'three-imgs': false,
+					'four-imgs': false,
+					'five-imgs': false,
+					'six-imgs': false
+				}
+			}
+			var vm = new Vue({
+				el: '#container',
+				data: myData
+			})
+			var classChange = (function() {
+				if (vm.imgs.length) {
+					switch (vm.imgs.length) {
+						case 1:
+							vm.classObj['one-img'] = true;
+							break;
+						case 2:
+							vm.classObj['two-imgs'] = true;
+							break;
+						case 3:
+							vm.classObj['three-imgs'] = true;
+							var $children = $(vm.$el).children();
+							$children[1].style.width = $children[1].style.height = vm.$el.offsetHeight * 0.5 + 'px';
+							$children[2].style.width = $children[2].style.height = vm.$el.offsetHeight * 0.5 + 'px';
+							$children[0].style.width = vm.$el.offsetWidth - $children[2].offsetWidth + 'px';
+							break;
+						case 4:
+							vm.classObj['four-imgs'] = true;
+							break;
+						case 5:
+							vm.classObj['five-imgs'] = true;
+							break;
+						case 6:
+							vm.classObj['six-imgs'] = true;
+							break;
+					}
+				}
+			})()
+		})()
+	</script>
+</body>
+
+</html>
