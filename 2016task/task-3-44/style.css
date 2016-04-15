@@ -5,3 +5,10 @@
 	width: 100%;
 	display: block;
 }
+.img-wapper {
+	overflow: hidden;
+}
+.columns {
+	display: inline-block;
+	vertical-align: top;
+}
