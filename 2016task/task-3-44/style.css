@@ -1,0 +1,7 @@
+#imgs-wapper {
+	padding: 20px;
+}
+.img-wapper img {
+	width: 100%;
+	display: block;
+}

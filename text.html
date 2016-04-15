@@ -9,66 +9,21 @@
 
 <body>
 	<div id="app">
-		<ul>
-			<li v-for="item in items" v-show="greeting" transition="change">
-				{{ item.message }}{{ $index }}
-				<span>{{ item.name }}</span>
-			</li>
-			<a href="#" v-on:click.prevent="fn">{{ a }}</a>
-		</ul>
-		<input type="text" v-model="a" number debounce='1000'>
-		<button v-on:click="reva">Reverse Message</button>
+		<div v-bind:style = 'style'></div>
 	</div>
-	<style>
-		.expand-transition {
-			transition: all .3s ease;
-			height: 30px;
-			padding: 10px;
-			background-color: #eee;
-			overflow: hidden;
-		}
-		.expand-enter,
-		.expand-leave {
-			height: 0;
-			padding: 0 10px;
-			opacity: 0;
-		}
-		.change-transition {
-			trandsiton: all 1s ease;
-			background-color: #f00;
-		}
-		.chang-enter,.change-leave {
-			opacity: 0;
-		}
-	</style>
 	<script>
 		Vue.config.debug = true;
-		var message = {
-			greeting: true,
-			message: 'test',
-			items: [{
-				message: 'asd'
-			}, {
-				name: 'ccc'
-			}],
-			a: 'click me',
-			id: 'testa',
-			styleObj: {
-				color: '#f00'
-			}
-		}
 		var vm = new Vue({
 			el: '#app',
-			data: message,
-			methods: {
-				reva: function() {
-
-				},
-				fn: function(e) {
-					console.log(e);
+			data: {
+				style: {
+					backgroundColor: '#f00',
+					width: '1px',
+					height: '100px'
 				}
 			}
 		})
+		vm.style.width = '100px'
 	</script>
 </body>
 

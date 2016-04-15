@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多功能相册之瀑布布局</title>
+	<link rel="stylesheet" href="../../tool/reset.css">
+	<link rel="stylesheet" href="./style.css">
+	<script src="../../tool/jquery-2.2.2.js"></script>
+	<script src="../../tool/vue.js"></script>
+</head>
+<body>
+	<div class="container" id="imgs-wapper">
+		<div class="columns" v-for="column in columns" v-bind:style="columnStyle">
+			<div class="img-wapper" v-for="img in column">
+				<img alt="img" v-bind:src="img.url">
+			</div>
+		</div>
+	</div>
+	<script>
+		var imgsWapper = (function(){
+			var conf = {
+				space: 16,
+				column: 4
+			}
+			var imgs = [
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img2.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img3.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img4.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img5.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img6.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img7.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img8.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img9.jpg'},
+				{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img10.jpg'}
+			];
+			var vm = new Vue({
+				el: '#imgs-wapper',
+				data: {
+					imgs: imgs,
+					columns: '',
+					imgWapperStyle: {
+						width: '100%',
+					},
+					columnStyle: {
+						
+					}
+				},
+				methods: {
+					generateColumn:function(column) {
+						var len = this.imgs.length,
+							z=0,
+							count = Math.ceil(len/column);
+						this.columns = new Array();
+						for (var i = 0; i <count ; i++) {
+							this.columns[i] = new Array();
+							for (var j = 0; j < column; j++) {
+								if (z<len) {
+									this.columns[i][j] = this.imgs[z]
+								}
+								z++
+							}
+						}
+					}
+				}
+			});
+			(function(){
+				vm.imgWapperStyle.width= ($(vm.$el).width() - (conf.column-1)*conf.space)/conf.column + 'px';
+				vm.generateColumn(conf.column);
+				console.log(vm.columns);
+			})();
+		})();
+	</script>
+</body>
+</html>
