@@ -22,13 +22,14 @@ article {
 }
 .clicked-img {
 	transition: all .3s ease;
-	position: absolute;
+	position: fixed;
 	opacity: 1;
 	top: 0;
 	left: 0;
 	width: 100%;
 	background-color: rgba(0,0,0,0.8);
 	text-align: center;
+	overflow: auto;
 }
 .clicked-img-enter,.clicked-img-leave {
 	opacity: 0;
@@ -36,4 +37,7 @@ article {
 .clicked-img img {
 	width: 800px;
 	vertical-align: middle;
+}
+.clicked-img::-webkit-scrollbar {
+	width: 0;
 }

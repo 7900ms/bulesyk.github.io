@@ -23,8 +23,8 @@ var imgsWapper = function (conf, imgs, id) {
                 url: ''
             },
             displayStyle: {
-                minHeight: $(window).height() + 'px',
-                lineHeight: $(window).height() + 'px'
+                Height: $(window).height()+'px',
+                lineHeight: $(window).height()+'px'
             }
         },
         methods: {
