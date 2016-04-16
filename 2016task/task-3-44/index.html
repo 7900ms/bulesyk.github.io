@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>多功能相册之瀑布布局</title>
@@ -8,80 +9,17 @@
 	<script src="../../tool/jquery-2.2.2.js"></script>
 	<script src="../../tool/vue.js"></script>
 </head>
+
 <body>
-	<div class="container" id="imgs-wapper">
-		<div class="columns" v-for="column in columns" v-bind:style="columnStyle"></div>
-	</div>
-	<script>
-			var imgsWapper = function () {
-				var conf = {
-					space: 5,
-					column: 4
-				}
-				var imgs = [
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img2.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img3.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img4.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img5.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img6.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img7.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img8.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img9.jpg'},
-					{url:'C:\\Users\\bulesyk\\Documents\\Git\\bulesyk.github.io\\imgs\\img10.jpg'}
-				]
-				imgsWapper = {
-					conf: conf,
-					imgs: imgs,
-					addImgs: function (imgURL) {
-						this.imgs.push({url:imgURL})
-					}
-				}
-				var vm = new Vue({
-					el: '#imgs-wapper',
-					data: {
-						imgs: imgs,
-						columns: conf.column,
-						imgWapperStyle: {
-							width: '100%',
-						},
-						columnStyle: {
-							width: '',
-							marginLeft: '',
-							marginRight: ''
-						}
-					}
-				})
-				vm.columnStyle.width= ($(vm.$el).width() - conf.column*conf.space*2)/conf.column + 'px'
-				vm.columnStyle.marginRight = conf.space + 'px '
-				vm.columnStyle.marginLeft = conf.space + 'px '
-				function appendImg(imgURL) {
-					var img = document.createElement('img')
-					var div = document.createElement('div')
-					div.className = 'img-wapper'
-					img.src = imgURL
-					img.style.margin = conf.space+'px ' + '0';
-					img.onload = function () {
-						var columns = $(vm.$el).find('.columns'),
-							min = columns[0]
-						for (var i = 0,len = columns.length; i < len; i++) {
-							if (columns[i].offsetHeight<min.offsetHeight) {
-								min = columns[i]
-							}
-						}
-						div.appendChild(img)
-						min.appendChild(div)
-					}
-				}
-				var count = vm.imgs.length
-				for (var i = 0; i < count ; i++) {
-					appendImg(vm.imgs[i].url)
-				}
-			}
-			imgsWapper()
-			$(document).ready(function () {
-				$('#imgs-wapper').find('.columns:first-of-type')[0].style.marginLeft = '0'
-				$('#imgs-wapper').find('.columns:last-of-type')[0].style.marginRight = '0'
-			})
-	</script>
+	<article>
+		<div class="container" id="imgs-wapper">
+			<div class="columns" v-for="column in columns" v-bind:style="columnStyle"></div>
+			<div id="display" class="clicked-img" v-show="display.clicked" v-bind:style="displayStyle" v-on:click="hide" transition="clicked-img">
+				<img alt="img" v-bind:src="display.url">
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</article>
 </body>
+
 </html>
