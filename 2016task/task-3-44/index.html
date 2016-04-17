@@ -31,14 +31,14 @@
 				methods: {
 					getMoreImgs:function(e){
 						var ajax = new XMLHttpRequest()
+						ajax.open("GET","http://bulesky.github.io/imgsUrl.json")
+						ajax.send()
 						ajax.onreadystatechange = function(){
-							console.log(ajax.readyState,ajax.states)
-							if (ajax.readyState === 4 && ajax.states === 200) {
-								console.log('asd')
+							if (ajax.readyState === 4 && ajax.status === 200) {
+								var imgsUrl = JSON.parse(ajax.responseText)
+								console.log(imgUrl)
 							}
 						}
-						ajax.open("GET","http://7xs725.com1.z0.glb.clouddn.com/testimg/timg12.jpg")
-						ajax.send()
 					}
 				}
 			})
