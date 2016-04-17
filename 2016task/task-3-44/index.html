@@ -20,34 +20,6 @@
 		</div>
 		<button id="more">{{more.text}}</button>
 		<script src="script.js"></script>
-		<script>
-			var vm = new Vue({
-				el:'#more',
-				data: {
-					more:{
-						text:"下拉加载更多"
-					}
-				},
-				methods: {
-					getMoreImgs:function(e){
-						var ajax = new XMLHttpRequest()
-						ajax.open("GET","http://bulesky.github.io/imgsUrl.json")
-						ajax.send()
-						ajax.onreadystatechange = function(){
-							if (ajax.readyState === 4 && ajax.status === 200) {
-								var imgsUrl = JSON.parse(ajax.responseText)
-								console.log(imgUrl)
-							}
-						}
-					}
-				}
-			})
-			$(document).ready(function(){
-				$(this).on('mousewheel',function(){
-					vm.getMoreImgs()
-				})
-			})
-		</script>
 	</article>
 </body>
 

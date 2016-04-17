@@ -23,8 +23,8 @@ var imgsWapper = function (conf, imgs, id) {
                 url: ''
             },
             displayStyle: {
-                Height: $(window).height()+'px',
-                lineHeight: $(window).height()+'px'
+                Height: $(window).height() + 'px',
+                lineHeight: $(window).height() + 'px'
             }
         },
         methods: {
@@ -66,6 +66,10 @@ var imgsWapper = function (conf, imgs, id) {
     for (var i = 0; i < count; i++) {
         var wappers = appendImg(vm.imgs[i].url)
     }
+    return {
+        vm: vm,
+        appendImg: appendImg
+    }
 }
 
 $(document).ready(function () {
@@ -89,5 +93,46 @@ $(document).ready(function () {
             this.imgs.push(imgUrl)
         }
     }
-    imgsWapper(config.conf, config.imgs)
+    var imgs = imgsWapper(config.conf, config.imgs)
+    var vm = new Vue({
+        el: '#more',
+        data: {
+            more: {
+                text: "下拉加载更多",
+                imgLine: 0
+            }
+        },
+        methods: {
+            getMoreImgs: function (e) {
+                var vpH = $(window).height()
+                var dH = $(document).height()
+                if (e.pageY >= (dH - vpH) && e.pageY <= dH) {
+                    var ajax = new XMLHttpRequest()
+                    this.more.imgLine++
+                    var url = "http://bulesyk.github.io/imgsUrl" + this.more.imgLine + ".json"
+                    ajax.open("GET", url)
+                    ajax.send()
+                    ajax.onreadystatechange = function () {
+                        if (ajax.readyState === 4 && ajax.status === 200) {
+                            var imgsUrl = JSON.parse(ajax.responseText)
+                            var list = []
+                            for (var key in imgsUrl) {
+                                list.push(imgsUrl[key])
+                            }
+                            var len = list.length
+                            while (len--) {
+                                var count = list[len].length
+                                while (count--) {
+                                    imgs.appendImg(list[len][count])
+                                }
+                            }
+                        } else {
+                            this.more.test = "没有更多了"
+                        }
+                    }
+                }
+            }
+        }
+    })
+    document.addEventListener('mousewheel', vm.getMoreImgs)
 })
