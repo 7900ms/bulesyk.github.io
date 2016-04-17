@@ -18,7 +18,36 @@
 				<img alt="img" v-bind:src="display.url">
 			</div>
 		</div>
+		<button id="more">{{more.text}}</button>
 		<script src="script.js"></script>
+		<script>
+			var vm = new Vue({
+				el:'#more',
+				data: {
+					more:{
+						text:"下拉加载更多"
+					}
+				},
+				methods: {
+					getMoreImgs:function(e){
+						var ajax = new XMLHttpRequest()
+						ajax.onreadystatechange = function(){
+							console.log(ajax.readyState,ajax.states)
+							if (ajax.readyState === 4 && ajax.states === 200) {
+								console.log('asd')
+							}
+						}
+						ajax.open("GET","http://7xs725.com1.z0.glb.clouddn.com/testimg/timg12.jpg")
+						ajax.send()
+					}
+				}
+			})
+			$(document).ready(function(){
+				$(this).on('mousewheel',function(){
+					vm.getMoreImgs()
+				})
+			})
+		</script>
 	</article>
 </body>
 

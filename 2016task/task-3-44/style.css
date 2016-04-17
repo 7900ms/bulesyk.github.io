@@ -41,3 +41,13 @@ article {
 .clicked-img::-webkit-scrollbar {
 	width: 0;
 }
+#more {
+	display: block;
+	width: 100%;
+	text-align: center;
+	border: none;
+	font-size: 20px;
+}
+#more:hover {
+	background: none;
+}
