@@ -8,19 +8,17 @@ var imgsWapper = (function () {
         methods: {
             newImg: function (url, height, width) {
                 return {
-                    url: url,
-                    style: {
-                        width: width + 'px',
-                        height: height + 'px'
-                    }
+                    url: url
                 }
             },
             addImg: function (imgObj) {
                 this.imgs.push(imgObj)
             },
             getImg: function (e) {
-                this.nowImgStyle.width = e.target.width
-                this.nowImgStyle.height = e.target.height
+                var imgWapper = e.target.parentNode
+                this.scale = e.target.width/e.target.height
+                imgWapper.style.height = 300 + 'px'
+                imgWapper.style.width = 300 * this.scale + 'px'
             }
         }
     })
@@ -47,7 +45,7 @@ $(document).ready(function () {
     ]
     var len = url.length;
     while (len--) {
-        var img = imgsWapper.newImg(url[len],200)
+        var img = imgsWapper.newImg(url[len])
         imgsWapper.addImg(img)
     }
 })

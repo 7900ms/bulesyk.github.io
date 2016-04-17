@@ -3,8 +3,12 @@
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+}
+.img-wapper {
+    overflow: hidden;
+    margin: 8px;
 }
 .img-wapper img {
     display: block;
+    width: 100%;
 }
