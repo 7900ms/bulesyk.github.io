@@ -11,7 +11,7 @@ article {
 	display: block;
 }
 .img-wapper:hover {
-	cursor: pointer;
+	cursor: zoom-in;
 }
 .img-wapper {
 	overflow: hidden;
@@ -45,9 +45,5 @@ article {
 	display: block;
 	width: 100%;
 	text-align: center;
-	border: none;
 	font-size: 20px;
-}
-#more:hover {
-	background: none;
 }

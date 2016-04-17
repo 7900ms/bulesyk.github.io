@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多功能相册之木桶布局</title>
+    <script src="../../tool/jquery-2.2.2.js"></script>
+    <script src="../../tool/vue.js"></script>
+    <link rel="stylesheet" href="../../tool/reset.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="imgs-wapper" class="container">
+        <div class="img-wapper" v-for="img in imgs">
+            <img alt="img" v-bind:src="img.url" v-bind:style="img.style" v-on:load="getImg">
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
