@@ -126,8 +126,9 @@ $(document).ready(function () {
                                     imgs.appendImg(list[len][count])
                                 }
                             }
-                        } else {
-                            this.more.test = "没有更多了"
+                        } if (ajax.status > 400) {
+                            vm.more.text = "没有更多了"
+                            document.removeEventListener('mousewheel',vm.getMoreImgs)
                         }
                     }
                 }
