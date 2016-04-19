@@ -113,6 +113,7 @@ header .nav li:hover a {
   border: none;
   padding: 0.5em 3em;
   background-color: #e74f4d;
+  color: #fff;
 }
 #banner button:hover {
   background-color: #e9615f;
@@ -234,6 +235,7 @@ header .nav li:hover a {
 }
 #find-new-world button {
   width: 200px;
+  color: #fff;
   background-color: #e74f4d;
   letter-spacing: 16px;
   font-family: "Microsoft Yahei", sans-serif;
@@ -267,8 +269,10 @@ header .nav li:hover a {
 }
 #activities li:nth-of-type(2) h3 {
   text-align: justify;
+  text-justify: distribute-all-lines;
   text-align-last: justify;
   -moz-text-align-last: justify;
+  -webkit-text-align-last: justify;
   padding: 0 1em;
   font-weight: bold;
 }
@@ -407,6 +411,7 @@ header .nav li:hover a {
   background-color: #fff;
 }
 #new-times button {
+  color: #fff;
   padding: 1em 4em;
   border: 1px solid #fff;
   font-size: 120%;
@@ -531,13 +536,15 @@ footer i:nth-of-type(4) {
 footer [type='text'],
 footer button {
   border: none;
-  padding: 10px;
+  height: 36px;
+  line-height: 36px;
 }
 footer [type='text'] {
   width: 300px;
+  padding: 0 10px;
 }
 footer button {
-  padding: 9px 20px;
+  padding: 0 20px;
   background-color: #6f7278;
   vertical-align: bottom;
 }

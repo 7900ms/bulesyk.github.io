@@ -119,6 +119,7 @@ header {
         border none
         padding .5em 3em
         background-color hoverColor
+        color #fff
         &:hover {
             background-color lighten(hoverColor,10%)
         }
@@ -245,6 +246,7 @@ header {
     }
     button {
         width 200px
+        color #fff
         background-color hoverColor
         letter-spacing 16px
         &:hover {
@@ -280,9 +282,12 @@ header {
                 background-image url('./img/img_05.gif')
             }
             h3 {
+                // @字体两端对齐解决方案
                 text-align justify
+                text-justify:distribute-all-lines
                 text-align-last justify
                 -moz-text-align-last justify
+                -webkit-text-align-last:justify
                 padding 0 1em
                 font-weight bold
             }
@@ -433,6 +438,7 @@ header {
         }
     }
     button {
+        color #fff
         padding 1em 4em
         border 1px solid #fff
         font-size 120%
@@ -558,13 +564,15 @@ footer {
     }
     [type='text'],button {
         border none
-        padding 10px
+        height 36px
+        line-height 36px
     }
     [type='text'] {
         width 300px
+        padding 0 10px
     }
     button {
-        padding 9px 20px
+        padding 0 20px
         background-color #6f7278
         vertical-align bottom
         &:hover {
