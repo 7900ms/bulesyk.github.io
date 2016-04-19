@@ -10,6 +10,6 @@ input:focus,select:focus{outline:none;}
 a:focus,a:active{outline:none;}
 .clearfloat:after{content:'\0020';display:block;height:0;clear:both;}
 .clearfloat{*zoom:1;}
-.btn,button,[type='submit']{display:inline-block;border:1px solid #000;background:none;font-family:inherit;}
+.btn,button,[type='submit']{display:inline-block;border:1px solid #000;background:none;font-family:inherit;color:inherit;}
 button:focus{outline:none;}
 button:hover{cursor:pointer;background-color:#d5d5d5}

@@ -1,0 +1,417 @@
+a,
+body {
+  color: #83868d;
+}
+body {
+  background-color: #fff;
+  min-width: 1200px;
+}
+a:hover {
+  color: #e74f4d;
+}
+h1 {
+  font-weight: normal;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+header {
+  height: 60px;
+  line-height: 60px;
+}
+header .active {
+  border-bottom: 4px solid #e74f4d;
+}
+header .logo-wapper {
+  float: left;
+}
+header .logo-wapper:hover {
+  cursor: pointer;
+}
+header .login-wapper:hover {
+  cursor: pointer;
+}
+header .nav,
+header .login-wapper {
+  float: right;
+}
+header .nav li {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 2em;
+  height: 60px;
+}
+header .nav li:hover {
+  cursor: pointer;
+  border-bottom: 4px solid #e74f4d;
+}
+header .nav li:hover a {
+  color: #e74f4d;
+}
+#logo,
+#login {
+  vertical-align: middle;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url("./img/sprite.png");
+  background-position: 0 -92px;
+}
+#logo-text {
+  vertical-align: middle;
+  font-size: 20px;
+}
+#login {
+  width: 16px;
+  height: 18px;
+  background-position: 0 -246px;
+}
+#login-text {
+  vertical-align: middle;
+  color: #e74f4d;
+}
+#banner {
+  width: 100%;
+  height: 650px;
+  background: url("./img/banner.png") no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  color: #fff;
+  position: relative;
+}
+#banner .mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#banner .container {
+  position: absolute;
+  height: 30%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  z-index: 1;
+}
+#banner h1,
+#banner p {
+  margin: 20px 0;
+}
+#banner h1 {
+  font-size: 40px;
+}
+#banner p {
+  font-size: 18px;
+}
+#banner button {
+  font-size: 30px;
+  border: none;
+  padding: 0.5em 3em;
+  background-color: #e74f4d;
+}
+#banner button:hover {
+  background-color: #e9615f;
+}
+#introduction {
+  margin: 30px auto;
+}
+#introduction ul {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+#introduction li:nth-of-type(2n) {
+  width: 2px;
+  height: 50px;
+  background-color: #83868d;
+}
+#introduction li:nth-of-type(2n+1) {
+  width: 270px;
+  padding: 0 60px;
+  text-align: center;
+}
+#introduction li:nth-of-type(2n+1) i {
+  display: block;
+  margin: 30px auto;
+  height: 50px;
+  width: 50px;
+  background: url("./img/sprite.png");
+}
+#introduction li:nth-of-type(2n+1) p {
+  height: 50px;
+}
+#introduction li:nth-of-type(1) i {
+  background-position: 50px -50px;
+}
+#introduction li:nth-of-type(3) i {
+  background-position: 50px 0;
+}
+#introduction li:nth-of-type(5) i {
+  background-position: 50px -100px;
+}
+#introduction li:nth-of-type(7) i {
+  background-position: 50px -150px;
+}
+#do-not-know {
+  background-color: #ededed;
+  padding: 50px 0;
+  text-align: center;
+}
+#do-not-know i {
+  background: url("./img/sprite.png");
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  background-position: 0 0;
+  margin-bottom: 20px;
+}
+#do-not-know h1 {
+  font-size: 50px;
+}
+#find-new-world {
+  width: 100%;
+  height: 340px;
+  background: url("./img/map.png") no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding: 50px 0 100px 0;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  position: relative;
+}
+#find-new-world .mask {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(190,79,72,0.1);
+}
+#find-new-world .container {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+}
+#find-new-world h1 {
+  display: block;
+  margin: 10px auto;
+}
+#find-new-world h1:after {
+  content: '\0020';
+  display: block;
+  width: 20px;
+  height: 4px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+#find-new-world p {
+  margin-bottom: 50px;
+}
+#find-new-world select,
+#find-new-world button {
+  padding: 5px;
+  border: none;
+  margin: 0 10px;
+}
+#find-new-world select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #83868d;
+  background: #fff url("./img/sprite.png") 174px -265px no-repeat;
+  padding-right: 2em;
+}
+#find-new-world select::-ms-expand {
+  display: none;
+}
+#find-new-world button {
+  width: 200px;
+  background-color: #e74f4d;
+  letter-spacing: 16px;
+  font-family: "Microsoft Yahei", sans-serif;
+}
+#find-new-world button:hover {
+  background-color: #e9615f;
+}
+#activities {
+  background-color: #f7f7f7;
+  text-align: center;
+}
+#activities ul {
+  width: 970px;
+  height: 340px;
+  padding: 60px 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+#activities li div {
+  width: 220px;
+  height: 330px;
+  border: 1px solid rgba(115,115,115,0.3);
+  background: #fff center center no-repeat;
+}
+#activities li:nth-of-type(1) div {
+  background-image: url("./img/img_03.gif");
+}
+#activities li:nth-of-type(2) div {
+  background-image: url("./img/img_05.gif");
+}
+#activities li:nth-of-type(2) h3 {
+  text-align: justify;
+  text-align-last: justify;
+  -moz-text-align-last: justify;
+  padding: 0 1em;
+  font-weight: bold;
+}
+#activities li:nth-of-type(3) div {
+  background-image: url("./img/img_07.gif");
+}
+#activities li:nth-of-type(4) div {
+  background-image: url("./img/img_10.gif");
+}
+#activities h3 {
+  font-weight: normal;
+  color: #333;
+}
+#new-world {
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+#new-world .new-world-pic {
+  flex-shrink: 0;
+  color: #fff;
+  width: 850px;
+  height: 564px;
+  line-height: 564px;
+  background: url("./img/new-world.png") center no-repeat;
+}
+#new-world .new-world-pic .wapper {
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+#new-world .new-world-pic .wapper h1:nth-of-type(1) {
+  font-size: 50px;
+}
+#new-world .new-world-pic .wapper h1:nth-of-type(2) {
+  font-size: 120px;
+}
+#new-world .new-world-pic .wapper h3 {
+  line-height: normal;
+}
+#new-world .new-world-text {
+  width: 100%;
+  height: 564px;
+  line-height: 564px;
+}
+#new-world .new-world-text .wapper {
+  width: 285px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  margin: 0 auto;
+}
+#new-world .new-world-text h1 {
+  font-size: 30px;
+  color: #222;
+}
+#new-world .new-world-text h1 span {
+  color: #e74f4d;
+}
+#new-world .new-world-text p {
+  text-indent: 2em;
+  text-align: left;
+  margin: 30px 0;
+  line-height: 2;
+}
+#new-world .new-world-text button {
+  color: #e74f4d;
+  border: 1px solid #e74f4d;
+  padding: 1em 3em;
+  margin: 20px 0 30px 0;
+}
+#new-world .new-world-text button:hover {
+  background-color: #e74f4d;
+  color: #fff;
+}
+#new-world .new-world-text .spanholder span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+#new-world .new-world-text .spanholder span:first-of-type {
+  background-color: #ccc;
+}
+#new-world .new-world-text .spanholder span:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+#new-times {
+  width: 100%;
+  display: flex;
+  height: 520px;
+}
+#new-times div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#new-times div:nth-of-type(1) {
+  background-color: #e74f4d;
+  color: #fff;
+}
+#new-times div:nth-of-type(2) {
+  color: #000;
+}
+#new-times div:nth-of-type(2) h1:nth-of-type(2):after {
+  background-color: #000;
+}
+#new-times div:nth-of-type(2) button {
+  color: #e74f4d;
+  border-color: #e74f4d;
+}
+#new-times div:nth-of-type(2) button:hover {
+  background-color: #e74f4d;
+  color: #fff;
+}
+#new-times div:nth-of-type(3) {
+  width: 430px;
+  flex-shrink: 0;
+  background: url("./img/new-times.png") center no-repeat;
+}
+#new-times h1 {
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+#new-times h1:nth-of-type(2):after {
+  content: '\0020';
+  display: block;
+  margin: 20px auto;
+  height: 2px;
+  width: 30px;
+  background-color: #fff;
+}
+#new-times button {
+  padding: 1em 4em;
+  border: 1px solid #fff;
+  font-size: 120%;
+}
+#new-times button:hover {
+  background-color: #fff;
+  color: #e74f4d;
+}

@@ -1,0 +1,444 @@
+// 定义全局
+defaultColor = #83868d
+hoverColor = #e74f4d
+sprite = url('./img/sprite.png')
+// 全局属性
+a,body {
+    color defaultColor
+}
+body {
+    background-color #fff
+    min-width 1200px
+}
+a:hover {
+    color hoverColor
+}
+h1 {
+    font-weight normal
+}
+.container {
+    width 1200px
+    margin 0 auto
+}
+// 头部
+header {
+    height 60px
+    line-height 60px
+    .active {
+        border-bottom 4px solid hoverColor
+    }
+    .logo-wapper {
+        &:hover {
+            cursor pointer
+        }
+        float left
+    }
+    .login-wapper {
+        &:hover {
+            cursor pointer
+        }
+    }
+    .nav,.login-wapper {
+        float right
+    }
+    .nav {
+        li {
+            display inline-block
+            box-sizing border-box
+            margin 0 2em
+            height 60px
+            &:hover {
+                cursor pointer
+                border-bottom 4px solid hoverColor
+                a {
+                    color hoverColor
+                }
+            }
+        }
+    }
+}
+#logo,#login {
+    vertical-align middle
+    display inline-block
+    width 32px
+    height 32px
+    background-image sprite
+    background-position 0 -92px
+}
+#logo-text {
+    vertical-align middle
+    font-size 20px
+}
+#login {
+    width 16px
+    height 18px
+    background-position 0 -246px
+}
+#login-text {
+    vertical-align middle
+    color hoverColor
+}
+// banner
+#banner {
+    width 100%
+    height 650px
+    background url('./img/banner.png') no-repeat
+    background-size cover
+    overflow hidden
+    color #fff
+    position relative
+    .mask {
+        width 100%
+        height 100%
+        background-color rgba(0,0,0,.3)
+        position absolute
+        left 0
+        top 0
+    }
+    .container {
+        position absolute
+        height 30%
+        left 0
+        right 0
+        bottom 0
+        top 0
+        margin auto
+        z-index 1
+    }
+    h1,p {
+        margin: 20px 0
+    }
+    h1 {
+        font-size 40px
+    }
+    p {
+        font-size 18px
+    }
+    button {
+        font-size 30px
+        border none
+        padding .5em 3em
+        background-color hoverColor
+        &:hover {
+            background-color lighten(hoverColor,10%)
+        }
+    }
+}
+// introduction
+#introduction {
+    margin 30px auto
+    ul {
+        display flex
+        text-align center
+        justify-content: space-around
+        align-items flex-end
+    }
+    li {
+        &:nth-of-type(2n) {
+            width 2px
+            height 50px
+            background-color defaultColor
+        }
+        &:nth-of-type(2n+1) {
+            width 270px
+            padding 0 60px
+            text-align center
+            i {
+                display block
+                margin 30px auto
+                height 50px
+                width 50px
+                background sprite
+            }
+            p {
+                height 50px
+            }         
+        }
+        &:nth-of-type(1) i {
+            background-position 50px -50px
+        }
+        &:nth-of-type(3) i {
+            background-position 50px -0
+        }
+        &:nth-of-type(5) i {
+            background-position 50px -100px
+        }
+        &:nth-of-type(7) i {
+            background-position 50px -150px
+        }
+    }
+}
+// about-new-world
+// do-not-know
+#do-not-know {
+    background-color #ededed
+    padding 50px 0
+    text-align center
+    i {
+        background sprite
+        display inline-block
+        width 90px
+        height 90px
+        background-position 0 0
+        margin-bottom 20px
+    }
+    h1 {
+        font-size 50px
+    }
+}
+// find-new-world 
+#find-new-world {
+    width 100%
+    height 340px
+    background url('./img/map.png') no-repeat
+    background-size cover
+    text-align center
+    padding 50px 0 100px 0
+    color #fff
+    font-family Arial,sans-serif
+    box-sizing border-box
+    position relative
+    .mask {
+        position absolute
+        height 100%
+        width 100%
+        top 0
+        left 0
+        background-color rgba(190,79,72,.1)
+    }
+    .container {
+        position absolute
+        z-index 1
+        left 0
+        right 0
+    }
+    h1 {
+        display block
+        margin 10px auto
+        &:after {
+            content '\0020'
+            display block
+            width 20px
+            height 4px
+            background-color #fff
+            margin 0 auto
+        }
+    }
+    p {
+        margin-bottom 50px
+    }
+    select,button {
+        padding 5px
+        border none
+        margin 0 10px
+    }
+    select {
+        -webkit-appearance none
+        -moz-appearance none
+        appearance none
+        color defaultColor
+        &::-ms-expand {
+            display none
+        }
+        background #fff sprite 174px -265px no-repeat
+        padding-right 2em
+    }
+    button {
+        width 200px
+        background-color hoverColor
+        letter-spacing 16px
+        &:hover {
+            background-color lighten(hoverColor,10%)
+        }
+        font-family "Microsoft Yahei",sans-serif
+    }
+}
+// activities
+#activities {
+    background-color #f7f7f7
+    text-align center
+    ul {
+        width 970px
+        height 340px
+        padding 60px 0
+        margin 0 auto
+        display flex
+        justify-content space-between
+    }
+    li{
+        div {
+            width 220px
+            height 330px
+            border 1px solid rgba(115,115,115,.3)
+            background #fff center center no-repeat
+        }
+        &:nth-of-type(1) div {
+            background-image url('./img/img_03.gif')
+        }
+        &:nth-of-type(2) {
+            div {
+                background-image url('./img/img_05.gif')
+            }
+            h3 {
+                text-align justify
+                text-align-last justify
+                -moz-text-align-last justify
+                padding 0 1em
+                font-weight bold
+            }
+        }
+        &:nth-of-type(3) div {
+            background-image url('./img/img_07.gif')
+        }
+        &:nth-of-type(4) div {
+            background-image url('./img/img_10.gif')
+        }
+    }
+    h3 {
+        font-weight normal
+        color #333
+    }
+}
+// new-world
+#new-world {
+    width 100%
+    display flex
+    text-align center
+    .new-world-pic {
+        flex-shrink 0
+        color #fff
+        width 850px
+        height 564px
+        line-height 564px
+        background url('./img/new-world.png') center no-repeat
+        .wapper {
+            line-height 1
+            display inline-block
+            vertical-align middle
+            h1 {
+                &:nth-of-type(1) {
+                    font-size 50px
+                }
+                &:nth-of-type(2) {
+                    font-size 120px
+                }
+            }
+            h3 {
+                line-height normal
+            }
+        }
+    }
+    .new-world-text {
+        width 100%
+        height 564px
+        line-height 564px
+        .wapper {
+            width 285px
+            display inline-block
+            vertical-align middle
+            line-height normal
+            margin 0 auto
+        }
+        h1 {
+            font-size 30px
+            color #222
+            span {
+                color hoverColor
+            }
+        }
+        p {
+            text-indent 2em
+            text-align left
+            margin 30px 0
+            line-height 2
+        }
+        button {
+            color hoverColor
+            border 1px solid hoverColor
+            padding 1em 3em
+            margin 20px 0 30px 0
+            &:hover {
+                background-color hoverColor
+                color #fff
+            }
+        }
+        .spanholder {
+            span {
+                display inline-block
+                width 12px
+                height 12px
+                border-radius 50%
+                border 1px solid #ccc
+                &:first-of-type {
+                    background-color #ccc
+                }
+                &:hover {
+                    background-color #ccc
+                    cursor pointer
+                }
+            }
+        }
+    }
+}
+// new-times
+#new-times {
+    width 100%
+    display flex
+    height 520px
+    div {
+        height 100%
+        width 100%
+        display flex
+        flex-direction column
+        align-items center
+        justify-content center
+        &:nth-of-type(1) {
+            background-color hoverColor
+            color #fff
+        }
+        &:nth-of-type(2) {
+             color #000
+             h1:nth-of-type(2) {
+                 &:after {
+                     background-color #000
+                 }
+             }
+             button {
+                 color hoverColor
+                 border-color hoverColor
+                 &:hover {
+                     background-color hoverColor
+                     color #fff
+                 }
+             }
+        }
+        &:nth-of-type(3) {
+            width 430px
+            flex-shrink 0
+            background url('./img/new-times.png') center no-repeat
+        }
+    }
+    h1 {
+        font-size 20px
+        letter-spacing 4px
+        &:nth-of-type(2) {
+            &:after {
+                content '\0020'
+                display block
+                margin 20px auto
+                height 2px
+                width 30px
+                background-color #fff
+            }
+        }
+    }
+    button {
+        padding 1em 4em
+        border 1px solid #fff
+        font-size 120%
+        &:hover {
+            background-color #fff
+            color hoverColor
+        } 
+    }
+}
