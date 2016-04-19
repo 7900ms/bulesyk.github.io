@@ -55,7 +55,7 @@ header .nav li:hover a {
   display: inline-block;
   width: 32px;
   height: 32px;
-  background-image: url("./img/sprite.png");
+  background-image: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/sprite.png");
   background-position: 0 -92px;
 }
 #logo-text {
@@ -74,7 +74,7 @@ header .nav li:hover a {
 #banner {
   width: 100%;
   height: 650px;
-  background: url("./img/banner.png") no-repeat;
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/banner.png") no-repeat;
   background-size: cover;
   overflow: hidden;
   color: #fff;
@@ -142,7 +142,7 @@ header .nav li:hover a {
   margin: 30px auto;
   height: 50px;
   width: 50px;
-  background: url("./img/sprite.png");
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/sprite.png");
 }
 #introduction li:nth-of-type(2n+1) p {
   height: 50px;
@@ -165,7 +165,7 @@ header .nav li:hover a {
   text-align: center;
 }
 #do-not-know i {
-  background: url("./img/sprite.png");
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/sprite.png");
   display: inline-block;
   width: 90px;
   height: 90px;
@@ -178,7 +178,7 @@ header .nav li:hover a {
 #find-new-world {
   width: 100%;
   height: 340px;
-  background: url("./img/map.png") no-repeat;
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/map.png") no-repeat;
   background-size: cover;
   text-align: center;
   padding: 50px 0 100px 0;
@@ -227,7 +227,7 @@ header .nav li:hover a {
   -moz-appearance: none;
   appearance: none;
   color: #83868d;
-  background: #fff url("./img/sprite.png") 174px -265px no-repeat;
+  background: #fff url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/sprite.png") 174px -265px no-repeat;
   padding-right: 2em;
 }
 #find-new-world select::-ms-expand {
@@ -262,10 +262,10 @@ header .nav li:hover a {
   background: #fff center center no-repeat;
 }
 #activities li:nth-of-type(1) div {
-  background-image: url("./img/img_03.gif");
+  background-image: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/img_03.gif");
 }
 #activities li:nth-of-type(2) div {
-  background-image: url("./img/img_05.gif");
+  background-image: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/img_05.gif");
 }
 #activities li:nth-of-type(2) h3 {
   text-align: justify;
@@ -277,10 +277,10 @@ header .nav li:hover a {
   font-weight: bold;
 }
 #activities li:nth-of-type(3) div {
-  background-image: url("./img/img_07.gif");
+  background-image: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/img_07.gif");
 }
 #activities li:nth-of-type(4) div {
-  background-image: url("./img/img_10.gif");
+  background-image: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/img_10.gif");
 }
 #activities h3 {
   font-weight: normal;
@@ -297,7 +297,7 @@ header .nav li:hover a {
   width: 850px;
   height: 564px;
   line-height: 564px;
-  background: url("./img/new-world.png") center no-repeat;
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/new-world.png") center no-repeat;
 }
 #new-world .new-world-pic .wapper {
   line-height: 1;
@@ -396,7 +396,7 @@ header .nav li:hover a {
 #new-times div:nth-of-type(3) {
   width: 430px;
   flex-shrink: 0;
-  background: url("./img/new-times.png") center no-repeat;
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/new-times.png") center no-repeat;
 }
 #new-times h1 {
   font-size: 20px;
@@ -461,7 +461,7 @@ header .nav li:hover a {
   bottom: 0;
   right: 0;
   padding-left: 10px;
-  background: url("./img/bottom-arrow.png") 0% 55% no-repeat;
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/bottom-arrow.png") 0% 55% no-repeat;
 }
 .volunteer-agreement .agreement i:hover {
   color: #e74f4d;
@@ -516,7 +516,7 @@ footer i {
   display: inline-block;
   height: 32px;
   width: 32px;
-  background: url("./img/sprite.png");
+  background: url("http://7xs725.com1.z0.glb.clouddn.com/2016task/task-1-7/img/sprite.png");
 }
 footer i:hover {
   cursor: pointer;
