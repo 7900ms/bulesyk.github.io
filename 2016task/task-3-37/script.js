@@ -13,12 +13,29 @@ function Float(config) {
         no: document.createElement('button')
     }
     var elem = this
-    float.yes.addEventListener('click',function (e) {
+    float.wapper.addEventListener('mousedown', function (e) {
+        if (e.target !==float.title) return;
+        this.style.top = this.offsetTop + 'px'
+        this.style.left = this.offsetLeft + 'px'
+        this.style.position = 'absolute'
+        var elem = this,
+            top = e.clientY - this.offsetTop,
+            left = e.clientX - this.offsetLeft
+        this.move = function (e) {
+            elem.style.top = e.clientY - top + 'px'
+            elem.style.left = e.clientX - left + 'px'
+        }
+        float.container.addEventListener('mousemove',this.move)
+    })
+    float.wapper.addEventListener('mouseup', function (e) {
+        float.container.removeEventListener('mousemove',this.move)
+    })
+    float.yes.addEventListener('click', function (e) {
         elem.value = true
         elem.hide()
         config.methods.yes.call(elem.container)
     })
-    float.no.addEventListener('click',function (e) {
+    float.no.addEventListener('click', function (e) {
         elem.value = false
         elem.hide()
         config.methods.no.call(elem.container)
@@ -40,17 +57,13 @@ Float.prototype = {
     display: function () {
         this.container.classList.remove('hide')
         var elem = this
-        document.addEventListener('click',function (e) {
+        document.addEventListener('mousedown', function (e) {
             if (!elem.wapper.contains(e.target)) {
                 elem.hide()
             }
         })
-        document.onmousewheel = function (e) {
-            e.preventDefault()
-        }
     },
     hide: function () {
         this.container.classList.add('hide')
-        document.onmousewheel = null
     }
 }
