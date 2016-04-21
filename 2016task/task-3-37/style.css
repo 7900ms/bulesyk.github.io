@@ -1,0 +1,24 @@
+#test {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .3);
+    text-align: center;
+}
+#test div {
+    text-align: right;
+    line-height: normal;
+    vertical-align: middle;
+    display: inline-block;
+    width: 300px;
+    border: 1px solid #ccc;
+}
+#test h1,p {
+    text-align: left;
+}
+.hide {
+    display: none
+}
+body {
+    height: 1000px;
+}

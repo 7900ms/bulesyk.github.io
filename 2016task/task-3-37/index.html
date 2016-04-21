@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../tool/reset.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <script src="./script.js"></script>
+    <script>
+        var float = new Float({
+            id: 'test',
+            title: 'title',
+            content: '你说对不对?',
+            yes: '正确',
+            no: '错误',
+            methods: {
+                yes:function(){
+                    console.log('正确')
+                },
+                no:function(){
+                    console.log('错误')
+                }
+            }
+        })
+        document.body.appendChild(float.container)
+        float.display()
+    </script>
+</body>
+</html>
