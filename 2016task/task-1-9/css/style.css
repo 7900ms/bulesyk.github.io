@@ -468,7 +468,6 @@ article>.container {
     margin: 20px 0;
     color: #444;
 }
-.projects .items {}
 .projects .items:hover .handle, .projects .active .handle {
     border: 1px solid #ccc;
     border-bottom: 1px solid #fff;

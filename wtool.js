@@ -50,7 +50,7 @@ WTool.addPrototype = function (prototype) {
 WTool.addPrototype({
     /**
      * @param  {string} selector CSS选择器
-     * @return {obj} WTool对象
+     * @return {obj} tool WTool对象
      */
     w: function (selector) {
         var tool = new WTool()
@@ -115,7 +115,7 @@ WTool.addPrototype({
 var w = (function () {
     /**
      * @param  {dom/string} selector DOM元素或者CSS选择器
-     * @return {obj} WTool对象
+     * @return {obj} tool WTool对象
      */
     return function (selector) {
         var tool = new WTool()

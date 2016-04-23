@@ -1,5 +1,21 @@
 /**
  * @param  {obj} config
+ * @config {
+            id: 'test',
+            title: '这是一个测试',
+            content: '这是测试的内容吗?',
+            yes: '正确',
+            no: '错误',
+            methods: {
+                yes:function(){
+                    alert('正确')
+                },
+                no:function(){
+                    alert('错误')
+                }
+            }
+        }
+ * @generate {obj}
  */
 function Float(config) {
     var vpWidth = window.innerWidth,
@@ -14,7 +30,7 @@ function Float(config) {
     }
     var elem = this
     float.wapper.addEventListener('mousedown', function (e) {
-        if (e.target !==float.title) return;
+        if (e.target !== float.title) return;
         this.style.top = this.offsetTop + 'px'
         this.style.left = this.offsetLeft + 'px'
         this.style.position = 'absolute'
@@ -25,10 +41,10 @@ function Float(config) {
             elem.style.top = e.clientY - top + 'px'
             elem.style.left = e.clientX - left + 'px'
         }
-        float.container.addEventListener('mousemove',this.move)
+        float.container.addEventListener('mousemove', this.move)
     })
     float.wapper.addEventListener('mouseup', function (e) {
-        float.container.removeEventListener('mousemove',this.move)
+        float.container.removeEventListener('mousemove', this.move)
     })
     float.yes.addEventListener('click', function (e) {
         elem.value = true

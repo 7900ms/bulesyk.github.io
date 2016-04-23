@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UI组件之排序表格</title>
+    <link rel="stylesheet" href="../../tool/reset.css">
+    <script src="../../wtool.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script src="./script.js"></script>
+    <script>
+        var th = ['姓名','语文','数学','英语','总分']
+        var content = {
+            小明:[80,90,70,240],
+            小龙:[90,60,90,230],
+            小黑:[30,10],
+            小黄:[90,20,10,340]
+        }
+        var table = new Sort(th,content)
+        document.body.appendChild(table.container)
+        console.log(table.getColumn.call(table.container,4))
+    </script>
+</body>
+
+</html>
