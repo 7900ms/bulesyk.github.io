@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./wtool.js"></script>
+    <style>
+        div {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #000;
+            background-color: #fff;
+            margin: 5px 0;
+            position: relative;
+            padding: 5px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px;
+        }
+        
+        div:hover {
+            cursor: pointer;
+        }
+        
+        .container-1 {
+            margin-bottom: 20px;
+        }
+        
+        .container-2,
+        .container-4,
+        .container-8 {
+            margin-left: 5%;
+        }
+        
+        .clicked {
+            background-color: #0f0;
+        }
+        
+        div span {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background-color: #00f;
+            color: #fff;
+            padding: 2px;
+        }
+        
+        div .handle-hide {
+            background-color: #f00;
+        }
+        
+        div .handle-hide:hover {
+            background-color: #00f;
+        }
+        
+        div span:hover {
+            background-color: #f00;
+        }
+        
+        div .hide {
+            display: none;
+        }
+        
+        div .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-1">
+        Apple
+        <span class="handle">展开</span>
+        <div class="container-2">
+            Lumia
+            <span class="handle">展开</span>
+            <div class="container-4">
+                Blackbarry
+                <span class="handle">展开</span>
+                <div class="container-8">
+                    Xiaomi
+                </div>
+            </div>
+            <div class="container-4">
+                Samsung
+                <span class="handle">展开</span>
+                <div class="container-8">
+                    Meizu
+                </div>
+                <div class="container-8">
+                    Huawei
+                </div>
+            </div>
+            <div class="container-4">
+                Oppo
+                <span class="handle">展开</span>
+                <div class="container-8">
+                    Vivo
+                </div>
+            </div>
+        </div>
+        <div class="container-2">
+            Microsoft
+            <span class="handle">展开</span>
+            <div class="container-4">
+                Metal
+                <span class="handle">展开</span>
+                <div class="container-8">
+                    IBM
+                </div>
+                <div class="container-8">
+                    Andriod
+                </div>
+                <div class="container-8">
+                    Google
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var container = document.querySelectorAll('div div')
+        console.log(container)
+        console.log(w('div').w('div'))
+    </script>
+</body>
+
+</html>
