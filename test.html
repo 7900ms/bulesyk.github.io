@@ -118,9 +118,9 @@
         </div>
     </div>
     <script>
-        var container = document.querySelectorAll('div div')
-        console.log(container)
-        console.log(w('div').w('div'))
+        document.onreadystatechange = function(){
+            console.log(document.readyState)
+        }
     </script>
 </body>
 
