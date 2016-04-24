@@ -1,4 +1,7 @@
 /**
+ * 
+ */
+/**
  * Author:bulesyk
  */
 function WTool() {
@@ -11,7 +14,7 @@ function WTool() {
                 return this[0].id
             },
             set: function (params) {
-                this.uniqActive.call(this, 'id', params)
+                this._uniqActive.call(this, 'id', params)
             }
         },
         'className': {
@@ -19,7 +22,7 @@ function WTool() {
                 return this[0].className
             },
             set: function (params) {
-                this.uniqActive.call(this, 'className', params)
+                this._uniqActive.call(this, 'className', params)
             }
         },
         'innerHTML': {
@@ -27,7 +30,7 @@ function WTool() {
                 return this[0].innerHTML
             },
             set: function (params) {
-                this.uniqActive.call(this, 'innerHTML', params)
+                this._uniqActive.call(this, 'innerHTML', params)
             }
         }
     })
@@ -39,7 +42,7 @@ WTool.prototype = new Array()
 /**
  * @param  {obj} 要添加的prototype
  */
-WTool.addPrototype = function (prototype) {
+WTool._addPrototype = function (prototype) {
     for (var key in prototype) {
         this.prototype[key] = prototype[key]
     }
@@ -47,7 +50,7 @@ WTool.addPrototype = function (prototype) {
 /**
  * 添加部分封装函数到原型
  */
-WTool.addPrototype({
+WTool._addPrototype({
     /**
      * @param  {string} selector CSS选择器
      * @return {obj} tool WTool对象
@@ -87,7 +90,7 @@ WTool.addPrototype({
      * @param  {string} name 重复动作的名称
      * @param  {string/array} content 输入的值
      */
-    uniqActive: function (name, content) {
+    _uniqActive: function (name, content) {
         if (typeof content === 'string') {
             this[0][name] = content
         } else if (Object.prototype.toString.call(content) === '[object Array]') {
@@ -104,12 +107,90 @@ WTool.addPrototype({
      * 文档结构加载完毕后执行函数
      * @param  {function} fn 文档加载后执行的函数
      */
-    ready:function (fn) {
+    ready: function (fn) {
         document.onreadystatechange = function () {
             if (document.readyState === 'interactive') {
                 fn.call(document)
             }
         }
+    }
+})
+/**
+ * hasClass,addClass,removeClass,toggleClass的封装
+ */
+WTool._addPrototype({
+    /**
+     * @param  {string} className 要判断的类名
+     * @return {boolean} result true/false
+     */
+    hasClass: function (className) {
+        if (typeof className !== 'string') return
+        var len = this.length,
+            result = false
+        while (len--) {
+            var classNames = this[len].className.replace(/^\s+|\s+$/g, '').split(/\s+/)
+            var count = classNames.length
+            while(count--) {
+                if (className === classNames[count]) {
+                    result = true
+                }
+            }
+        }
+        return result
+    },
+    /**
+     * @param  {string} className 要添加的类名
+     * @return {obj} this 添加后的对象
+     */
+    addClass: function (className) {
+        if (typeof className !== 'string') return
+        var len = this.length
+        while (len--) {
+            if (!w(this[len]).hasClass(className)) {
+                if (!this[len].className) {
+                    this[len].className = className
+                } else {
+                    this[len].className = this[len].className.replace(/^\s+|\s+$/g, '') + ' ' + className
+                }
+            }
+        }
+        return this
+    },
+    /**
+     * @param  {string} className 要删除的类名
+     * @return {obj} this 删除后的对象
+     */
+    removeClass: function (className) {
+        if (typeof className !== 'string') return
+        var len = this.length
+        while (len--) {
+            if (w(this[len]).hasClass(className)) {
+                var classNames = this[len].className.replace(/^\s+|\s+$/g, '').split(/\s+/)
+                classNames.forEach(function (value, index, list) {
+                    if (value === className) {
+                        list.splice(index, 1)
+                    }
+                })
+                this[len].className = classNames.join(' ')
+            }
+        }
+        return this
+    },
+    /**
+     * @param  {string} className 要添加/删除的类名
+     * @return {obj} this 添加/删除后的对象
+     */
+    toggleClass: function (className) {
+        if (typeof className !== 'string') return
+        var len = this.length
+        while (len--) {
+            if (w(this[len]).hasClass(className)) {
+                w(this[len]).removeClass(className)
+            } else {
+                w(this[len]).addClass(className)
+            }
+        }
+        return this
     }
 })
 var w = (function () {
@@ -119,7 +200,7 @@ var w = (function () {
      */
     return function (selector) {
         var tool = new WTool()
-        if (!selector) return tool;
+        if (!selector) return tool
         if (typeof selector !== 'string') {
             for (var i = 0, len = arguments.length; i < len; i++) {
                 tool.push(arguments[i])

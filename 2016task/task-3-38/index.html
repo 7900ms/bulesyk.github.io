@@ -7,11 +7,45 @@
     <link rel="stylesheet" href="../../tool/reset.css">
     <script src="../../wtool.js"></script>
     <style>
-
+        #test {
+            margin: 0 auto;
+        }
+        #test td,#test th {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 5px 50px;
+        }
+        #test th {
+            background-color: #444;
+            color: #fff;
+            position: relative;
+        }
+        #test i {
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            color: #fff;
+        }
+        #test .top-btn {
+            border-bottom-color: currentColor;
+            top: 3px;
+        }
+        #test .bottom-btn {
+            border-top-color: currentColor;
+            bottom: 3px;
+        }
+        #test .active {
+            color: #000;
+        }
     </style>
 </head>
 
 <body>
+    <div></div>
     <script src="./script.js"></script>
     <script>
         var th = ['姓名','语文','数学','英语','总分']
@@ -21,9 +55,12 @@
             小黑:[30,10],
             小黄:[90,20,10,340]
         }
-        var table = new Sort(th,content)
+        var config = {
+            sortFnTop:'',
+            sortFnBottom:''
+        }
+        var table = new Sort('test',th,content,config)
         document.body.appendChild(table.container)
-        console.log(table.getColumn.call(table.container,4))
     </script>
 </body>
 
