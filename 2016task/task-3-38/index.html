@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../../tool/reset.css">
     <script src="../../wtool.js"></script>
     <style>
+        body {
+            height: 1000px;
+        }
         #test {
             margin: 0 auto;
         }
@@ -53,9 +56,16 @@
             小明:[80,90,70,240],
             小龙:[90,60,90,230],
             小黑:[30,10],
-            小黄:[90,20,10,340]
+            小黄:[90,20,10,340],
+            小绿:[100,20,30,400],
+            小飞:[20,99,20,135],
+            小华:[50,30,21,500],
+            小红:[40,20,191,300],
+            小绿:[80,42,131,200]
         }
-        var config = null
+        var config = {
+            
+        }
         var table = new Sort('test',th,content,config)
         document.body.appendChild(table.container)
     </script>

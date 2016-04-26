@@ -118,7 +118,10 @@
         </div>
     </div>
     <script>
-        
+        function fn(e){
+            console.log(this,e)
+        }
+        w('.container-1').delegateEvent('span','click',fn)
     </script>
 </body>
 

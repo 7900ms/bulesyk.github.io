@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>歌剧网站</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="./js/wtool.js"></script>
+    <script language="javascript" src="./js/jquery.min.js"></script>
+    <script language="javascript" src="js/html5.js"></script>
+    <script type="text/javascript" language="javascript" src="js/swfobject.js"></script>
+    <style>
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+    <script type="text/javascript">
+        function MM_CheckFlashVersion(reqVerStr, msg) {
+            with(navigator) {
+                var isIE = (appVersion.indexOf("MSIE") != -1 && userAgent.indexOf("Opera") == -1);
+                var isWin = (appVersion.toLowerCase().indexOf("win") != -1);
+                if (!isIE || !isWin) {
+                    var flashVer = -1;
+                    if (plugins && plugins.length > 0) {
+                        var desc = plugins["Shockwave Flash"] ? plugins["Shockwave Flash"].description : "";
+                        desc = plugins["Shockwave Flash 2.0"] ? plugins["Shockwave Flash 2.0"].description : desc;
+                        if (desc == "") flashVer = -1;
+                        else {
+                            var descArr = desc.split(" ");
+                            var tempArrMajor = descArr[2].split(".");
+                            var verMajor = tempArrMajor[0];
+                            var tempArrMinor = (descArr[3] != "") ? descArr[3].split("r") : descArr[4].split("r");
+                            var verMinor = (tempArrMinor[1] > 0) ? tempArrMinor[1] : 0;
+                            flashVer = parseFloat(verMajor + "." + verMinor);
+                        }
+                    }
+                    // WebTV has Flash Player 4 or lower -- too low for video
+                    else if (userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 4.0;
+
+                    var verArr = reqVerStr.split(",");
+                    var reqVer = parseFloat(verArr[0] + "." + verArr[2]);
+
+                    if (flashVer < reqVer) {
+                        if (confirm(msg))
+                            window.location = "http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash";
+                    }
+                }
+            }
+        }
+        swfobject.embedSWF("media/yinyue.swf", "myMovie", "28", "24", "9.0.0", null, null, {
+            wmode: "transparent"
+        });
+    </script>
+</head>
+
+<body>
+    <div id="banner">
+        <div id="header">
+
+
+            <div class="container clearfloat">
+                <a href="#" class="logo"><img src="./img/logo.png" alt="LOGO"></a>
+                <div class="nav">
+                    <ul>
+                        <li><a href="#banner" class='scroll'>首页</a></li>
+                        <li><a href="#feature" class='scroll'>剧目剧情</a></li>
+                        <li><a href="#people" class='scroll'>主创主演</a></li>
+                        <li><a href="#works" class='scroll'>作品解析</a></li>
+                        <li><a href="#make" class='scroll'>制作亮点</a></li>
+                        <li><a href="#audio" class='scroll'>媒体之声</a></li>
+                    </ul>
+                    <div class="bg_music2">
+                        <p>
+                            <span id="myMovie"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span style='position:absolute;width:100%;text-align:center;top:245px'>
+			<img src='img/font.png' class='titleCss' style='margin:auto;'>
+		</span>
+
+        <div class="banner titleCss">
+            <a href="javascript:alertWin('jiajDiv16');" class="a_video">视频推介</a>
+            <button id='dingpiaoBtn'>立即订票</button>
+        </div>
+        <div class="banner2"></div>
+        <div class="feature">
+            <a id="feature" class="title-a">剧目剧情</a>
+            <div class="button-wapper">
+                <button class="first active">演出介绍</button>
+                <button class="last">分幕剧情</button>
+            </div>
+            <p class='yanchuInfo' >德沃夏克的歌剧《水仙女(RUSALKA)》是捷克民族歌剧的代表作。脚本由捷克著名诗人和戏剧家杰罗斯拉夫·克伐比尔根据捷克人鱼神话所作。其故事情节与人们所熟知的安徒生童话《海的女儿》相近。1901年3月31日，该剧在布拉格首演，获巨大成功，迅速传播到国外，是迄今最成功的捷克语歌剧。作为在中国上演的第一部捷克语歌剧，本剧将让中国观众第一次现场感受这一语言、声调和音乐相结合后产生的独特魅力。</p>
+            <p class='yanchuInfo'>国家大剧院在制作上秉承一贯的风格，集合最富有艺术想象力和制作实力的一流主创阵容——国际著名导演，乌戈·德·安纳及其团队，打造出独具匠心的《水仙女》。乌戈·德·安纳集导演、舞美、服装设计于一身。他的舞台视觉呈现以整体性和震撼感一向令人称绝。此次他更是将童话的故事氛围发挥到极致，独具匠心的将艺术和技术结合，呈现给现场观众一个美轮美奂的海底梦境。</p>
+            <h3 class='jumuInfo' style='display:none'>第一幕</h3>
+            <p class='jumuInfo' style='display:none;text-indent: 0em;'>
+                森林深处的湖畔，三位精灵优美的歌声将老水仙吸引了过来。当精灵们离去后，水仙女卢莎卡向父亲老水仙倾述她的心事，诉说她爱上了来湖边打猎的英俊青年王子。她渴求能够变成凡人，与王子长相厮守，享受爱情的幸福。忧心忡忡的老水仙告诫她与人类相爱的结局会很悲惨。但卢莎卡心意已决，老水仙只好让她去找女巫洁西巴巴。 洁西巴巴用魔法使卢莎卡拥有了人的形象，但不再能开口说话，而且，倘若王子对她不忠，不仅不能回到水底故乡，还将与王子一起受到诅咒。被爱情冲昏了头脑的卢莎卡接受了洁西巴巴的所有要求。 卢莎卡从洁西巴巴那里出来，已经变成一个亭亭玉立的女子。同时，一种神奇的力量，将王子吸引到湖畔。王子对美貌的卢莎卡果然一见钟情，而老水仙与水精灵们却惊恐万分。王子欣喜若狂地将卢莎卡带回城堡。
+            </p>
+            <h3 class='jumuInfo' style='-100px;display:none'>第二幕</h3>
+            <p class='jumuInfo' style='display:none;'>
+                城堡中，宾客云集，他们都是应邀前来参加王子与卢莎卡婚礼的。猎人与厨师对这位神秘新娘的出现感到奇怪，怀疑有魔法作祟。而卢莎卡的冷淡与沉默也让王子十分苦恼，担心他们婚后是否能够幸福。此时，来做客的外国公主从旁经过，王子让卢莎卡去宫中换衣服参加舞会，自己却与公主热情地跳起舞来。 看到此景，卢莎卡十分伤心。此时，老水仙从湖中浮出水面。当他发觉王子遗弃卢莎卡，而移情别恋于外国公主时，十分气愤，并宣告王子未来的黑暗命运。王子对老水仙的愤怒十分惧怕，央求外国公主解除他身上的魔咒。公主见到王子如此怯懦，无情、傲慢地离去。
+            </p>
+            <h3 class='jumuInfo' style='display:none'>第三幕</h3>
+            <p class='jumuInfo' style='display:none;text-indent: 0em;'>
+                回到湖畔的卢莎卡因王子的不忠而受到诅咒。洁西巴巴对她说，如今只有背叛她的王子的鲜血才能够救她，这使得卢莎卡痛苦万分，因为她依然深爱着王子。 猎人与厨师请求洁西巴巴帮助受到惊吓的王子，却因老水仙的出现吓得落荒而逃。王子重返湖畔寻找卢莎卡，请求卢莎卡原谅他的不忠并拥抱他。卢莎卡暗示王子，“虽然只是我的一个小小的拥抱，你将没有回头的路”。最终，王子紧紧抱住了卢莎卡，并与卢莎卡深情一吻，双双沉入湖底。
+            </p>
+        </div>
+    </div>
+    <div id="article">
+        <div class="people">
+            <a href="#people" id="people" class="title-a">主创主演</a>
+            <ul class="first clearfloat">
+                <a href='http://ticket.chncpa.org/product-1010629.html'>
+                    <li class="one"></li>
+                </a>
+                <li class="two"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="three"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="four"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+            </ul>
+            <ul class="second clearfloat">
+                <li class="one"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="two"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="three"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="four"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+            </ul>
+            <ul class="third clearfloat">
+                <li class="one"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="two"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="three"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="four"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+            </ul>
+            <ul class="fourth clearfloat">
+                <li class="one"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="two"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="three"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+            </ul>
+            <ul class="fifth clearfloat">
+                <li class="one"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="two"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="three"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+            </ul>
+            <ul class="sixth clearfloat">
+                <li class="one"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="two"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="three"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+                <li class="four"><em class="hide">阿蕾桑德拉·潘泽<br>沃尔塔 编舞</em></li>
+            </ul>
+            <i class="left"><em>谁谁<br>谁谁</em></i>
+            <a href='http://ticket.chncpa.org/product-1010629.html'><i class="right"></i></a>
+        </div>
+        <div class="works">
+            <a href="#works" id="works" class="title-a">作品解析</a>
+            <h3 style='    margin-top: -100px;'>家大剧院制作首部捷克民族乐派歌剧国</h3>
+            <p>随着19世纪，欧洲民族民主运动的高涨，长期受奥地利哈布斯堡王朝奴役和统治的捷克民族，掀起了争取民族独立、复兴民族文化的运动。在此背景下，以斯美塔那和德沃夏克为代表的捷克民族乐派诞生，并体现出鲜明的民族主义倾向，使得捷克音乐得到了前所未有的发展。</p>
+            <p>在歌剧领域，斯美塔那的歌剧，选材自捷克的民间传说和生活，采用民族的语言，并灵活运用了波西米亚的民族民间音乐。这其中，《被出卖的新嫁娘》富有浓郁的乡土气息，是世界许多重要歌剧院保留上演的剧目。继斯美塔那之后的作曲家德沃夏克，同样也是一位在歌剧领域取得高度成就的作曲家。其中，《水仙女》是捷克民族乐派歌剧中最重要的作品，既汲取了同时期，欧洲歌剧作曲家的写作经验，同时，又融入了波西米亚的旋律和风格。而感人的神话故事、动听的音乐，使其超越国界，成为德沃夏克歌剧中流传于世界的巅峰之作，久演不衰。</p>
+            <p>此次推出的《水仙女》，是国家大剧院制作的首部捷克民族乐派歌剧，也是大剧院制作的首部用捷克语演唱的歌剧，希望能够让中国观众第一次在现场感受这一语言、声调和音乐相结合后产生的独特魅力。</p>
+            <h3>“月亮颂”抒情浪漫流传百年</h3>
+            <div>
+                <div class="inner">
+                    天上的月儿<br> 你的光芒照耀远方
+                    <br> 你游走整个世界
+                </div>
+                <img src="./img/text-con.png" alt="">
+                <div class="inner">
+                    看到人类的住所<br> 月儿，再停留一会儿
+                    <br> 告诉我，我的爱人在哪儿？
+                </div>
+                <img src="./img/text-con.png" alt="">
+                <div class="inner">
+                    告诉他，银色的月儿<br> 我的双臂拥着他
+                    <br> 我希望，至少有这么一刻
+                </div>
+                <img src="./img/text-con.png" alt="">
+                <div class="inner">
+                    他会梦见我<br> 光照着他，无论他在何方
+                    <br> 告诉他，有个人在这里等待着他
+                    <br>
+                </div>
+            </div>
+            <p>月夜，水仙女卢莎卡面对月亮倾吐对王子的思慕，唱起这段咏叹调。该曲以丰富的色彩、多变的和声与节奏、舒展优美的旋律，充分表现了水仙女的情感与大自然的美景，充满诗意，是歌剧中最为动人的咏叹调之一，也是女高音歌唱家挚爱的经典，更是这部陌生歌剧中最为著名、最被人熟知的咏叹调。</p>
+            <p>此外，在音乐上，这部歌剧一方面吸收了瓦格纳、韦伯等作曲家歌剧写作手法，同时，有机融合民族音乐特色。在第二幕中，各国贵宾前来参加水仙女与王子的婚礼，还运用了源自于波兰的波罗乃兹舞曲。整部歌剧充满了高雅温柔的旋律，色彩丰富且美妙的配器，并对人物性格、自然景色都做了丰富的描写。</p>
+            <h3>“海的女儿”的故事</h3>
+            <div>在西方文化中，从古希腊的《荷马史诗》中，就有关于水中精灵的传说：</div>
+            <p>塞壬的歌声，优美的旋律，会把他引入迷津。她们坐栖草地，四周堆满白骨，死烂的人们，挂着皱缩的皮肤。你必须驱船一驶而过，烘暖蜜甜的蜂蜡，塞住伙伴们的耳朵，使他们听不见歌唱；但是，倘若你自己心想聆听，那就让他们捆住你的手脚，在迅捷的海船，贴站桅杆之上，绳端将杆身紧紧围圈，使你能欣赏塞壬的歌声——然而，当你恳求伙伴，央求为你松绑，他们要拿出更多的绳条，把你捆得更严。此后，水中精灵、人鱼的故事，也是海涅、歌德、王尔德等文豪经常涉猎的题目。</p>
+            <p>安徒生笔下的《海的女儿》同样写的是人鱼的故事，而且，《海的女儿》原始形象，正是来源于斯拉夫民族“水仙女”的民间故事。在最初的故事中，水仙女是以不洁方式夭亡的女人或孩子,而她们甚至也有借助迷人容貌和美妙歌声诱人入水，以谋取他们的性命，发泄自己的怨气。 歌剧《水仙女》的故事，由脚本作者杰罗斯拉夫·克伐比尔根据莫特·富凯的小说《昂丁》（徐志摩译作《涡提孩》于1923年5月商务印书馆出版，其目的是借他人之笔，写了他自己和林徽因的一段宿缘）创作而成，同时也参照了《海的女儿》的情节。《昂丁》讲述的是一个生来没有灵魂的小水妖昂丁，只有与凡人真心相爱结成婚姻，才能获得不朽的灵魂。她与人间的骑士相爱，但又为情所困，最后化为泉水环绕爱人坟边的故事。
+            </p>
+            <p>而在歌剧《水仙女》中，水仙女为水中的精灵、湖王的女儿。她美丽、纯洁、善良，对爱执着、勇敢，不惜付出巨大的代价、不畏惧“仙界”的警告，毅然投身王子的怀抱。但是，人类与非人类的恋情最终是悲情的——王子在婚礼前夕移情异国公主、使得水仙女变成湖中死神，想要得到解救需要背叛她的王子的鲜血，最终回心转意的王子与水仙女消失于湖水之中的凄绝的爱情故事。</p>
+            <div>在捷克民族乐派音乐中，除了德沃夏克《水仙女》，在斯美塔那的《沃尔塔瓦河》中，也有对于水仙女的唯美描写。</div>
+            <h3>德沃夏克与《水仙女》的创作</h3>
+            <p>“念故乡，念故乡，故乡真可爱……”德沃夏克，是北欧民族乐派中被人熟知的作曲家。特别是他的第九号“自新大陆”交响曲，是许多观众熟悉的经典。《幽默曲》、弦乐四重奏“美国”、B小调小提琴协奏曲、《斯拉夫舞曲》等也极为脍炙人口。</p>
+            <p>而在器乐作品之外，德沃夏克非常爱好歌剧的创作。他共创作了10部歌剧。其中，1900年创作完成的《水仙女》是他创作的倒数第二部歌剧。这部歌剧在距离布拉格西南60公里外的一个叫维索卡的小村子创作完成。在这个村子大片树林中，有一个称之为卢莎卡的小湖。浓郁的大森林、起伏的山峦，成为德沃夏克灵感的来源。这样的创作环境，使得德沃夏克的音乐“极富联想地表现出波浪的起伏和反映在这小小湖面上的月光，从而使仙女童话的梦境具有极强的魅力”。</p>
+            <h3>精彩音乐赏析</h3>
+            <div class="music clearfloat">
+                <ul class="left">
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >月亮颂</a></li>
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >您远古的智慧洞察一切</a></li>
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >咒语之歌</a></li>
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >神圣的幻想</a></li>
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >可怜的水仙女</a></li>
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >难以捉摸的水之神力</a></li>
+                    <li><span style='display:block;height:40px'><span><img class='hideCssPause ' src='img/pauseBtn.png'><img class='hideCssPlay ' src='img/playBtn.png'><a >终场的二重唱</a></li>
+                </ul>
+                <p id='musicText'>《水仙女》（Rusalka）是最经常上演的捷克歌剧，《月亮颂》是歌剧历史上最美妙动人的咏叹调之一，是所有女高音歌唱家的挚爱。1901年，功成名就的德沃夏克从美国回到捷克后创作了捷克民族歌剧中最璀璨的明珠《水仙女》，在这部爱情悲剧的第一幕里，水仙女爱上了人间漂亮英俊的王子，返回水中后在静静的月夜，水仙女独自唱起这首《月亮颂》。德沃夏克在这首咏叹调中，并没有刻意表达悲哀的情绪，而是描写了一种深切绵远的感怀，借对月亮的歌颂，表现了女主角对爱情的渴望。悲剧性的水仙女的主题也贯穿了歌剧的始终，悠长的旋律线条和情感投入对女高音的要求较高。</p>
+            </div>
+        </div>
+        <div class="make">
+            <a href="#make" id="make" class="title-a">制作亮点</a>
+            <div style='position:relative;top:-100px'>
+                <button class="first">导演阐述</button>
+                <button class="last active ">舞美服装</button>
+            </div>
+			<p id='daoyanshanshu' style='display:none;width: 1100px;margin:0px auto;    border: 2px solid rgba(225, 225, 225, 0.5);padding:40px'>倒仰1111111111111111111111111《水仙女》（Rusalka）是最经常上演的捷克歌剧，《月亮颂》是歌剧历史上最美妙动人的咏叹调之一，是所有女高音歌唱家的挚爱。1901年，功成名就的德沃夏克从美国回到捷克后创作了捷克民族歌剧中最璀璨的明珠《水仙女》，在这部爱情悲剧的第一幕里，水仙女爱上了人间漂亮英俊的王子，返回水中后在静静的月夜，水仙女独自唱起这首《月亮颂》。德沃夏克在这首咏叹调中，并没有刻意表达悲哀的情绪，而是描写了一种深切绵远的感怀，借对月亮的歌颂，表现了女主角对爱情的渴望。悲剧性的水仙女的主题也贯穿了歌剧的始终，悠长的旋律线条和情感投入对女高音的要求较高。<p>
+            <div id='wumeifuzhuang' class="swiper-container swiper-container-horizontal swiper-container-3d swiper-container-coverflow" style="cursor: -webkit-grab;">
+				<div class="swiper-wrapper" style="transform: translate3d(533px, 0px, 0px); transition-duration: 0ms;">
+					<div class="swiper-slide " style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; background-image: url(img/bottom-bg.png);"><div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div></div>
+					<div class="swiper-slide " style="transform: translate3d(0px, 0px, -100px) rotateX(0deg) rotateY(-50deg); z-index: 0; transition-duration: 0ms; background-image: url(img/bottom-bg.png);"><div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 1; transition-duration: 0ms;"></div></div>
+					<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, -200px) rotateX(0deg) rotateY(-100deg); z-index: -1; transition-duration: 0ms; background-image: url(img/bottom-bg.png);"><div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 2; transition-duration: 0ms;"></div></div>
+					<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(-150deg); z-index: -2; transition-duration: 0ms; background-image: url(img/bottom-bg.png);"><div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 3; transition-duration: 0ms;"></div></div>
+					<div class="swiper-slide" style="transform: translate3d(0px, 0px, -400px) rotateX(0deg) rotateY(-200deg); z-index: -3; transition-duration: 0ms; background-image: url(img/bottom-bg.png);"><div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div><div class="swiper-slide-shadow-right" style="opacity: 4; transition-duration: 0ms;"></div></div>
+				</div>
+			</div>
+        </div>
+        <div class="audio">
+			<a href="#audio" id="audio" class="title-a">媒体之声</a>
+            <ul>
+                <li><a href="#">国家大剧院   ——    天香版《牡丹亭》亮相国家大剧院</a><span>2015.3.5</span></li>
+                    <li><a href="#">国家大剧院   ——    天香版《牡丹亭》亮相国家大剧院</a><span>2015.3.5</span></li>
+                    <li><a href="#">国家大剧院   ——    天香版《牡丹亭》亮相国家大剧院</a><span>2015.3.5</span></li>
+                    <li><a href="#">国家大剧院   ——    天香版《牡丹亭》亮相国家大剧院</a><span>2015.3.5</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            <img src="./img/footer-bg.png" alt="">
+
+        </div>
+        <a href="#" title="返回" id="go_back" style="display: block;"></a>
+        <!-- 弹出视频 -->
+        <div id="jiajDiv16" style=" display:none;" class="mydiv2">
+            <div class="tc_x">
+                <span id="jiajDiv16Title"><a id="jiajDiv16Close">关闭</a></span>
+
+                <div class="fmv">
+                    <div id="fmv"></div>
+                </div>
+
+            </div>
+            <div id="jiajbg" class="bg"></div>
+        </div>
+        <audio src="img/1.mp3" id="audio"></audio>
+        <!-- //弹出视频 -->
+        <script src="./js/script.js"></script>
+        <script>
+            var audio = document.getElementById('audio');
+
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event) {
+                    console.log($(this.hash).offset().top);
+                    event.preventDefault();
+                    $('html,body').animate({
+                        scrollTop: $(this.hash).offset().top - 90
+                    }, 1000);
+                });
+
+                $('.music ul li').click(function() {
+                    var i = $.inArray(this, $('.music ul li'));
+                    var _this = this;
+                    if ($(this).hasClass('select')) {
+                        audio.pause();
+                        $('.music div.bar').remove();
+                        $(this).removeClass('select');
+                    } else {
+                        $('.music div.bar').remove();
+                        $('.music ul li ').eq(i).prepend('<div class="bar"></div>');
+                        $('.music ul li').removeClass('select').eq(i).addClass('select');
+                        audio.src = 'img/' + (i + 1) + '.mp3';
+                        $('#musicText').text(musicTextArray[i]);
+                        console.log(audio);
+                        console.log(i);
+                        audio.play();
+                        audio.addEventListener("timeupdate", function() {
+                            var elapsedTime = Math.round(audio.currentTime);
+                            var fWidth = (elapsedTime / audio.duration) * ($('.music ul li').width());
+                            //console.log(parseInt(fWidth));
+                            $('.music ul li .bar').width(parseInt(fWidth));
+                        }, true);
+                        audio.addEventListener("ended", function() {
+                            $('.music ul li').removeClass('select');
+                        }, false);
+                    }
+                });
+            });
+
+            function alertWin(n) {
+                swfobject.embedSWF("null", "myMovie", "28", "24", "9.0.0", null, null, {
+                    wmode: "transparent"
+                });
+                swfobject.embedSWF("FLVPlayer_Progressive.swf", "fmv", "580", "460", "9.0.0", null, null, {
+                    wmode: "transparent",
+                    FlashVars: "&MM_ComponentVersion=1&skinName=Clear_Skin_3&streamName=media/video_index&autoPlay=true&autoRewind=false"
+                });
+                var DDiv = document.getElementById(n)
+                DDiv.style.display = "block";
+                titleBar = document.getElementById(n + "Title");
+                titleBar = document.getElementById(n + "bg");
+                closeBtn = document.getElementById(n + "Close");
+                closeBtn.onclick = function() {
+                    DDiv.style.display = "none";
+                    swfobject.embedSWF("null", "fmv", "580", "460", "9.0.0", null, null, {
+                        wmode: "transparent",
+                        FlashVars: "&MM_ComponentVersion=1&skinName=media/Clear_Skin_3&streamName=media/video_index&autoPlay=true&autoRewind=false"
+                    });
+                    swfobject.embedSWF("media/yinyue.swf", "myMovie", "28", "24", "9.0.0", null, null, {
+                        wmode: "transparent"
+                    });
+                }
+            }
+            $('#dingpiaoBtn').click(function() {
+                window.location.href = 'http://ticket.chncpa.org/product-1010629.html';
+            });
+        </script>
+        <script src="./js/swiper.min.js"></script>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                pagination: 'null',
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflow: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true
+                }
+            });
+            swiper.slideNext();
+        </script>
+</body>
+
+</html>

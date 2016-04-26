@@ -83,8 +83,12 @@ function Sort(id, head, content, config) {
             return b.sort - a.sort
         }
     } else {
-        var sortBtnTop = config.sortFnTop,
-            sortBtnBottom = config.sortFnBottom
+        var sortFnTop = config.sortFnTop || function (a, b) {
+            return a.sort - b.sort
+        }
+        var sortFnBottom = config.sortFnBottom || function (a, b) {
+            return b.sort - a.sort
+        }
     }
     var table = document.createElement('table'),
         tHead = document.createElement('thead'),

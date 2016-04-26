@@ -116,7 +116,7 @@ WTool._addPrototype({
     }
 })
 /**
- * hasClass,addClass,removeClass,toggleClass的封装
+ * 关于类名的封装
  */
 WTool._addPrototype({
     /**
@@ -130,7 +130,7 @@ WTool._addPrototype({
         while (len--) {
             var classNames = this[len].className.replace(/^\s+|\s+$/g, '').split(/\s+/)
             var count = classNames.length
-            while(count--) {
+            while (count--) {
                 if (className === classNames[count]) {
                     result = true
                 }
@@ -191,6 +191,44 @@ WTool._addPrototype({
             }
         }
         return this
+    }
+})
+/**
+ * 关于事件的封装
+ */
+WTool._addPrototype({
+    /**
+     * @param  {string} event 传入的事件类型
+     * @param  {function} handle 传入的事件监听函数
+     */
+    addEvent: function (event, handle) {
+        if (!event || !handle) return
+        this.forEach(function (value) {
+            value.addEventListener.call(value, event, handle)
+        })
+    },
+    /**
+     * @param  {string} event 需要取消的的事件类型
+     * @param  {function} handle 取消的事件监听函数
+     */
+    removeEvent: function (event, handle) {
+        if (!event || !handle) return
+        this.forEach(function (value) {
+            value.removeEventListener.call(value, event, handle)
+        })
+    },
+    /**
+     * @param  {string} tag 传入的监听标签名
+     * @param  {string} event 传入的事件类型
+     * @param  {function} handle 传入的事件监听函数
+     */
+    delegateEvent: function (tag, event, handle) {
+        if (!event || !handle || !tag) return
+        this.addEvent(event, function (e) {
+            if (e.target.tagName.toLowerCase() === tag) {
+                handle.call(e.target,e)
+            }
+        })
     }
 })
 var w = (function () {
