@@ -37,7 +37,12 @@ w().ready(function(){
 		$('#daoyanshanshu').css('display','none');
 		$('#wumeifuzhuang').css('display','block');
 	}
-	
+	$('.music .left a').click(function(){
+		var nEv = new Event('click')
+		var music = w('.bg_music2 p')[0].nextSibling.nextSibling
+		console.log(music)
+		music.dispatchEvent(nEv)
+	})
 	$(".nav li a").click(function(){
 		$('.nav li a').removeClass("nav_on");
 		$(this).addClass("nav_on");

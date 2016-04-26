@@ -288,7 +288,8 @@ h3:before {
 .audio li {
     white-space: pre;
     text-align: left;
-    font-size: 16px
+    font-size: 16px;
+    line-height: 4;
 }
 
 .audio li:hover {
