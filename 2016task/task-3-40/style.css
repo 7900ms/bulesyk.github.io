@@ -49,3 +49,11 @@
     border-left-color: #000;
     margin-left: 10px;
 }
+.input-wapper {
+    text-align: center;
+}
+.input-wapper input {
+    padding: 5px;
+    border-color: #000;
+    border-radius: 3px;
+}

@@ -105,9 +105,12 @@ function Calendar(id, config) {
     this.setValue(year, date.getFullYear())
     this.setValue(month, date.getMonth() + 1)
     w(tBody).delegateEvent('td', 'click', function (e) {
-        w(tool.tBody).w('.active').removeClass('active')
-        w(this).addClass('active')
-        tool.selectDay = year.value + '年' + month.value + '月' + this.innerHTML + '日'
+        if (this.innerHTML) {
+            w(tool.tBody).w('.active').removeClass('active')
+            w(this).addClass('active')
+            tool.selectDay = year.value + '年' + month.value + '月' + this.innerHTML + '日'
+            config.clicked.call(tool)
+        }
     })
     // 箭头的事件
     w(container).w('i').addEvent('click', function (e) {
@@ -130,6 +133,13 @@ function Calendar(id, config) {
         tool.setValue(month, selectMonth)
         month.dispatchEvent(new Event('change'))
         year.dispatchEvent(new Event('change'))
+    })
+    // 绑定input
+    w().ready(function () {
+        var inputWapper = w('#' + config.inputId)[0].parentNode
+        w(inputWapper).addEvent('click', function (e) {
+            w(container).toggleClass('hide')
+        })
     })
     this.container = container
 }

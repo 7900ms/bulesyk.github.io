@@ -10,12 +10,19 @@
 </head>
 
 <body>
+    <div class="input-wapper">
+        <label for="date">日期:</label><input type="text" id="date">
+    </div>
     <script src="./script.js"></script>
     <script>
         var config = {
             year: {
                 start: 1994,
                 end: 2016
+            },
+            inputId:'date',
+            clicked:function(){
+                w('#date')[0].value = this.selectDay
             }
         }
         var calendar = new Calendar('test', config)
