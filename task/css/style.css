@@ -679,3 +679,10 @@ h3:before {
     text-align: left;
     display: none;
 }
+#asd {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 20px;
+    top: 10px;
+}

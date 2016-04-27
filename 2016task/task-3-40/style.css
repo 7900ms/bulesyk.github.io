@@ -1,0 +1,51 @@
+#test {
+    text-align: center;
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+#test table {
+    padding: 20px;
+    width: 100%;
+}
+#test table td,#test table th {
+    padding: 1em 2em;
+}
+#test table td:empty {
+    padding: 0;
+}
+#test table td:hover {
+    cursor: pointer;
+}
+#test select {
+    width: 40%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    border-radius: 3px;
+    border: 1px solid #000;
+    margin: 0 2px;
+}
+#test .active {
+    background-color: #f00;
+    color: #fff;
+}
+#test i {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    vertical-align: middle;
+    border: 8px solid transparent;
+    position: relative;
+    bottom: 1px;
+}
+#test .left-arrow {
+    border-right-color: #000;
+    margin-right: 10px;
+}
+#test .right-arrow {
+    border-left-color: #000;
+    margin-left: 10px;
+}

@@ -3,13 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>任务五十：微型调查问卷平台</title>
-    <link rel="stylesheet" href="../../tool/reset.css">
+    <title>任务四十：UI组件之日历组件（一）</title>
     <script src="../../wtool.js"></script>
+    <link rel="stylesheet" href="../../tool/reset.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-
+    <script src="./script.js"></script>
+    <script>
+        var config = {
+            year: {
+                start: 1994,
+                end: 2016
+            }
+        }
+        var calendar = new Calendar('test', config)
+        document.body.appendChild(calendar.container)
+    </script>
 </body>
 
 </html>
