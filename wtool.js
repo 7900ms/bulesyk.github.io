@@ -1,39 +1,11 @@
 /**
- * 
- */
-/**
  * Author:bulesyk
  */
 function WTool() {
     /**
-     * 定义Id,Class,innerHTML的输入输出
+     * 定义Id,Class,innerHTML,value的输入输出
      */
-    Object.defineProperties(this, {
-        'id': {
-            get: function () {
-                return this[0].id
-            },
-            set: function (params) {
-                this._uniqActive.call(this, 'id', params)
-            }
-        },
-        'className': {
-            get: function () {
-                return this[0].className
-            },
-            set: function (params) {
-                this._uniqActive.call(this, 'className', params)
-            }
-        },
-        'innerHTML': {
-            get: function () {
-                return this[0].innerHTML
-            },
-            set: function (params) {
-                this._uniqActive.call(this, 'innerHTML', params)
-            }
-        }
-    })
+    // this._defineProperties(['id', 'className', 'innerHTML', 'value'])
 }
 /**
  * Array的实例
@@ -47,6 +19,45 @@ WTool._addPrototype = function (prototype) {
         this.prototype[key] = prototype[key]
     }
 }
+/**
+ * 一些内部函数
+ */
+WTool._addPrototype({
+    /**
+     * 重复动作
+     * @param  {string} name 重复动作的名称
+     * @param  {string/array} content 输入的值
+     */
+    _uniqActive: function (name, content) {
+        if (typeof content === 'string') {
+            this[0][name] = content
+        } else if (Object.prototype.toString.call(content) === '[object Array]') {
+            var len = this.length,
+                count = content.length
+            for (var i = 0; i < len; i++) {
+                if (content[i]) {
+                    this[i][name] = content[i]
+                }
+            }
+        }
+    },
+    /**
+     * 重复动作
+     * @param  {array} valueList 要设置的valueList
+     */
+    _defineProperties: function (valueList) {
+        valueList.forEach(function (value) {
+            Object.defineProperty(this, value, {
+                get: function () {
+                    return this[0][value]
+                },
+                set: function (params) {
+                    this._uniqActive.call(this, value, params)
+                }
+            })
+        }, this)
+    }
+})
 /**
  * 添加部分封装函数到原型
  */
@@ -84,35 +95,6 @@ WTool._addPrototype({
             }
         }
         return result
-    },
-    /**
-     * 设置id,class,innerHTML的重复动作
-     * @param  {string} name 重复动作的名称
-     * @param  {string/array} content 输入的值
-     */
-    _uniqActive: function (name, content) {
-        if (typeof content === 'string') {
-            this[0][name] = content
-        } else if (Object.prototype.toString.call(content) === '[object Array]') {
-            var len = this.length,
-                count = content.length
-            for (var i = 0; i < len; i++) {
-                if (content[i]) {
-                    this[i][name] = content[i]
-                }
-            }
-        }
-    },
-    /**
-     * 文档结构加载完毕后执行函数
-     * @param  {function} fn 文档加载后执行的函数
-     */
-    ready: function (fn) {
-        document.onreadystatechange = function () {
-            if (document.readyState === 'interactive') {
-                fn.call(document)
-            }
-        }
     }
 })
 /**
@@ -226,29 +208,118 @@ WTool._addPrototype({
         if (!event || !handle || !tag) return
         this.addEvent(event, function (e) {
             if (e.target.tagName.toLowerCase() === tag) {
-                handle.call(e.target,e)
+                handle.call(e.target, e)
             }
         })
     }
 })
-var w = (function () {
+/**
+ * @param  {dom/string} selector DOM元素或者CSS选择器
+ * @return {obj} tool WTool对象
+ */
+function w(selector) {
+    var tool = new WTool()
+    if (!selector) return tool
+    if (typeof selector !== 'string') {
+        for (var i = 0, len = arguments.length; i < len; i++) {
+            tool.push(arguments[i])
+        }
+    } else {
+        var len = document.querySelectorAll(selector).length
+        while (len--) {
+            tool.unshift(document.querySelectorAll(selector)[len])
+        }
+    }
+    return tool
+}
+/**
+ * wTool的实例
+ */
+w.prototype = new WTool()
+/**
+ * 文档结构加载完毕后执行函数
+ * @param  {function} fn 文档加载后执行的函数
+ */
+w.ready = function (fn) {
+    document.onreadystatechange = function () {
+        if (document.readyState === 'interactive') {
+            fn.call(document)
+        }
+    }
+}
+/**
+ * @param  {obj} methods 添加的方法
+ */
+w._addMethods = function (method) {
+    for (var key in method) {
+        this[key] = method[key]
+    }
+}
+/**
+ * 新建元素
+ */
+w._addMethods({
     /**
-     * @param  {dom/string} selector DOM元素或者CSS选择器
-     * @return {obj} tool WTool对象
+     * @param  {obj} config 创建复杂元素
+     * @return {obj} result WTool对象
      */
-    return function (selector) {
-        var tool = new WTool()
-        if (!selector) return tool
-        if (typeof selector !== 'string') {
-            for (var i = 0, len = arguments.length; i < len; i++) {
-                tool.push(arguments[i])
+    create: function (config) {
+        if (!config) return
+        var result = new WTool()
+        config.forEach(function (value) {
+            for (var key in value) {
+                var container = null
+                container = document.createElement(key)
+                for (let innerKey in value[key]) {
+                    switch (innerKey) {
+                        case 'id':
+                        case 'className':
+                        case 'value':
+                        case 'innerHTML':
+                            container[innerKey] = value[key][innerKey]
+                            break
+                        case 'container':
+                            var innerContainer = this.create(value[key][innerKey])
+                            innerContainer.forEach(function (value) {
+                                container.appendChild(value)
+                            })
+                            break
+                        default:
+
+                    }
+                }
+
             }
-        } else {
-            var len = document.querySelectorAll(selector).length
-            while (len--) {
-                tool.unshift(document.querySelectorAll(selector)[len])
+            result.push(container)
+        }, this)
+        return result
+    },
+    /**
+     * @param  {string} tag 新建元素的标签名
+     * @param  {obj} config 配置
+     */
+    createElem: function (tag, config) {
+        if (!tag) return
+        var result = document.createElement(tag)
+        for (var key in config) {
+            result.setAttribute(key, config[key])
+        }
+        return result
+    },
+    /**
+     * @param  {obj} config 配置
+     * @param  {number} count=1 数量
+     */
+    createElems: function (config, count = 1) {
+        if (!config) return
+        var result = new WTool()
+        while (count--) {
+            for (var key in config) {
+                var elem = null
+                elem = this.createElem(key, config[key])
+                result.push(elem)
             }
         }
-        return tool
+        return result
     }
-})()
+})

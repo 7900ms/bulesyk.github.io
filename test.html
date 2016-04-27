@@ -118,10 +118,15 @@
         </div>
     </div>
     <script>
-        function fn(e){
-            console.log(this,e)
-        }
-        w('.container-1').delegateEvent('span','click',fn)
+        console.log(w.createElems({
+            label: {
+                for:'asd'
+            },
+            input:{
+                class:'asd',
+                type:'text'
+            }
+        },2))
     </script>
 </body>
 

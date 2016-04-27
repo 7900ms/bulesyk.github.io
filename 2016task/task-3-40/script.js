@@ -135,7 +135,7 @@ function Calendar(id, config) {
         year.dispatchEvent(new Event('change'))
     })
     // 绑定input
-    w().ready(function () {
+    w.ready(function () {
         var inputWapper = w('#' + config.inputId)[0].parentNode
         w(inputWapper).addEvent('click', function (e) {
             w(container).toggleClass('hide')
