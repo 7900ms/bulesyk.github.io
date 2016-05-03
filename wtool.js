@@ -15,7 +15,7 @@ WTool.prototype = new Array()
  * @param  {obj} 要添加的prototype
  */
 WTool._addPrototype = function (prototype) {
-    for (var key in prototype) {
+    for (let key in prototype) {
         this.prototype[key] = prototype[key]
     }
 }
@@ -34,7 +34,7 @@ WTool._addPrototype({
         } else if (Object.prototype.toString.call(content) === '[object Array]') {
             var len = this.length,
                 count = content.length
-            for (var i = 0; i < len; i++) {
+            for (let i = 0; i < len; i++) {
                 if (content[i]) {
                     this[i][name] = content[i]
                 }
@@ -76,18 +76,18 @@ WTool._addPrototype({
                 tool.unshift(this[len].querySelectorAll(selector)[count])
             }
         }
-        tool = tool.uniqArray()
+        tool = tool.uniqArrayay()
         return tool
     },
     /**
      * 数组去重
      */
-    uniqArray: function () {
+    uniqArrayay: function () {
         var result = new WTool()
-        for (var i = 0, len = this.length; i < len; i++) {
+        for (let i = 0, len = this.length; i < len; i++) {
             if (this[i]) {
                 result.push(this[i])
-                for (var j = i + 1; j < len; j++) {
+                for (let j = i + 1; j < len; j++) {
                     if (this[j] === this[i]) {
                         this.splice(j, 1, '')
                     }
@@ -115,6 +115,7 @@ WTool._addPrototype({
  */
 WTool._addPrototype({
     /**
+     * 判断WTool中有没有所给类名
      * @param  {string} className 要判断的类名
      * @return {boolean} result true/false
      */
@@ -134,6 +135,7 @@ WTool._addPrototype({
         return result
     },
     /**
+     * 添加类名,如果存在就不添加
      * @param  {string} className 要添加的类名
      * @return {obj} this 添加后的对象
      */
@@ -152,6 +154,7 @@ WTool._addPrototype({
         return this
     },
     /**
+     * 删除类名,如果不存在就不删除
      * @param  {string} className 要删除的类名
      * @return {obj} this 删除后的对象
      */
@@ -172,6 +175,7 @@ WTool._addPrototype({
         return this
     },
     /**
+     * 添加删除类名,如果存在就删除,如果不存在就添加
      * @param  {string} className 要添加/删除的类名
      * @return {obj} this 添加/删除后的对象
      */
@@ -193,6 +197,7 @@ WTool._addPrototype({
  */
 WTool._addPrototype({
     /**
+     * 为WTool中的所有元素添加事件
      * @param  {string} event 传入的事件类型
      * @param  {function} handle 传入的事件监听函数
      */
@@ -203,6 +208,7 @@ WTool._addPrototype({
         })
     },
     /**
+     * 为WTool中的所有元素删除事件
      * @param  {string} event 需要取消的的事件类型
      * @param  {function} handle 取消的事件监听函数
      */
@@ -219,12 +225,12 @@ WTool._addPrototype({
      */
     delegateEvent: function (tag, event, handle) {
         if (!event || !handle || !tag) return
-        this['wDelegateEvent' + handle.name] = function (e) {
+        this['delegateEvent' + handle.name] = function (e) {
             if (e.target.tagName.toLowerCase() === tag.toLowerCase()) {
                 handle.call(e.target, e)
             }
         }
-        this.addEvent(event, this['wDelegateEvent' + handle.name])
+        this.addEvent(event, this['delegateEvent' + handle.name])
     },
     /**
      * @param  {string} tag 标签
@@ -232,23 +238,28 @@ WTool._addPrototype({
      * @param  {function} handle 要取消的监听函数
      */
     removeDelegateEvent: function (tag, event, handle) {
-        console.log(handle)
-        this.removeEvent(event, this['wDelegateEvent' + handle.name])
+        this.removeEvent(event, this['delegateEvent' + handle.name])
     }
 })
 /**
+ * 关于位置的封装
+ */
+WTool._addPrototype({
+    getPos: function () {
+        var elem = this[0]
+
+    }
+})
+/**
+ * 传入css选择器使用querySelAll返回一个WTool对象,传入dom元素返回WTool对象,可以传入多个dom对象
  * @param  {dom/string} selector DOM元素或者CSS选择器
  * @return {obj} tool WTool对象
  */
 function w(selector) {
     var tool = new WTool()
     if (!selector) return tool
-    if (Object.prototype.toString.call(selector).slice(8, -1).toLowerCase() === 'array') {
-        for (var i = 0, len = selector.length; i < len; i++) {
-            tool.push(selector[i])
-        }
-    } else if (typeof selector !== 'string') {
-        for (var i = 0, len = arguments.length; i < len; i++) {
+    if (typeof selector !== 'string') {
+        for (let i = 0, len = arguments.length; i < len; i++) {
             tool.push(arguments[i])
         }
     } else {
@@ -278,7 +289,7 @@ w.ready = function (fn) {
  * @param  {obj} methods 添加的方法
  */
 w._addMethods = function (method) {
-    for (var key in method) {
+    for (let key in method) {
         this[key] = method[key]
     }
 }
@@ -287,14 +298,15 @@ w._addMethods = function (method) {
  */
 w._addMethods({
     /**
-     * @param  {obj} config 创建复杂元素
+     * 创建复杂的复合对象
+     * @param  {obj} config 配置
      * @return {obj} result WTool对象
      */
     create: function (config) {
         if (!config) return
         var result = new WTool()
         config.forEach(function (value) {
-            for (var key in value) {
+            for (let key in value) {
                 var container = null
                 container = document.createElement(key)
                 for (let innerKey in value[key]) {
@@ -322,29 +334,65 @@ w._addMethods({
         return result
     },
     /**
+     * 新建DOM元素
      * @param  {string} tag 新建元素的标签名
-     * @param  {obj} config 配置
+     * @param  {obj} config 配置,使用setArrribute创建
+     * @return {obj} result DOM元素
      */
     createElem: function (tag, config) {
         if (!tag) return
         var result = document.createElement(tag)
-        for (var key in config) {
+        for (let key in config) {
             result.setAttribute(key, config[key])
         }
         return result
     },
     /**
-     * @param  {obj} config 配置
+     * 创建多个元素
+     * @param  {obj} config 配置,,使用setArrribute创建
      * @param  {number} count=1 数量
+     * @return {obj} result WTool对象
      */
     createElems: function (config, count = 1) {
         if (!config) return
         var result = new WTool()
         while (count--) {
-            for (var key in config) {
+            for (let key in config) {
                 var elem = null
                 elem = this.createElem(key, config[key])
                 result.push(elem)
+            }
+        }
+        return result
+    }
+})
+/**
+ * 常用函数
+ */
+w._addMethods({
+    /**
+     * @param  {obj} obj 需要判断的对象
+     * @param  {string} type 需要判断的类型
+     * @return {boolean} true/false
+     */
+    is: function (obj, type) {
+        return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase() === type.toLowerCase()
+    },
+    /**
+     * @param  {obj} obj 要复制的obj
+     * @return {obj} result 复制后的obj
+     */
+    cloneObj: function (obj) {
+        var result = {}
+        if (this.is(obj, 'array')) {
+            return obj.slice()
+        } else {
+            for (let key in obj) {
+                if (typeof obj[key] === 'object') {
+                    result[key] = this.cloneObj(obj[key])
+                } else {
+                    result[key] = obj[key]
+                }
             }
         }
         return result
