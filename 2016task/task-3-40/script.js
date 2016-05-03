@@ -100,10 +100,11 @@ function Calendar(id, config) {
     })
     // 设置现在的日期
     var date = new Date()
-    tool.generateContent(date.getFullYear(), date.getMonth() + 1)
-    w(w(tBody).w('td')[date.getDay() + date.getDate()]).addClass('active')
+    var week = date.getDay()
     this.setValue(year, date.getFullYear())
     this.setValue(month, date.getMonth() + 1)
+    month.dispatchEvent(new Event('change'))
+    w(w(tBody).w('td')[7-week+date.getDate()]).addClass('active')
     w(tBody).delegateEvent('td', 'click', function (e) {
         if (this.innerHTML) {
             w(tool.tBody).w('.active').removeClass('active')
@@ -146,7 +147,7 @@ function Calendar(id, config) {
 /**
  * 生成table
  */
-Calendar.prototype.generateContent = function (year, month, day) {
+Calendar.prototype.generateContent = function (year, month,day) {
     this.tBody.innerHTML = ''
     var tool = this
     var days = this.years[year][month].slice()

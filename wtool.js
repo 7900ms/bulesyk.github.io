@@ -5,7 +5,7 @@ function WTool() {
     /**
      * 定义Id,Class,innerHTML,value的输入输出
      */
-    // this._defineProperties(['id', 'className', 'innerHTML', 'value'])
+    this._defineProperties(['id', 'className', 'innerHTML', 'value'])
 }
 /**
  * Array的实例
@@ -203,11 +203,12 @@ WTool._addPrototype({
      * @param  {string} tag 传入的监听标签名
      * @param  {string} event 传入的事件类型
      * @param  {function} handle 传入的事件监听函数
+     * 不可监听两次事件
      */
     delegateEvent: function (tag, event, handle) {
         if (!event || !handle || !tag) return
         this.addEvent(event, function (e) {
-            if (e.target.tagName.toLowerCase() === tag) {
+            if (e.target.tagName.toLowerCase() === tag.toLowerCase()) {
                 handle.call(e.target, e)
             }
         })
