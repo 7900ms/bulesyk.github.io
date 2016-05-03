@@ -34,7 +34,7 @@ function Calendar(id, config) {
         return tr
     })()
     tHead.appendChild(tHeadTr)
-    // 创建年
+    // 生成选择的年份
     var years = {}
     var months = this.generateArray(1, 12)
     for (var i = config.year.start; i <= config.year.end; i++) {
@@ -77,7 +77,7 @@ function Calendar(id, config) {
     }
     this.years = years
     this.tBody = tBody
-    // 设置年月
+    // 根据生成的年份生成select
     months.forEach(function (value) {
         var option = document.createElement('option')
         option.innerHTML = value + '月'
@@ -90,29 +90,22 @@ function Calendar(id, config) {
         option.value = key
         year.appendChild(option)
     }
+    // 添加选择年月的事件
     w(year).addEvent('change', function (e) {
         var choice = this.value
-        tool.generateContent(choice, month.value)
+        tool.setDate(choice, month.value)
     })
     w(month).addEvent('change', function (e) {
         var choice = this.value
-        tool.generateContent(year.value, choice)
+        tool.setDate(year.value, choice)
     })
-    // 设置现在的日期
+    // 设置现在的日期,添加选择的事件
     var date = new Date()
     var week = date.getDay()
-    this.setValue(year, date.getFullYear())
-    this.setValue(month, date.getMonth() + 1)
+    w(year).setSelectValue(date.getFullYear())
+    w(month).setSelectValue(date.getMonth() + 1)
     month.dispatchEvent(new Event('change'))
-    w(w(tBody).w('td')[7-week+date.getDate()]).addClass('active')
-    w(tBody).delegateEvent('td', 'click', function (e) {
-        if (this.innerHTML) {
-            w(tool.tBody).w('.active').removeClass('active')
-            w(this).addClass('active')
-            tool.selectDay = year.value + '年' + month.value + '月' + this.innerHTML + '日'
-            config.clicked.call(tool)
-        }
-    })
+    w(w(tBody).w('td')[7 - week + date.getDate()]).addClass('active')
     // 箭头的事件
     w(container).w('i').addEvent('click', function (e) {
         var selectYear = year.value
@@ -130,8 +123,8 @@ function Calendar(id, config) {
                 selectYear++
             }
         }
-        tool.setValue(year, selectYear)
-        tool.setValue(month, selectMonth)
+        w(year).setSelectValue(selectYear)
+        w(month).setSelectValue(selectMonth)
         month.dispatchEvent(new Event('change'))
         year.dispatchEvent(new Event('change'))
     })
@@ -142,12 +135,60 @@ function Calendar(id, config) {
             w(container).toggleClass('hide')
         })
     })
+    function setUserDate(userYear, userMonth, userDay) {
+        w(year).setSelectValue(userYear)
+        w(month).setSelectValue(userMonth)
+        year.dispatchEvent(new Event('change'))
+        w(w(tBody).w('td')[tool.empty - 1 + userDay]).addClass('active')
+    }
+
+    if (config.selectType === 'radio') {
+        function onlyChoice(e) {
+            if (this.innerHTML) {
+                w(tool.tBody).w('.active').removeClass('active')
+                w(this).addClass('active')
+                tool.selectDay = year.value + '年' + month.value + '月' + this.innerHTML + '日'
+                config.clicked.call(tool)
+            }
+        }
+        w(tBody).delegateEvent('td', 'click', onlyChoice)
+    }
+    if (config.selectType === 'multiple') {
+        function multipleChoice(e) {
+            if (this.innerHTML) {
+                var actives = w(tool.tBody).w('.active')
+                var start = parseInt(actives[0].innerHTML),
+                    end = parseInt(actives[actives.length - 1].innerHTML)
+                if (actives.length < 2) {
+                    w(this).addClass('active')
+                } else {
+                    var select = parseInt(this.innerHTML)
+                    if (select <= 15) {
+                        w(actives[0]).removeClass('active')
+                        w(this).addClass('active')
+                    }
+                    if (select > 15) {
+                        w(actives[actives.length - 1]).removeClass('active')
+                        w(this).addClass('active')
+                    }
+                }
+            }
+            actives = w(tool.tBody).w('.active')
+            var area = tool.tds.slice(tool.empty+parseInt(actives[0].innerHTML),tool.empty+parseInt(actives[actives.length - 1].innerHTML)-1)
+            w(tool.tBody).w('.area-active').removeClass('area-active')
+            w(area).addClass('area-active')
+            tool.selectDay = year.value + '年' + month.value + '月' + actives.innerHTML + '日至' + actives[actives.length - 1].innerHTML + '日'
+            config.clicked.call(tool)
+        }
+        w(tBody).delegateEvent('td', 'click', multipleChoice)
+    }
     this.container = container
+    this.setUserDate = setUserDate
 }
 /**
  * 生成table
  */
-Calendar.prototype.generateContent = function (year, month,day) {
+Calendar.prototype.setDate = function (year, month) {
     this.tBody.innerHTML = ''
     var tool = this
     var days = this.years[year][month].slice()
@@ -165,11 +206,13 @@ Calendar.prototype.generateContent = function (year, month,day) {
         })
         this.tBody.appendChild(tr)
     }, this)
-    var lastWeek = week - 1
-    while (lastWeek--) {
+    var empty = week - 1
+    this.empty = empty
+    while (empty--) {
         days.unshift('')
     }
-    w(this.tBody).w('td').innerHTML = days
+    this.tds = w(this.tBody).w('td')
+    this.tds.innerHTML = days
 }
 Calendar.prototype.generateArray = function (start, stop) {
     var result = []
@@ -177,14 +220,4 @@ Calendar.prototype.generateArray = function (start, stop) {
         result.push(i)
     }
     return result
-}
-Calendar.prototype.setValue = function (select, input) {
-    var options = [].slice.call(select.children)
-    options.forEach(function (value) {
-        if (value.value == input) {
-            value.selected = true
-        } else {
-            value.selected = false
-        }
-    })
 }

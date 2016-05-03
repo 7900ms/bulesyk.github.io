@@ -57,3 +57,7 @@
     border-color: #000;
     border-radius: 3px;
 }
+.area-active {
+    color: #fff;
+    background-color: #f77;
+}

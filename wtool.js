@@ -95,6 +95,19 @@ WTool._addPrototype({
             }
         }
         return result
+    },
+    /**
+     * @param  {string} input
+     */
+    setSelectValue: function (input) {
+        var list = Array.from(w(this[0]).w('option'))
+        list.forEach(function (value) {
+            if (value.value == input) {
+                value.selected = true
+            } else {
+                value.selected = false
+            }
+        })
     }
 })
 /**
@@ -203,15 +216,24 @@ WTool._addPrototype({
      * @param  {string} tag 传入的监听标签名
      * @param  {string} event 传入的事件类型
      * @param  {function} handle 传入的事件监听函数
-     * 不可监听两次事件
      */
     delegateEvent: function (tag, event, handle) {
         if (!event || !handle || !tag) return
-        this.addEvent(event, function (e) {
+        this['wDelegateEvent' + handle.name] = function (e) {
             if (e.target.tagName.toLowerCase() === tag.toLowerCase()) {
                 handle.call(e.target, e)
             }
-        })
+        }
+        this.addEvent(event, this['wDelegateEvent' + handle.name])
+    },
+    /**
+     * @param  {string} tag 标签
+     * @param  {string} event 事件类型
+     * @param  {function} handle 要取消的监听函数
+     */
+    removeDelegateEvent: function (tag, event, handle) {
+        console.log(handle)
+        this.removeEvent(event, this['wDelegateEvent' + handle.name])
     }
 })
 /**
@@ -221,7 +243,11 @@ WTool._addPrototype({
 function w(selector) {
     var tool = new WTool()
     if (!selector) return tool
-    if (typeof selector !== 'string') {
+    if (Object.prototype.toString.call(selector).slice(8, -1).toLowerCase() === 'array') {
+        for (var i = 0, len = selector.length; i < len; i++) {
+            tool.push(selector[i])
+        }
+    } else if (typeof selector !== 'string') {
         for (var i = 0, len = arguments.length; i < len; i++) {
             tool.push(arguments[i])
         }
