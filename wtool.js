@@ -258,7 +258,11 @@ WTool._addPrototype({
 function w(selector) {
     var tool = new WTool()
     if (!selector) return tool
-    if (typeof selector !== 'string') {
+    if (w.is(selector, 'array')) {
+        for (let i = 0, len = selector.length; i < len; i++) {
+            tool.push(selector[i])
+        }
+    } else if (typeof selector !== 'string') {
         for (let i = 0, len = arguments.length; i < len; i++) {
             tool.push(arguments[i])
         }
