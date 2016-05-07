@@ -1,0 +1,66 @@
+defaultColor = #91d4da
+
+
+// settings
+lineHeight(n)
+    height n
+    line-height n
+
+header {
+    width 100%
+    position fixed
+    top 0
+    left 0
+    color #fff
+    lineHeight(3rem)
+    background-color defaultColor
+    font-size 0
+    h1 {
+        display inline-block
+        width 100%
+        font-size 1.3rem
+        vertical-align middle
+        font-weight normal
+        text-align center
+    }
+    .back {
+        vertical-align middle
+        font-size 14px
+        position absolute
+        &:before {
+            content '<'
+            display inline
+        }
+    }
+}
+.space {
+    height 3rem
+}
+article {
+    width 100%
+    background-color #fff
+    text-align center
+    .nav {
+        display flex
+        lineHeight(2.5rem)
+        justify-content space-around
+        li {
+            border-bottom 2px solid transparent
+        }
+        .active {
+            border-color defaultColor
+        }
+    }
+}
+.banner {
+    img {
+        width 100%
+        display block
+    }
+}
+@media (min-width:768px) {
+    .container {
+        width 1200px
+        margin 0 auto
+    }
+}

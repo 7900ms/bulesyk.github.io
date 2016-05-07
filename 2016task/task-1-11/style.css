@@ -1,0 +1,58 @@
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: #91d4da;
+  font-size: 0;
+}
+header h1 {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.3rem;
+  vertical-align: middle;
+  font-weight: normal;
+  text-align: center;
+}
+header .back {
+  vertical-align: middle;
+  font-size: 14px;
+  position: absolute;
+}
+header .back:before {
+  content: '<';
+  display: inline;
+}
+.space {
+  height: 3rem;
+}
+article {
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+}
+article .nav {
+  display: flex;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+}
+article .nav li {
+  border-bottom: 2px solid transparent;
+}
+article .nav .active {
+  border-color: #91d4da;
+}
+.banner img {
+  width: 100%;
+  display: block;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
